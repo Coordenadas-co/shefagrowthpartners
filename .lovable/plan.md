@@ -1,24 +1,50 @@
 
 
-# Fix Client Logos + Add Scheduling Link
+# Favicon, Visual Effects & Conversion Popup
 
-## Two changes requested
+## What we're building
+Four enhancements: (1) Shefa favicon, (2) cinematic visual effects with particles and parallax, (3) enhanced animations throughout, (4) a conversion popup that appears on first visit.
 
-### 1. Fix Client Logos Section — Not Displaying Properly
-**Problem**: The `brightness-0 invert opacity-50` CSS filter turns all logos into white silhouettes on the dark navy background, making them nearly invisible. Many of these logos are PNGs with transparency — the filter approach doesn't work well.
+---
 
-**Fix**: Remove the `brightness-0 invert` filter and instead display logos at reduced opacity in their original colors. Use `opacity-60` as default with `opacity-100` on hover. Add a subtle white/light background pill behind each logo so they're visible regardless of the original logo colors.
+## 1. Favicon
+- Copy `src/assets/logo.png` to `public/favicon.png`
+- Update `index.html`: add `<link rel="icon" href="/favicon.png">`, update `<title>` to "Shefa Growth Partners", update meta descriptions and OG tags
+- Delete `public/favicon.ico` if it exists
 
-**File**: `src/components/sections/ClientLogos.tsx`
-- Replace `brightness-0 invert opacity-50` with `opacity-60 grayscale` (grayscale for the subtle "client wall" look, full color on hover)
-- Add a rounded background container (`bg-white/10 rounded-lg p-4`) behind each logo for contrast
-- Keep `h-12 max-w-[140px] object-contain` sizing
+## 2. Floating Particles + Parallax (Cinematic Feel)
+- **New `src/components/FloatingParticles.tsx`**: Canvas-based or CSS particle system with subtle gold dots floating upward in the Hero section background. Lightweight — ~20 particles with slow drift animation using CSS keyframes (no heavy library).
+- **Parallax on Hero**: Add a `useEffect` scroll listener that translates the Hero background glow and text at different speeds (`transform: translateY(scrollY * 0.3)`) for a cinematic depth effect.
+- **Parallax on section dividers**: Subtle gold gradient lines between sections shift slightly on scroll.
 
-### 2. Replace All CTA Links with Scheduling URL
-**URL**: `https://api.leadconnectorhq.com/widget/booking/FHOxAqdafvXaA2qoyd7c`
+## 3. Enhanced Animations
+- **Staggered card entrances**: Problem, Results, Solution cards animate in one-by-one with increasing `animation-delay`
+- **Counter animation on Results metrics**: Animate numbers from 0 to final value on scroll reveal (e.g., "+42%" counts up)
+- **Text reveal on Hero**: Headline words fade in sequentially with slight upward movement
+- **Hover micro-interactions**: Cards get a subtle glow border + scale on hover
+- Add keyframes to `tailwind.config.ts`: `float`, `particle-rise`, `text-reveal`
 
-**Files to update**:
-- `src/components/sections/FinalCTA.tsx` — change `mailto:contact@shefagrowth.com` to the booking URL, open in new tab
-- `src/components/sections/Hero.tsx` — change `href="#cta"` on the main CTA button to the booking URL directly
-- `src/components/Navbar.tsx` — change both "Apply Now" buttons (desktop + mobile) from `href="#cta"` to the booking URL
+## 4. Conversion Popup (First Visit)
+- **New `src/components/ConversionPopup.tsx`**: Dialog/modal that appears after 5 seconds on first visit (uses `localStorage` to show only once per session)
+- Content: Gold headline "Get Your Free Growth Diagnostic" / "Obtén tu Diagnóstico de Crecimiento Gratis", brief value prop, CTA button linking to the booking URL
+- Styled with the existing Dialog component, gold accent border, backdrop blur
+- Dismiss sets `localStorage` flag so it won't reappear
+- Bilingual using `useLang()`
+- Mounted in `Index.tsx`
+
+---
+
+## Files to create/modify
+| File | Action |
+|------|--------|
+| `public/favicon.png` | Copy from logo asset |
+| `index.html` | Favicon link, meta tags |
+| `src/components/FloatingParticles.tsx` | New — gold particle animation |
+| `src/components/ConversionPopup.tsx` | New — first-visit conversion modal |
+| `src/components/sections/Hero.tsx` | Add particles, parallax, text reveal |
+| `src/components/sections/Results.tsx` | Counter animation on metrics |
+| `src/components/sections/Problem.tsx` | Staggered card animation |
+| `src/pages/Index.tsx` | Mount ConversionPopup |
+| `tailwind.config.ts` | New keyframes (float, particle-rise) |
+| `src/index.css` | Particle + parallax utility classes |
 
