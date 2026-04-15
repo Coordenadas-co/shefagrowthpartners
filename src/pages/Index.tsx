@@ -13,6 +13,7 @@ import AboutMe from "@/components/sections/AboutMe";
 import EmotionalClose from "@/components/sections/EmotionalClose";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/Footer";
+import ConversionPopup from "@/components/ConversionPopup";
 
 const Index = () => {
   return (
@@ -32,6 +33,7 @@ const Index = () => {
       <EmotionalClose />
       <FinalCTA />
       <Footer />
+      <ConversionPopup />
     </div>
   );
 };

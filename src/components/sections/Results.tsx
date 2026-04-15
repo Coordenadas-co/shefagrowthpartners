@@ -1,5 +1,6 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const cases = {
   en: [
@@ -7,7 +8,9 @@ const cases = {
       company: "B2B SaaS — LatAm",
       problem: "Stagnant pipeline, 3% close rate",
       action: "Redesigned sales process, implemented lead scoring & new scripts",
-      metric: "+42%",
+      metricNum: 42,
+      metricPrefix: "+",
+      metricSuffix: "%",
       metricLabel: "revenue in 90 days",
       result: "Close rate → 11%",
     },
@@ -15,7 +18,9 @@ const cases = {
       company: "Professional Services Firm",
       problem: "100% referral-dependent, zero outbound",
       action: "Built outbound engine with ICP targeting and automated sequences",
-      metric: "35",
+      metricNum: 35,
+      metricPrefix: "",
+      metricSuffix: "",
       metricLabel: "qualified meetings/mo",
       result: "$180K new pipeline in 60 days",
     },
@@ -23,7 +28,9 @@ const cases = {
       company: "EdTech Scale-up",
       problem: "High CAC, retention below 60%",
       action: "Overhauled onboarding funnel and pricing tiers",
-      metric: "2.1×",
+      metricNum: 2.1,
+      metricPrefix: "",
+      metricSuffix: "×",
       metricLabel: "LTV increase",
       result: "CAC ↓ 38%, retention → 82%",
     },
@@ -33,7 +40,9 @@ const cases = {
       company: "SaaS B2B — LatAm",
       problem: "Pipeline estancado, tasa de cierre del 3%",
       action: "Rediseñé el proceso de ventas, implementé lead scoring y nuevos scripts",
-      metric: "+42%",
+      metricNum: 42,
+      metricPrefix: "+",
+      metricSuffix: "%",
       metricLabel: "ingresos en 90 días",
       result: "Tasa de cierre → 11%",
     },
@@ -41,7 +50,9 @@ const cases = {
       company: "Firma de Servicios Profesionales",
       problem: "100% dependiente de referidos, cero outbound",
       action: "Construí motor outbound con targeting por ICP y secuencias automatizadas",
-      metric: "35",
+      metricNum: 35,
+      metricPrefix: "",
+      metricSuffix: "",
       metricLabel: "reuniones calificadas/mes",
       result: "$180K nuevo pipeline en 60 días",
     },
@@ -49,12 +60,25 @@ const cases = {
       company: "EdTech en Escalamiento",
       problem: "CAC alto, retención por debajo del 60%",
       action: "Reestructuré funnel de onboarding y tiers de precios",
-      metric: "2.1×",
+      metricNum: 2.1,
+      metricPrefix: "",
+      metricSuffix: "×",
       metricLabel: "aumento de LTV",
       result: "CAC ↓ 38%, retención → 82%",
     },
   ],
 };
+
+function AnimatedMetric({ num, prefix, suffix, active }: { num: number; prefix: string; suffix: string; active: boolean }) {
+  const isDecimal = num % 1 !== 0;
+  const target = isDecimal ? Math.round(num * 10) : num;
+  const value = useCountUp(target, 1800, active);
+  const display = isDecimal ? (value / 10).toFixed(1) : value;
+
+  return (
+    <span>{prefix}{display}{suffix}</span>
+  );
+}
 
 export default function Results() {
   const { lang, t } = useLang();
@@ -78,8 +102,8 @@ export default function Results() {
           {items.map((c, i) => (
             <div
               key={i}
-              className={`flex flex-col rounded-lg border border-border/60 bg-card overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-              style={{ transitionDelay: visible ? `${i * 120}ms` : "0ms" }}
+              className={`flex flex-col rounded-lg border border-border/60 bg-card overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:border-primary/40 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+              style={{ transitionDelay: visible ? `${i * 150}ms` : "0ms" }}
             >
               <div className="border-b border-border/40 bg-primary/5 px-6 py-4">
                 <p className="text-xs font-semibold uppercase tracking-wider text-primary">{c.company}</p>
@@ -94,7 +118,9 @@ export default function Results() {
                   <p className="text-sm">{c.action}</p>
                 </div>
                 <div className="mt-auto rounded-md bg-primary/10 px-4 py-4 text-center">
-                  <p className="text-3xl font-extrabold text-primary">{c.metric}</p>
+                  <p className="text-3xl font-extrabold text-primary">
+                    <AnimatedMetric num={c.metricNum} prefix={c.metricPrefix} suffix={c.metricSuffix} active={visible} />
+                  </p>
                   <p className="text-xs text-muted-foreground mt-1">{c.metricLabel}</p>
                   <p className="text-sm font-semibold text-foreground mt-2">{c.result}</p>
                 </div>
