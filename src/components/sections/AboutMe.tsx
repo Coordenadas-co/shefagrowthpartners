@@ -1,6 +1,7 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Linkedin } from "lucide-react";
+import jsmPhoto from "@/assets/jsm-photo.png";
 
 export default function AboutMe() {
   const { t } = useLang();
