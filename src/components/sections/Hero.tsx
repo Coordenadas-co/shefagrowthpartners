@@ -51,7 +51,7 @@ export default function Hero() {
 
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none" asChild>
-            <a href="#cta">
+            <a href="https://api.leadconnectorhq.com/widget/booking/FHOxAqdafvXaA2qoyd7c" target="_blank" rel="noopener noreferrer">
               {t("Apply for a Strategy Session", "Solicita una sesión estratégica")}
               <ArrowRight className="h-4 w-4" />
             </a>

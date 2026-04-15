@@ -40,11 +40,11 @@ export default function ClientLogos() {
         </p>
         <div className="grid grid-cols-2 items-center gap-8 sm:grid-cols-3 lg:grid-cols-5">
           {logos.map((logo) => (
-            <div key={logo.alt} className="flex items-center justify-center">
+            <div key={logo.alt} className="flex items-center justify-center rounded-lg bg-white/10 p-4">
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className="h-12 max-w-[140px] object-contain brightness-0 invert opacity-50 transition-all duration-300 hover:brightness-100 hover:invert-0 hover:opacity-100"
+                className="h-12 max-w-[140px] object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
               />
             </div>
           ))}

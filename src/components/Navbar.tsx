@@ -51,7 +51,7 @@ export default function Navbar() {
             {lang === "en" ? "ES" : "EN"}
           </Button>
           <Button size="sm" asChild>
-            <a href="#cta">{t("Apply Now", "Aplica ahora")}</a>
+            <a href="https://api.leadconnectorhq.com/widget/booking/FHOxAqdafvXaA2qoyd7c" target="_blank" rel="noopener noreferrer">{t("Apply Now", "Aplica ahora")}</a>
           </Button>
         </div>
 
@@ -79,7 +79,7 @@ export default function Navbar() {
               {lang === "en" ? "ES" : "EN"}
             </Button>
             <Button size="sm" asChild>
-              <a href="#cta" onClick={() => setOpen(false)}>{t("Apply Now", "Aplica ahora")}</a>
+              <a href="https://api.leadconnectorhq.com/widget/booking/FHOxAqdafvXaA2qoyd7c" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>{t("Apply Now", "Aplica ahora")}</a>
             </Button>
           </div>
         </div>
