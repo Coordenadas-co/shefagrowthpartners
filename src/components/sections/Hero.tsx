@@ -51,13 +51,13 @@ export default function Hero() {
         <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
           <span className="inline-block animate-fade-in" style={{ animationDelay: "0.25s" }}>
             {t(
-              "Add $50K–$200K/mo to your B2B pipeline in 90 days",
-              "Agrega $50K–$200K/mes a tu pipeline B2B en 90 días"
+              "Increase revenue to your B2B pipeline in 90 days",
+              "Aumenta los ingresos de tu pipeline B2B en 90 días"
             )}
           </span>
           <br />
           <span className="inline-block text-gradient-gold animate-fade-in text-3xl sm:text-4xl lg:text-5xl" style={{ animationDelay: "0.45s" }}>
-            {t("— without hiring a single rep", "— sin contratar un solo vendedor")}
+            {t("without hiring a single rep", "sin contratar un solo vendedor")}
           </span>
         </h1>
         <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground animate-fade-in" style={{ animationDelay: "0.6s" }}>
