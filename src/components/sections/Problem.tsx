@@ -1,26 +1,38 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { AlertTriangle, TrendingDown, Users, Target } from "lucide-react";
+import { AlertTriangle, TrendingDown, Users, Target, ArrowRight } from "lucide-react";
 
 const pains = {
   en: [
-    { icon: TrendingDown, title: "Revenue plateaus", desc: "Growth stalls because there's no system — just effort." },
-    { icon: Users, title: "Sales team underperforms", desc: "Reps improvise instead of following a proven playbook." },
-    { icon: Target, title: "Low-quality leads", desc: "Marketing brings traffic, but nobody converts." },
-    { icon: AlertTriangle, title: "No commercial process", desc: "Pipeline, scripts, follow-ups — all ad hoc." },
+    { icon: TrendingDown, title: "Revenue plateaus", desc: "You're working harder but the numbers won't move. No system = no leverage." },
+    { icon: Users, title: "Reps improvise every call", desc: "No playbook, no scripts, no process. Every deal is a coin flip." },
+    { icon: Target, title: "Leads come in, revenue doesn't", desc: "Marketing spends, pipeline fills, but close rates stay at 3-5%." },
+    { icon: AlertTriangle, title: "Everything is ad hoc", desc: "Pipeline stages, follow-ups, forecasting — held together with duct tape." },
   ],
   es: [
-    { icon: TrendingDown, title: "Ingresos estancados", desc: "El crecimiento se detiene porque no hay sistema — solo esfuerzo." },
-    { icon: Users, title: "Equipo de ventas con bajo rendimiento", desc: "Los reps improvisan en vez de seguir un playbook probado." },
-    { icon: Target, title: "Leads de baja calidad", desc: "Marketing trae tráfico, pero nadie convierte." },
-    { icon: AlertTriangle, title: "Sin proceso comercial", desc: "Pipeline, scripts, seguimientos — todo es ad hoc." },
+    { icon: TrendingDown, title: "Ingresos estancados", desc: "Trabajas más duro pero los números no se mueven. Sin sistema = sin apalancamiento." },
+    { icon: Users, title: "Reps improvisan cada llamada", desc: "Sin playbook, sin scripts, sin proceso. Cada deal es lanzar una moneda." },
+    { icon: Target, title: "Entran leads, no salen ingresos", desc: "Marketing gasta, el pipeline se llena, pero la tasa de cierre se queda en 3-5%." },
+    { icon: AlertTriangle, title: "Todo es ad hoc", desc: "Etapas de pipeline, seguimientos, pronósticos — sostenidos con cinta adhesiva." },
   ],
+};
+
+const comparison = {
+  en: {
+    old: ["Hire more reps", "Buy more leads", "Another CRM migration", "Hope the new VP fixes it"],
+    new: ["Fix the system once", "Make every lead worth 3×", "Train the team you have", "Build a machine that compounds"],
+  },
+  es: {
+    old: ["Contratar más reps", "Comprar más leads", "Otra migración de CRM", "Esperar que el nuevo VP lo arregle"],
+    new: ["Arreglar el sistema una vez", "Hacer que cada lead valga 3×", "Entrenar al equipo que tienes", "Construir una máquina que se multiplique"],
+  },
 };
 
 export default function Problem() {
   const { lang, t } = useLang();
   const { ref, visible } = useScrollReveal();
   const items = lang === "en" ? pains.en : pains.es;
+  const comp = lang === "en" ? comparison.en : comparison.es;
 
   return (
     <section id="problem" className="bg-section-alt py-24">
@@ -29,12 +41,12 @@ export default function Problem() {
         className={`mx-auto max-w-6xl px-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
       >
         <h2 className="mb-4 text-center text-3xl font-bold sm:text-4xl">
-          {t("Sound familiar?", "¿Te suena familiar?")}
+          {t("You're losing money every month you wait", "Estás perdiendo dinero cada mes que esperas")}
         </h2>
         <p className="mx-auto mb-14 max-w-2xl text-center text-muted-foreground">
           {t(
-            "Most B2B companies don't have a revenue problem. They have a system problem.",
-            "La mayoría de las empresas B2B no tienen un problema de ingresos. Tienen un problema de sistema."
+            'These aren\'t "nice to fix" problems. Each one is a revenue leak costing you $10K-$50K/month.',
+            'Estos no son problemas "buenos de arreglar". Cada uno es una fuga de ingresos que te cuesta $10K-$50K/mes.'
           )}
         </p>
         <div className="grid gap-10 lg:grid-cols-[1fr_400px]">
@@ -59,6 +71,30 @@ export default function Problem() {
               loading="lazy"
               className="h-full w-full rounded-lg object-cover opacity-80"
             />
+          </div>
+        </div>
+
+        {/* Old way vs New way (merged from ParadigmShift) */}
+        <div className="mt-16 grid gap-8 md:grid-cols-2">
+          <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-8">
+            <h3 className="mb-4 text-lg font-bold text-destructive">{t("The old way", "La vieja forma")}</h3>
+            <ul className="space-y-3">
+              {comp.old.map((item, i) => (
+                <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
+                  <span className="text-destructive">✕</span> {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-lg border border-primary/30 bg-primary/5 p-8">
+            <h3 className="mb-4 text-lg font-bold text-primary">{t("The Shefa way", "La forma Shefa")}</h3>
+            <ul className="space-y-3">
+              {comp.new.map((item, i) => (
+                <li key={i} className="flex items-center gap-3 text-sm">
+                  <ArrowRight className="h-4 w-4 shrink-0 text-primary" /> {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
