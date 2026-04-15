@@ -1,4 +1,5 @@
 import { useLang } from "@/contexts/LanguageContext";
+import { useBooking } from "@/contexts/BookingContext";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import FloatingParticles from "@/components/FloatingParticles";
@@ -19,11 +20,11 @@ const bullets = {
 
 export default function Hero() {
   const { lang, t } = useLang();
+  const { openBooking } = useBooking();
   const offset = useParallax(0.3);
 
   return (
     <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-16">
-      {/* Parallax glow */}
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(43_52%_54%/0.06)_0%,transparent_70%)]"
         style={{ transform: `translateY(${offset * 0.5}px)` }}
@@ -62,11 +63,9 @@ export default function Hero() {
         </ul>
 
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center animate-fade-in" style={{ animationDelay: "0.9s" }}>
-          <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none shadow-[0_0_25px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_40px_hsl(43_52%_54%/0.5)] transition-shadow" asChild>
-            <a href="https://api.leadconnectorhq.com/widget/booking/FHOxAqdafvXaA2qoyd7c" target="_blank" rel="noopener noreferrer">
-              {t("Apply for a Strategy Session", "Solicita una sesión estratégica")}
-              <ArrowRight className="h-4 w-4" />
-            </a>
+          <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none shadow-[0_0_25px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_40px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openBooking}>
+            {t("Apply for a Strategy Session", "Solicita una sesión estratégica")}
+            <ArrowRight className="h-4 w-4" />
           </Button>
           <a href="#problem" className="text-sm text-muted-foreground underline-offset-4 hover:text-primary hover:underline">
             {t("See how it works ↓", "Descubre cómo funciona ↓")}

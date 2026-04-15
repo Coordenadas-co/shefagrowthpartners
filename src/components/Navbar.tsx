@@ -1,4 +1,5 @@
 import { useLang } from "@/contexts/LanguageContext";
+import { useBooking } from "@/contexts/BookingContext";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
@@ -15,6 +16,7 @@ const navItems = [
 
 export default function Navbar() {
   const { lang, toggleLang, t } = useLang();
+  const { openBooking } = useBooking();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const activeSection = useActiveSection();
@@ -50,8 +52,8 @@ export default function Navbar() {
           <Button size="sm" onClick={toggleLang} variant="outline" className="min-w-[48px] text-xs font-semibold">
             {lang === "en" ? "ES" : "EN"}
           </Button>
-          <Button size="sm" asChild>
-            <a href="https://api.leadconnectorhq.com/widget/booking/FHOxAqdafvXaA2qoyd7c" target="_blank" rel="noopener noreferrer">{t("Apply Now", "Aplica ahora")}</a>
+          <Button size="sm" onClick={openBooking}>
+            {t("Apply Now", "Aplica ahora")}
           </Button>
         </div>
 
@@ -78,8 +80,8 @@ export default function Navbar() {
             <Button size="sm" onClick={toggleLang} variant="outline" className="text-xs font-semibold">
               {lang === "en" ? "ES" : "EN"}
             </Button>
-            <Button size="sm" asChild>
-              <a href="https://api.leadconnectorhq.com/widget/booking/FHOxAqdafvXaA2qoyd7c" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>{t("Apply Now", "Aplica ahora")}</a>
+            <Button size="sm" onClick={() => { setOpen(false); openBooking(); }}>
+              {t("Apply Now", "Aplica ahora")}
             </Button>
           </div>
         </div>

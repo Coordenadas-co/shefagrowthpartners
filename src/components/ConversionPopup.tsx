@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLang } from "@/contexts/LanguageContext";
+import { useBooking } from "@/contexts/BookingContext";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
@@ -9,6 +10,7 @@ const STORAGE_KEY = "shefa_popup_shown";
 export default function ConversionPopup() {
   const [open, setOpen] = useState(false);
   const { t } = useLang();
+  const { openBooking } = useBooking();
 
   useEffect(() => {
     if (localStorage.getItem(STORAGE_KEY)) return;
@@ -39,11 +41,9 @@ export default function ConversionPopup() {
           </DialogDescription>
         </DialogHeader>
         <div className="mt-4 flex flex-col gap-3">
-          <Button size="lg" className="w-full gap-2 font-semibold shadow-[0_0_20px_hsl(43_52%_54%/0.3)]" asChild>
-            <a href="https://api.leadconnectorhq.com/widget/booking/FHOxAqdafvXaA2qoyd7c" target="_blank" rel="noopener noreferrer">
-              {t("Book My Free Session", "Agendar Mi Sesión Gratis")}
-              <ArrowRight className="h-4 w-4" />
-            </a>
+          <Button size="lg" className="w-full gap-2 font-semibold shadow-[0_0_20px_hsl(43_52%_54%/0.3)]" onClick={() => { setOpen(false); openBooking(); }}>
+            {t("Book My Free Session", "Agendar Mi Sesión Gratis")}
+            <ArrowRight className="h-4 w-4" />
           </Button>
           <button
             onClick={() => setOpen(false)}
