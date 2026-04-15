@@ -26,7 +26,7 @@ export default function Problem() {
     <section id="problem" className="bg-section-alt py-24">
       <div
         ref={ref}
-        className={`mx-auto max-w-5xl px-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        className={`mx-auto max-w-6xl px-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
       >
         <h2 className="mb-4 text-center text-3xl font-bold sm:text-4xl">
           {t("Sound familiar?", "¿Te suena familiar?")}
@@ -37,18 +37,29 @@ export default function Problem() {
             "La mayoría de las empresas B2B no tienen un problema de ingresos. Tienen un problema de sistema."
           )}
         </p>
-        <div className="grid gap-6 sm:grid-cols-2">
-          {items.map((item, i) => (
-            <div
-              key={i}
-              className={`rounded-lg border border-border/60 bg-card p-6 transition-all duration-300 hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-              style={{ transitionDelay: visible ? `${i * 120}ms` : "0ms" }}
-            >
-              <item.icon className="mb-3 h-6 w-6 text-primary" />
-              <h3 className="mb-1 text-lg font-semibold">{item.title}</h3>
-              <p className="text-sm text-muted-foreground">{item.desc}</p>
-            </div>
-          ))}
+        <div className="grid gap-10 lg:grid-cols-[1fr_400px]">
+          <div className="grid gap-6 sm:grid-cols-2">
+            {items.map((item, i) => (
+              <div
+                key={i}
+                className={`rounded-lg border border-border/60 bg-card p-6 transition-all duration-300 hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                style={{ transitionDelay: visible ? `${i * 120}ms` : "0ms" }}
+              >
+                <item.icon className="mb-3 h-6 w-6 text-primary" />
+                <h3 className="mb-1 text-lg font-semibold">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="hidden lg:block">
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="h-full w-full rounded-lg object-cover opacity-80"
+            />
+          </div>
         </div>
       </div>
     </section>

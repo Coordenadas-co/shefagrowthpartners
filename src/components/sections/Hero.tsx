@@ -25,6 +25,17 @@ export default function Hero() {
 
   return (
     <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-16">
+      {/* Background image */}
+      <img
+        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ transform: `translateY(${offset * 0.5}px)` }}
+      />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background" />
+
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(43_52%_54%/0.06)_0%,transparent_70%)]"
         style={{ transform: `translateY(${offset * 0.5}px)` }}
