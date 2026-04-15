@@ -45,8 +45,8 @@ export default function Problem() {
         </h2>
         <p className="mx-auto mb-14 max-w-2xl text-center text-muted-foreground">
           {t(
-            "These aren't "nice to fix" problems. Each one is a revenue leak costing you $10K-$50K/month.",
-            "Estos no son problemas "buenos de arreglar". Cada uno es una fuga de ingresos que te cuesta $10K-$50K/mes."
+            'These aren\'t "nice to fix" problems. Each one is a revenue leak costing you $10K-$50K/month.',
+            'Estos no son problemas "buenos de arreglar". Cada uno es una fuga de ingresos que te cuesta $10K-$50K/mes.'
           )}
         </p>
         <div className="grid gap-10 lg:grid-cols-[1fr_400px]">
