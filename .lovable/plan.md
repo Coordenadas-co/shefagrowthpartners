@@ -1,38 +1,51 @@
 
 
-# Embed Booking Widget In-Page
+# Add Stock Images to Key Sections
 
 ## What
-Replace all `target="_blank"` booking links with an in-page modal that loads the LeadConnector booking widget via iframe, so users never leave the site.
+The landing page is currently all text + icons. We'll add high-quality stock images using Unsplash URLs to give sections visual weight and a more premium, cinematic feel.
 
-## Approach
+## Image Placement Strategy
 
-1. **New `src/components/BookingModal.tsx`**
-   - Reusable component using the existing `Dialog` component
-   - Contains an `<iframe>` pointing to `https://api.leadconnectorhq.com/widget/booking/FHOxAqdafvXaA2qoyd7c`
-   - Full-width iframe inside a large dialog (`sm:max-w-3xl`, height ~80vh)
-   - Exposes `open` / `onOpenChange` props
-   - Bilingual title using `useLang()`
+### 1. Hero Section — Background image with overlay
+- Add a dark business/strategy-themed background image behind the hero content
+- Use `bg-cover bg-center` with a dark gradient overlay (`bg-gradient-to-b from-background/90 via-background/70 to-background`) so text remains readable
+- Image: business strategy / growth chart aesthetic
 
-2. **New `src/hooks/useBookingModal.ts`**
-   - Simple shared state hook (or context) so any CTA can trigger the modal
-   - Returns `{ openBooking, isOpen, setIsOpen }`
+### 2. Problem Section — Inline image beside content
+- Add a side image (frustrated team / stagnant chart visual) in a 2-column layout on desktop
+- Image on the right, cards on the left. On mobile, image hides or stacks above
 
-3. **Create `src/contexts/BookingContext.tsx`**
-   - Provider wrapping the app with a single `BookingModal` instance
-   - `useBooking()` hook returns `openBooking()` function
+### 3. HowIWork Section — Background image with overlay
+- Subtle background image (team collaboration / partnership) with dark overlay
+- Replaces the current plain `bg-section-alt`
 
-4. **Update CTA components** — replace `<a href="..." target="_blank">` with `onClick={() => openBooking()}`:
-   - `src/components/sections/Hero.tsx` — main CTA button
-   - `src/components/sections/FinalCTA.tsx` — bottom CTA button
-   - `src/components/Navbar.tsx` — "Apply Now" buttons (desktop + mobile)
-   - `src/components/ConversionPopup.tsx` — popup CTA button
+### 4. EmotionalClose Section — Full-width background image
+- Dramatic wide-angle business image with heavy dark overlay
+- Creates a cinematic "pause" moment before the final CTA
 
-5. **Mount provider** in `src/App.tsx` or `src/pages/Index.tsx`
+### 5. About Section — Already has a photo, no change needed
 
-## Design
-- Dialog with minimal chrome, gold border accent
-- Loading spinner while iframe loads
-- Close button clearly visible
-- Responsive: full-screen on mobile, centered modal on desktop
+## Technical Details
+
+### Image Sources
+Using Unsplash URLs with size parameters for performance:
+- Hero: `https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80` (analytics dashboard)
+- Problem: `https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80` (team meeting)
+- HowIWork: `https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=80` (collaboration)
+- EmotionalClose: `https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1920&q=80` (tech office)
+
+### Files to modify
+| File | Change |
+|------|--------|
+| `src/components/sections/Hero.tsx` | Add background image with gradient overlay |
+| `src/components/sections/Problem.tsx` | Add side image in 2-col layout |
+| `src/components/sections/HowIWork.tsx` | Add background image with overlay |
+| `src/components/sections/EmotionalClose.tsx` | Add full-width background image |
+
+### Approach
+- All images use `loading="lazy"` except Hero
+- Background images use absolute positioning with z-index layering
+- Dark overlays ensure text contrast on the navy/gold theme
+- Images are decorative — proper alt text and `aria-hidden` where appropriate
 
