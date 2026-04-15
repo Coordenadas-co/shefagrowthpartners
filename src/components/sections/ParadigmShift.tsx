@@ -36,7 +36,8 @@ export default function ParadigmShift() {
           {t("Stop doing more of what doesn't work.", "Deja de hacer más de lo que no funciona.")}
         </p>
 
-        <div className="overflow-hidden rounded-lg border border-border/60">
+        {/* Desktop table */}
+        <div className="hidden sm:block overflow-hidden rounded-lg border border-border/60">
           <div className="grid grid-cols-2">
             <div className="border-b border-r border-border/60 bg-destructive/10 px-6 py-3 text-center text-sm font-semibold text-destructive">
               {t("Old Way", "Viejo Modelo")}
@@ -47,8 +48,22 @@ export default function ParadigmShift() {
           </div>
           {data.map(([old, newW], i) => (
             <div key={i} className="grid grid-cols-2 border-b border-border/30 last:border-0">
-              <div className="border-r border-border/30 px-6 py-4 text-sm text-muted-foreground">{old}</div>
+              <div className="border-r border-border/30 px-6 py-4 text-sm text-muted-foreground line-through decoration-destructive/40">{old}</div>
               <div className="px-6 py-4 text-sm font-medium text-foreground">{newW}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile stacked cards */}
+        <div className="flex flex-col gap-4 sm:hidden">
+          {data.map(([old, newW], i) => (
+            <div key={i} className="rounded-lg border border-border/60 overflow-hidden">
+              <div className="bg-destructive/10 px-4 py-3 text-sm text-muted-foreground line-through decoration-destructive/40">
+                {old}
+              </div>
+              <div className="bg-primary/5 px-4 py-3 text-sm font-medium text-foreground flex items-center gap-2">
+                <span className="text-primary">→</span> {newW}
+              </div>
             </div>
           ))}
         </div>

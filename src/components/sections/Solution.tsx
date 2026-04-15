@@ -28,7 +28,7 @@ export default function Solution() {
     <section id="solution" className="bg-section-alt py-24">
       <div
         ref={ref}
-        className={`mx-auto max-w-6xl px-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        className={`mx-auto max-w-5xl px-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
       >
         <h2 className="mb-4 text-center text-3xl font-bold sm:text-4xl">
           {t("The Growth System", "El Sistema de Crecimiento")}
@@ -39,17 +39,21 @@ export default function Solution() {
             "Cinco motores integrados que trabajan juntos para impulsar un crecimiento predecible."
           )}
         </p>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((step, i) => (
-            <div key={i} className="group relative rounded-lg border border-border/60 bg-card p-6 text-center transition-all hover:border-primary/50 hover:shadow-[0_0_30px_hsl(43_52%_54%/0.08)]">
+            <div
+              key={i}
+              className={`group relative rounded-lg border border-border/60 bg-card p-6 text-center transition-all hover:border-primary/50 hover:shadow-[0_0_30px_hsl(43_52%_54%/0.08)] hover:-translate-y-1 duration-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+              style={{ transitionDelay: visible ? `${i * 100}ms` : "0ms" }}
+            >
+              <div className="absolute top-3 right-3 text-xs font-bold text-primary/30">
+                {String(i + 1).padStart(2, "0")}
+              </div>
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                 <step.icon className="h-5 w-5 text-primary" />
               </div>
               <h3 className="mb-2 text-sm font-bold uppercase tracking-wide">{step.title}</h3>
               <p className="text-xs text-muted-foreground">{step.desc}</p>
-              {i < items.length - 1 && (
-                <div className="pointer-events-none absolute -right-3 top-1/2 hidden -translate-y-1/2 text-primary/40 lg:block">→</div>
-              )}
             </div>
           ))}
         </div>

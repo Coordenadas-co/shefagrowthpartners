@@ -19,7 +19,7 @@ export default function Hero() {
   const { lang, t } = useLang();
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
+    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-16">
       {/* Subtle radial glow */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(43_52%_54%/0.06)_0%,transparent_70%)]" />
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
@@ -27,10 +27,7 @@ export default function Hero() {
           {t("Growth Partner for B2B & SaaS", "Growth Partner para B2B y SaaS")}
         </p>
         <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-          {t(
-            "Scale your revenue.",
-            "Escala tus ingresos."
-          )}
+          {t("Scale your revenue.", "Escala tus ingresos.")}
           <br />
           <span className="text-gradient-gold">
             {t("Fix your system.", "Repara tu sistema.")}
@@ -53,7 +50,7 @@ export default function Hero() {
         </ul>
 
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <Button size="lg" className="gap-2 text-base font-semibold" asChild>
+          <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none" asChild>
             <a href="#cta">
               {t("Apply for a Strategy Session", "Solicita una sesión estratégica")}
               <ArrowRight className="h-4 w-4" />
