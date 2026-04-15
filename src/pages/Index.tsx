@@ -7,6 +7,7 @@ import HowIWork from "@/components/sections/HowIWork";
 import WhoItsFor from "@/components/sections/WhoItsFor";
 import ClientLogos from "@/components/sections/ClientLogos";
 import AboutMe from "@/components/sections/AboutMe";
+import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/Footer";
 import ConversionPopup from "@/components/ConversionPopup";
@@ -23,6 +24,7 @@ const Index = () => {
       <HowIWork />
       <WhoItsFor />
       <AboutMe />
+      <FAQ />
       <FinalCTA />
       <Footer />
       <ConversionPopup />
