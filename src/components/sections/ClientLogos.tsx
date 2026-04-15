@@ -44,7 +44,7 @@ export default function ClientLogos() {
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className="h-10 max-w-[120px] object-contain grayscale opacity-60 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
+                className="h-12 max-w-[140px] object-contain brightness-0 invert opacity-50 transition-all duration-300 hover:brightness-100 hover:invert-0 hover:opacity-100"
               />
             </div>
           ))}

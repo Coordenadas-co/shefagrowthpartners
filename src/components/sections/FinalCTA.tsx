@@ -23,9 +23,11 @@ export default function FinalCTA() {
           )}
         </p>
 
-        <Button size="lg" className="gap-2 text-base font-semibold">
-          {t("Apply for a Strategy Session", "Solicita una sesión estratégica")}
-          <ArrowRight className="h-4 w-4" />
+        <Button size="lg" className="gap-2 text-base font-semibold shadow-[0_0_20px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_30px_hsl(43_52%_54%/0.5)] transition-shadow" asChild>
+          <a href="mailto:contact@shefagrowth.com">
+            {t("Apply for a Strategy Session", "Solicita una sesión estratégica")}
+            <ArrowRight className="h-4 w-4" />
+          </a>
         </Button>
 
         <div className="mt-6 flex items-center justify-center gap-2 text-xs text-muted-foreground">
