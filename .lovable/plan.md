@@ -1,51 +1,91 @@
 
 
-# Add Stock Images to Key Sections
+# Parallax + Hormozi-Style Conversion Overhaul
 
-## What
-The landing page is currently all text + icons. We'll add high-quality stock images using Unsplash URLs to give sections visual weight and a more premium, cinematic feel.
+## Two Parts
 
-## Image Placement Strategy
+### Part 1: Parallax on HowIWork & EmotionalClose
+Add `useParallax` hook to both sections so background images shift subtly on scroll, matching the Hero's cinematic depth.
 
-### 1. Hero Section — Background image with overlay
-- Add a dark business/strategy-themed background image behind the hero content
-- Use `bg-cover bg-center` with a dark gradient overlay (`bg-gradient-to-b from-background/90 via-background/70 to-background`) so text remains readable
-- Image: business strategy / growth chart aesthetic
+### Part 2: Hormozi-Style Audit & Rewrite
 
-### 2. Problem Section — Inline image beside content
-- Add a side image (frustrated team / stagnant chart visual) in a 2-column layout on desktop
-- Image on the right, cards on the left. On mobile, image hides or stacks above
+**The Brutal Audit:**
 
-### 3. HowIWork Section — Background image with overlay
-- Subtle background image (team collaboration / partnership) with dark overlay
-- Replaces the current plain `bg-section-alt`
+- **Hero headline talks about "the plane" not "the vacation."** "Scale your revenue. Fix your system." — the prospect doesn't care about YOUR system. They care about their bank account, their pipeline, their stress level at 2am.
+- **No specific guarantee.** "Performance-based partnership" is vague. What happens if it doesn't work? Say it plainly.
+- **CTA is weak.** "Apply for a Strategy Session" sounds like homework. Nobody wakes up wanting to "apply" for things.
+- **Too many sections.** Problem → ParadigmShift → Solution → WhoItsFor → HowIWork → Results → ClientLogos → CommercialSystem → Methodology → About → EmotionalClose → FinalCTA = 12 sections. That's a novel, not a landing page. The prospect loses momentum.
+- **Results are buried.** Social proof (the strongest conversion lever) is section 8 of 12. It should be within the first 3 scroll-lengths.
+- **No objection handling.** Zero FAQ or "but what if..." section.
+- **"Who it's for" is fluff.** "$500K+ ARR" is the only real qualifier. The rest is generic.
+- **EmotionalClose says nothing new.** "You don't need more traffic. You need a better system." — just repeats the hero. Wasted space.
+- **CommercialSystem + Solution + Methodology = 3 sections saying "I'll fix your process" in different words.**
 
-### 4. EmotionalClose Section — Full-width background image
-- Dramatic wide-angle business image with heavy dark overlay
-- Creates a cinematic "pause" moment before the final CTA
+**Value Equation rewrite:**
+- **Dream outcome:** "Add $50K-$200K/mo to your pipeline in 90 days without hiring a single rep."
+- **Likelihood of success:** "I've done this 30+ times for B2B companies doing $500K-$10M ARR. Here are the receipts."
+- **Time delay:** "We start executing in week 1. First results by day 30. Full system live by day 90."
+- **Effort/sacrifice:** "You give me 2 hours/week and access to your CRM. I do the rest."
 
-### 5. About Section — Already has a photo, no change needed
+### Implementation Plan
 
-## Technical Details
+**Files to modify:**
 
-### Image Sources
-Using Unsplash URLs with size parameters for performance:
-- Hero: `https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80` (analytics dashboard)
-- Problem: `https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80` (team meeting)
-- HowIWork: `https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=80` (collaboration)
-- EmotionalClose: `https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1920&q=80` (tech office)
-
-### Files to modify
 | File | Change |
 |------|--------|
-| `src/components/sections/Hero.tsx` | Add background image with gradient overlay |
-| `src/components/sections/Problem.tsx` | Add side image in 2-col layout |
-| `src/components/sections/HowIWork.tsx` | Add background image with overlay |
-| `src/components/sections/EmotionalClose.tsx` | Add full-width background image |
+| `HowIWork.tsx` | Add `useParallax` to background image |
+| `EmotionalClose.tsx` | Add `useParallax` to background image |
+| `Hero.tsx` | Rewrite headline, sub, bullets, CTA per Hormozi framework |
+| `FinalCTA.tsx` | Rewrite CTA copy, add guarantee, objection bullets |
+| `Problem.tsx` | Sharpen copy — outcome-focused, not feature-focused |
+| `Results.tsx` | Move up in page order (Index.tsx) |
+| `Index.tsx` | Reorder sections: Hero → Problem → Results → Solution → HowIWork → WhoItsFor → About → FinalCTA. Remove or merge CommercialSystem/Methodology/ParadigmShift/EmotionalClose into other sections |
+| `ConversionPopup.tsx` | Rewrite popup copy with Hormozi-style headline |
 
-### Approach
-- All images use `loading="lazy"` except Hero
-- Background images use absolute positioning with z-index layering
-- Dark overlays ensure text contrast on the navy/gold theme
-- Images are decorative — proper alt text and `aria-hidden` where appropriate
+**Hero rewrite (3 variations, ranked):**
+
+**#1 (Highest expected conversion):**
+> **Headline:** "Add $50K–$200K/mo to your B2B pipeline in 90 days — without hiring a single rep"
+> **Sub:** "I embed with your team, rebuild your commercial engine, and only get paid when you grow. 30+ companies scaled this way."
+> **Bullets:**
+> - Close rate jumps 2-3× so every lead is worth more
+> - Predictable pipeline so you stop guessing where next month's revenue comes from
+> - No retainer risk — I eat what I kill alongside you
+> **CTA:** "Book Your Free Growth Diagnostic →" (what happens: "30-min call. I'll show you exactly where you're leaking revenue.")
+
+**#2:**
+> **Headline:** "Stop bleeding revenue. Get a commercial system that actually closes — in 90 days"
+> **Sub:** "Performance-based growth partner for B2B and SaaS. If you don't grow, I don't earn."
+> **CTA:** "See If You Qualify — Free 30-Min Diagnostic"
+
+**#3:**
+> **Headline:** "Your pipeline is broken. I fix it in 90 days or you don't pay."
+> **Sub:** "Fractional CRO for B2B companies doing $500K-$10M. I've added $20M+ in pipeline for 30+ companies."
+> **CTA:** "Claim Your Free Diagnostic Call"
+
+**Ranking reasoning:** #1 leads with the specific dollar outcome (most compelling), includes proof ("30+"), and removes risk ("only get paid when you grow"). #2 is emotional but less specific. #3 is bold but "broken" can feel insulting.
+
+**Section reorder (simplified page):**
+1. Hero (rewritten)
+2. Problem (sharpened — 4 pain cards stay)
+3. Results (MOVED UP — social proof early)
+4. Solution (merged with CommercialSystem — one section, 5 pillars)
+5. HowIWork (with parallax)
+6. WhoItsFor (tightened)
+7. About
+8. FinalCTA (with guarantee + objection-handling bullets)
+
+**Removed/merged:**
+- ParadigmShift → fold "old way vs new way" into Problem section as a compact comparison
+- CommercialSystem → merge into Solution
+- Methodology → fold into HowIWork (4-step process fits naturally there)
+- EmotionalClose → remove (redundant with FinalCTA)
+
+**FinalCTA additions:**
+- Guarantee: "If we don't identify at least 3 revenue leaks in your diagnostic call, I'll send you my full audit framework for free. Zero risk."
+- Objection bullets:
+  - "But I've tried consultants before" — I'm not a consultant. I execute. And I only get paid on results.
+  - "We don't have budget for this" — No retainer. I invest my time upfront. We both win or nobody pays.
+  - "Our sales process is too complex" — That's exactly what I fix. The more complex, the more I can unlock.
+  - "We need to think about it" — Revenue leaks don't wait. Book the free call, decide after.
 
