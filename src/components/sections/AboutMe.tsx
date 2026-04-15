@@ -1,6 +1,7 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Linkedin } from "lucide-react";
+import jsmPhoto from "@/assets/jsm-photo.png";
 
 export default function AboutMe() {
   const { t } = useLang();
@@ -14,9 +15,11 @@ export default function AboutMe() {
       >
         <div className="flex flex-col items-center gap-10 md:flex-row md:items-start">
           {/* Photo placeholder */}
-          <div className="flex h-48 w-48 shrink-0 items-center justify-center rounded-full border-2 border-primary/30 bg-card">
-            <span className="text-4xl font-bold text-primary">JSM</span>
-          </div>
+          <img
+            src={jsmPhoto}
+            alt="Juan Sebastián Medrano"
+            className="h-48 w-48 shrink-0 rounded-full border-2 border-primary/30 object-cover"
+          />
 
           <div>
             <h2 className="mb-2 text-3xl font-bold">Juan Sebastián Medrano</h2>
