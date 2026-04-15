@@ -3,6 +3,7 @@ import { useActiveSection } from "@/hooks/useActiveSection";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navItems = [
   { en: "Problem", es: "Problema", href: "#problem" },
@@ -27,9 +28,12 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-lg transition-shadow duration-300 ${scrolled ? "shadow-[0_4px_20px_rgba(0,0,0,0.3)]" : ""}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="#" className="text-xl font-bold tracking-tight">
-          <span className="text-gradient-gold">Shefa</span>{" "}
-          <span className="text-foreground">Growth Partners</span>
+        <a href="#" className="flex items-center gap-2 text-xl font-bold tracking-tight">
+          <img src={logo} alt="Shefa Growth Partners" className="h-8 w-auto" />
+          <span>
+            <span className="text-gradient-gold">Shefa</span>{" "}
+            <span className="text-foreground">Growth Partners</span>
+          </span>
         </a>
 
         {/* Desktop */}

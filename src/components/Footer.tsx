@@ -1,5 +1,6 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { Linkedin, Mail } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const footerLinks = [
   { en: "Problem", es: "Problema", href: "#problem" },
@@ -16,10 +17,13 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
           <div>
-            <p className="text-xl font-bold tracking-tight">
-              <span className="text-gradient-gold">Shefa</span>{" "}
-              <span className="text-foreground">Growth Partners</span>
-            </p>
+            <div className="flex items-center gap-3">
+              <img src={logo} alt="Shefa Growth Partners" className="h-10 w-auto" />
+              <p className="text-xl font-bold tracking-tight">
+                <span className="text-gradient-gold">Shefa</span>{" "}
+                <span className="text-foreground">Growth Partners</span>
+              </p>
+            </div>
             <p className="mt-1 text-xs text-muted-foreground">
               {t("Predictable growth, by design.", "Crecimiento predecible, por diseño.")}
             </p>
