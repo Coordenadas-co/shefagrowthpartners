@@ -6,6 +6,7 @@ import Solution from "@/components/sections/Solution";
 import WhoItsFor from "@/components/sections/WhoItsFor";
 import HowIWork from "@/components/sections/HowIWork";
 import Results from "@/components/sections/Results";
+import ClientLogos from "@/components/sections/ClientLogos";
 import CommercialSystem from "@/components/sections/CommercialSystem";
 import Methodology from "@/components/sections/Methodology";
 import AboutMe from "@/components/sections/AboutMe";
@@ -24,6 +25,7 @@ const Index = () => {
       <WhoItsFor />
       <HowIWork />
       <Results />
+      <ClientLogos />
       <CommercialSystem />
       <Methodology />
       <AboutMe />
