@@ -1,19 +1,22 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useParallax } from "@/hooks/useParallax";
 
 export default function EmotionalClose() {
   const { t } = useLang();
   const { ref, visible } = useScrollReveal();
+  const offset = useParallax(0.15);
 
   return (
     <section className="relative overflow-hidden py-24">
-      {/* Background image */}
+      {/* Background image with parallax */}
       <img
         src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1920&q=80"
         alt=""
         aria-hidden="true"
         loading="lazy"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-[120%] w-full object-cover"
+        style={{ transform: `translateY(${offset * 0.5}px)` }}
       />
       <div className="absolute inset-0 bg-background/85" />
 

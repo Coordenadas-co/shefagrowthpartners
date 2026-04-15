@@ -7,14 +7,14 @@ import { useParallax } from "@/hooks/useParallax";
 
 const bullets = {
   en: [
-    "+30% revenue growth in 90 days",
-    "Performance-based partnership",
-    "Proven system, not guesswork",
+    "Close rate jumps 2-3× — so every lead is worth more",
+    "Predictable pipeline — so you stop guessing where next month's revenue comes from",
+    "No retainer risk — I eat what I kill alongside you",
   ],
   es: [
-    "+30% de crecimiento de ingresos en 90 días",
-    "Alianza basada en resultados",
-    "Sistema probado, no improvisación",
+    "Tasa de cierre sube 2-3× — cada lead vale más",
+    "Pipeline predecible — deja de adivinar de dónde vendrán los ingresos del próximo mes",
+    "Sin riesgo de retainer — solo gano cuando tú ganas",
   ],
 };
 
@@ -50,17 +50,20 @@ export default function Hero() {
         </p>
         <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
           <span className="inline-block animate-fade-in" style={{ animationDelay: "0.25s" }}>
-            {t("Scale your revenue.", "Escala tus ingresos.")}
+            {t(
+              "Add $50K–$200K/mo to your B2B pipeline in 90 days",
+              "Agrega $50K–$200K/mes a tu pipeline B2B en 90 días"
+            )}
           </span>
           <br />
-          <span className="inline-block text-gradient-gold animate-fade-in" style={{ animationDelay: "0.45s" }}>
-            {t("Fix your system.", "Repara tu sistema.")}
+          <span className="inline-block text-gradient-gold animate-fade-in text-3xl sm:text-4xl lg:text-5xl" style={{ animationDelay: "0.45s" }}>
+            {t("— without hiring a single rep", "— sin contratar un solo vendedor")}
           </span>
         </h1>
         <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground animate-fade-in" style={{ animationDelay: "0.6s" }}>
           {t(
-            "I help B2B and SaaS companies build a predictable, scalable commercial system — so growth stops depending on luck and starts depending on structure.",
-            "Ayudo a empresas B2B y SaaS a construir un sistema comercial predecible y escalable — para que el crecimiento deje de depender de la suerte y empiece a depender de la estructura."
+            "I embed with your team, rebuild your commercial engine, and only get paid when you grow. 30+ companies scaled this way.",
+            "Me integro a tu equipo, reconstruyo tu motor comercial, y solo cobro cuando creces. 30+ empresas escalaron así."
           )}
         </p>
 
@@ -75,12 +78,12 @@ export default function Hero() {
 
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center animate-fade-in" style={{ animationDelay: "0.9s" }}>
           <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none shadow-[0_0_25px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_40px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openBooking}>
-            {t("Apply for a Strategy Session", "Solicita una sesión estratégica")}
+            {t("Book Your Free Growth Diagnostic", "Agenda tu Diagnóstico de Crecimiento Gratis")}
             <ArrowRight className="h-4 w-4" />
           </Button>
-          <a href="#problem" className="text-sm text-muted-foreground underline-offset-4 hover:text-primary hover:underline">
-            {t("See how it works ↓", "Descubre cómo funciona ↓")}
-          </a>
+          <p className="text-xs text-muted-foreground">
+            {t("30-min call. I'll show you exactly where you're leaking revenue.", "Llamada de 30 min. Te mostraré exactamente dónde estás perdiendo ingresos.")}
+          </p>
         </div>
       </div>
     </section>

@@ -30,19 +30,19 @@ export default function ConversionPopup() {
           </div>
           <DialogTitle className="text-xl font-bold">
             <span className="text-gradient-gold">
-              {t("Get Your Free Growth Diagnostic", "Obtén tu Diagnóstico de Crecimiento Gratis")}
+              {t("You're leaking revenue. Let me show you where.", "Estás perdiendo ingresos. Déjame mostrarte dónde.")}
             </span>
           </DialogTitle>
           <DialogDescription className="mt-2 text-sm text-muted-foreground">
             {t(
-              "In 30 minutes, we'll identify your #1 revenue bottleneck and map a clear action plan — no strings attached.",
-              "En 30 minutos, identificaremos tu principal cuello de botella de ingresos y trazaremos un plan de acción claro — sin compromiso."
+              "Free 30-min diagnostic. I'll identify your #1 revenue bottleneck and give you a clear action plan. If I can't find at least 3 leaks, you get my full audit framework free.",
+              "Diagnóstico gratis de 30 min. Identificaré tu principal cuello de botella de ingresos y te daré un plan de acción claro. Si no encuentro al menos 3 fugas, te envío mi framework de auditoría gratis."
             )}
           </DialogDescription>
         </DialogHeader>
         <div className="mt-4 flex flex-col gap-3">
           <Button size="lg" className="w-full gap-2 font-semibold shadow-[0_0_20px_hsl(43_52%_54%/0.3)]" onClick={() => { setOpen(false); openBooking(); }}>
-            {t("Book My Free Session", "Agendar Mi Sesión Gratis")}
+            {t("Book My Free Diagnostic", "Agendar Mi Diagnóstico Gratis")}
             <ArrowRight className="h-4 w-4" />
           </Button>
           <button
