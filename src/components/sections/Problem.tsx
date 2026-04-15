@@ -39,7 +39,11 @@ export default function Problem() {
         </p>
         <div className="grid gap-6 sm:grid-cols-2">
           {items.map((item, i) => (
-            <div key={i} className="rounded-lg border border-border/60 bg-card p-6 transition-colors hover:border-primary/40">
+            <div
+              key={i}
+              className={`rounded-lg border border-border/60 bg-card p-6 transition-all duration-300 hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+              style={{ transitionDelay: visible ? `${i * 120}ms` : "0ms" }}
+            >
               <item.icon className="mb-3 h-6 w-6 text-primary" />
               <h3 className="mb-1 text-lg font-semibold">{item.title}</h3>
               <p className="text-sm text-muted-foreground">{item.desc}</p>
