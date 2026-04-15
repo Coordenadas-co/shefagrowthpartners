@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import FloatingParticles from "@/components/FloatingParticles";
 import { useParallax } from "@/hooks/useParallax";
+import heroBg from "@/assets/hero-bg.png";
 
 const bullets = {
   en: [
@@ -27,7 +28,7 @@ export default function Hero() {
     <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-16">
       {/* Background image */}
       <img
-        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80"
+        src={heroBg}
         alt=""
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover"
