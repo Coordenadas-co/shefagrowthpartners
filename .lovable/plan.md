@@ -1,50 +1,38 @@
 
 
-# Favicon, Visual Effects & Conversion Popup
+# Embed Booking Widget In-Page
 
-## What we're building
-Four enhancements: (1) Shefa favicon, (2) cinematic visual effects with particles and parallax, (3) enhanced animations throughout, (4) a conversion popup that appears on first visit.
+## What
+Replace all `target="_blank"` booking links with an in-page modal that loads the LeadConnector booking widget via iframe, so users never leave the site.
 
----
+## Approach
 
-## 1. Favicon
-- Copy `src/assets/logo.png` to `public/favicon.png`
-- Update `index.html`: add `<link rel="icon" href="/favicon.png">`, update `<title>` to "Shefa Growth Partners", update meta descriptions and OG tags
-- Delete `public/favicon.ico` if it exists
+1. **New `src/components/BookingModal.tsx`**
+   - Reusable component using the existing `Dialog` component
+   - Contains an `<iframe>` pointing to `https://api.leadconnectorhq.com/widget/booking/FHOxAqdafvXaA2qoyd7c`
+   - Full-width iframe inside a large dialog (`sm:max-w-3xl`, height ~80vh)
+   - Exposes `open` / `onOpenChange` props
+   - Bilingual title using `useLang()`
 
-## 2. Floating Particles + Parallax (Cinematic Feel)
-- **New `src/components/FloatingParticles.tsx`**: Canvas-based or CSS particle system with subtle gold dots floating upward in the Hero section background. Lightweight — ~20 particles with slow drift animation using CSS keyframes (no heavy library).
-- **Parallax on Hero**: Add a `useEffect` scroll listener that translates the Hero background glow and text at different speeds (`transform: translateY(scrollY * 0.3)`) for a cinematic depth effect.
-- **Parallax on section dividers**: Subtle gold gradient lines between sections shift slightly on scroll.
+2. **New `src/hooks/useBookingModal.ts`**
+   - Simple shared state hook (or context) so any CTA can trigger the modal
+   - Returns `{ openBooking, isOpen, setIsOpen }`
 
-## 3. Enhanced Animations
-- **Staggered card entrances**: Problem, Results, Solution cards animate in one-by-one with increasing `animation-delay`
-- **Counter animation on Results metrics**: Animate numbers from 0 to final value on scroll reveal (e.g., "+42%" counts up)
-- **Text reveal on Hero**: Headline words fade in sequentially with slight upward movement
-- **Hover micro-interactions**: Cards get a subtle glow border + scale on hover
-- Add keyframes to `tailwind.config.ts`: `float`, `particle-rise`, `text-reveal`
+3. **Create `src/contexts/BookingContext.tsx`**
+   - Provider wrapping the app with a single `BookingModal` instance
+   - `useBooking()` hook returns `openBooking()` function
 
-## 4. Conversion Popup (First Visit)
-- **New `src/components/ConversionPopup.tsx`**: Dialog/modal that appears after 5 seconds on first visit (uses `localStorage` to show only once per session)
-- Content: Gold headline "Get Your Free Growth Diagnostic" / "Obtén tu Diagnóstico de Crecimiento Gratis", brief value prop, CTA button linking to the booking URL
-- Styled with the existing Dialog component, gold accent border, backdrop blur
-- Dismiss sets `localStorage` flag so it won't reappear
-- Bilingual using `useLang()`
-- Mounted in `Index.tsx`
+4. **Update CTA components** — replace `<a href="..." target="_blank">` with `onClick={() => openBooking()}`:
+   - `src/components/sections/Hero.tsx` — main CTA button
+   - `src/components/sections/FinalCTA.tsx` — bottom CTA button
+   - `src/components/Navbar.tsx` — "Apply Now" buttons (desktop + mobile)
+   - `src/components/ConversionPopup.tsx` — popup CTA button
 
----
+5. **Mount provider** in `src/App.tsx` or `src/pages/Index.tsx`
 
-## Files to create/modify
-| File | Action |
-|------|--------|
-| `public/favicon.png` | Copy from logo asset |
-| `index.html` | Favicon link, meta tags |
-| `src/components/FloatingParticles.tsx` | New — gold particle animation |
-| `src/components/ConversionPopup.tsx` | New — first-visit conversion modal |
-| `src/components/sections/Hero.tsx` | Add particles, parallax, text reveal |
-| `src/components/sections/Results.tsx` | Counter animation on metrics |
-| `src/components/sections/Problem.tsx` | Staggered card animation |
-| `src/pages/Index.tsx` | Mount ConversionPopup |
-| `tailwind.config.ts` | New keyframes (float, particle-rise) |
-| `src/index.css` | Particle + parallax utility classes |
+## Design
+- Dialog with minimal chrome, gold border accent
+- Loading spinner while iframe loads
+- Close button clearly visible
+- Responsive: full-screen on mobile, centered modal on desktop
 
