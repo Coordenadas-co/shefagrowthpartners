@@ -6,10 +6,20 @@ export default function EmotionalClose() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section className="py-24">
+    <section className="relative overflow-hidden py-24">
+      {/* Background image */}
+      <img
+        src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1920&q=80"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-background/85" />
+
       <div
         ref={ref}
-        className={`mx-auto max-w-3xl px-6 text-center transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        className={`relative z-10 mx-auto max-w-3xl px-6 text-center transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
       >
         <h2 className="mb-6 text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
           {t(

@@ -23,10 +23,20 @@ export default function HowIWork() {
   const items = lang === "en" ? points.en : points.es;
 
   return (
-    <section className="bg-section-alt py-24">
+    <section className="relative overflow-hidden py-24">
+      {/* Background image */}
+      <img
+        src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=80"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-background/90" />
+
       <div
         ref={ref}
-        className={`mx-auto max-w-5xl px-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        className={`relative z-10 mx-auto max-w-5xl px-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
       >
         <h2 className="mb-4 text-center text-3xl font-bold sm:text-4xl">
           {t("How I work", "Cómo trabajo")}
@@ -37,7 +47,7 @@ export default function HowIWork() {
         </p>
         <div className="grid gap-6 sm:grid-cols-2">
           {items.map((item, i) => (
-            <div key={i} className="flex gap-4 rounded-lg border border-border/60 bg-card p-6">
+            <div key={i} className="flex gap-4 rounded-lg border border-border/60 bg-card/80 backdrop-blur-sm p-6">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
                 <item.icon className="h-5 w-5 text-primary" />
               </div>
