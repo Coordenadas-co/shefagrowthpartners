@@ -37,7 +37,7 @@ export default function WhoItsFor() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section className="py-24">
+    <section className="py-16 lg:py-20 xl:py-24">
       <div
         ref={ref}
         className={`mx-auto max-w-5xl px-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
