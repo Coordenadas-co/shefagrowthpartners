@@ -26,7 +26,7 @@ export default function FinalCTA() {
   const items = lang === "en" ? objections.en : objections.es;
 
   return (
-    <section id="cta" className="bg-section-alt py-24">
+    <section id="cta" className="bg-section-alt py-16 lg:py-20 xl:py-24">
       <div
         ref={ref}
         className={`mx-auto max-w-3xl px-6 text-center transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}

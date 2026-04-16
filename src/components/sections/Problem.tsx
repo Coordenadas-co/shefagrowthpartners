@@ -35,7 +35,7 @@ export default function Problem() {
   const comp = lang === "en" ? comparison.en : comparison.es;
 
   return (
-    <section id="problem" className="bg-section-alt py-24">
+    <section id="problem" className="bg-section-alt py-16 lg:py-20 xl:py-24">
       <div
         ref={ref}
         className={`mx-auto max-w-6xl px-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}

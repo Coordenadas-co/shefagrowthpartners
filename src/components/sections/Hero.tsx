@@ -25,7 +25,7 @@ export default function Hero() {
   const offset = useParallax(0.3);
 
   return (
-    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-16">
+    <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden pt-16">
       {/* Background image */}
       <img
         src={heroBg}
@@ -49,7 +49,7 @@ export default function Hero() {
         <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary animate-fade-in" style={{ animationDelay: "0.1s" }}>
           {t("Growth Partner for B2B & SaaS", "Growth Partner para B2B y SaaS")}
         </p>
-        <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+        <h1 className="mb-5 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-[3.25rem]">
           <span className="inline-block animate-fade-in" style={{ animationDelay: "0.25s" }}>
             {t(
               "Increase revenue to your B2B pipeline in 90 days",
@@ -57,7 +57,7 @@ export default function Hero() {
             )}
           </span>
           <br />
-          <span className="inline-block text-gradient-gold animate-fade-in text-3xl sm:text-4xl lg:text-5xl" style={{ animationDelay: "0.45s" }}>
+          <span className="inline-block text-gradient-gold animate-fade-in text-3xl sm:text-4xl lg:text-4xl" style={{ animationDelay: "0.45s" }}>
             {t("without hiring a single rep", "sin contratar un solo vendedor")}
           </span>
         </h1>
@@ -68,7 +68,7 @@ export default function Hero() {
           )}
         </p>
 
-        <ul className="mx-auto mb-10 flex max-w-lg flex-col gap-3 text-left animate-fade-in" style={{ animationDelay: "0.75s" }}>
+        <ul className="mx-auto mb-8 flex max-w-lg flex-col gap-3 text-left animate-fade-in" style={{ animationDelay: "0.75s" }}>
           {(lang === "en" ? bullets.en : bullets.es).map((b, i) => (
             <li key={i} className="flex items-center gap-3 text-sm text-foreground/90">
               <CheckCircle className="h-5 w-5 shrink-0 text-primary" />

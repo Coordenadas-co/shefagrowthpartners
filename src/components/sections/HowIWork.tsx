@@ -41,7 +41,7 @@ export default function HowIWork() {
   const steps = lang === "en" ? methodology.en : methodology.es;
 
   return (
-    <section className="relative overflow-hidden py-24">
+    <section className="relative overflow-hidden py-16 lg:py-20 xl:py-24">
       {/* Background image with parallax */}
       <img
         src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=80"
