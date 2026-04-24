@@ -1,17 +1,19 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { AlertTriangle, TrendingDown, Users, Target, ArrowRight } from "lucide-react";
+import SectionCTA from "@/components/SectionCTA";
+import GuaranteeBadge from "@/components/GuaranteeBadge";
 
 const pains = {
   en: [
     { icon: TrendingDown, title: "Revenue plateaus", desc: "You're working harder but the numbers won't move. No system = no leverage." },
-    { icon: Users, title: "Reps improvise every call", desc: "No playbook, no scripts, no process. Every deal is a coin flip." },
+    { icon: Users, title: "It's not talent — it's the lack of a system", desc: "Your sales team doesn't fail from lack of talent, but from lack of a system: no playbook, no structure, no control of the process — every sale depends on luck." },
     { icon: Target, title: "Leads come in, revenue doesn't", desc: "Marketing spends, pipeline fills, but close rates stay at 3-5%." },
     { icon: AlertTriangle, title: "Everything is ad hoc", desc: "Pipeline stages, follow-ups, forecasting — held together with duct tape." },
   ],
   es: [
     { icon: TrendingDown, title: "Ingresos estancados", desc: "Trabajas más duro pero los números no se mueven. Sin sistema = sin apalancamiento." },
-    { icon: Users, title: "Reps improvisan cada llamada", desc: "Sin playbook, sin scripts, sin proceso. Cada deal es lanzar una moneda." },
+    { icon: Users, title: "No es falta de talento — es falta de sistema", desc: "Tu equipo comercial no falla por falta de talento, falla por falta de sistema: sin playbook, sin estructura y sin control del proceso, cada venta depende del azar." },
     { icon: Target, title: "Entran leads, no salen ingresos", desc: "Marketing gasta, el pipeline se llena, pero la tasa de cierre se queda en 3-5%." },
     { icon: AlertTriangle, title: "Todo es ad hoc", desc: "Etapas de pipeline, seguimientos, pronósticos — sostenidos con cinta adhesiva." },
   ],
