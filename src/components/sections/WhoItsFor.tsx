@@ -74,6 +74,11 @@ export default function WhoItsFor() {
             </ul>
           </div>
         </div>
+
+        <SectionCTA
+          label={t("Discover how to multiply your results", "Descubre cómo multiplicar tus resultados")}
+          className="mt-12"
+        />
       </div>
     </section>
   );
