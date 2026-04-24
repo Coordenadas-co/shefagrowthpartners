@@ -16,21 +16,24 @@ export default function BookingModal({ open, onOpenChange }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={(v) => { onOpenChange(v); if (!v) setLoading(true); }}>
-      <DialogContent className="max-w-3xl h-[85vh] p-0 gap-0 border-primary/30 bg-card overflow-hidden max-sm:max-w-[100vw] max-sm:h-[100dvh] max-sm:rounded-none max-sm:border-0">
+      <DialogContent className="max-w-3xl h-[85vh] p-0 gap-0 border-primary/30 bg-card overflow-hidden max-sm:max-w-[100vw] max-sm:w-screen max-sm:h-[100dvh] max-sm:rounded-none max-sm:border-0">
         <DialogTitle className="sr-only">
           {t("Book a Strategy Session", "Agenda una sesión estratégica")}
         </DialogTitle>
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full overflow-auto">
           {loading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-card">
+            <div className="absolute inset-0 z-10 flex items-center justify-center bg-card">
               <Loader2 className="h-8 w-8 animate-spin text-primary" />
             </div>
           )}
           <iframe
             src={BOOKING_URL}
-            className="w-full h-full border-0"
+            title="Booking calendar"
+            className="w-full h-full min-h-[600px] border-0 block"
             onLoad={() => setLoading(false)}
-            allow="payment"
+            allow="payment; fullscreen; clipboard-write"
+            allowFullScreen
+            scrolling="yes"
           />
         </div>
       </DialogContent>

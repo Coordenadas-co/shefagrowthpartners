@@ -3,13 +3,14 @@ import { useBooking } from "@/contexts/BookingContext";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import FloatingParticles from "@/components/FloatingParticles";
+import GuaranteeBadge from "@/components/GuaranteeBadge";
 import { useParallax } from "@/hooks/useParallax";
 import heroBg from "@/assets/hero-bg.png";
 
 const bullets = {
   en: [
     "Close rate jumps 2-3× — so every lead is worth more",
-    "Predictable pipeline — so you stop guessing where next month's revenue comes from",
+    "Predictable pipeline — no more guessing where next month's revenue comes from",
     "No retainer risk — I eat what I kill alongside you",
   ],
   es: [
@@ -43,13 +44,13 @@ export default function Hero() {
       />
       <FloatingParticles />
       <div
-        className="relative z-10 mx-auto max-w-4xl px-6 text-center"
+        className="relative z-10 mx-auto w-full max-w-4xl px-6 text-center"
         style={{ transform: `translateY(${offset * 0.15}px)` }}
       >
         <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary animate-fade-in" style={{ animationDelay: "0.1s" }}>
           {t("Growth Partner for B2B & SaaS", "Growth Partner para B2B y SaaS")}
         </p>
-        <h1 className="mb-5 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-[3.25rem]">
+        <h1 className="mb-5 break-words text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-[3.25rem]">
           <span className="inline-block animate-fade-in" style={{ animationDelay: "0.25s" }}>
             {t(
               "Increase revenue to your B2B pipeline in 90 days",
@@ -57,18 +58,18 @@ export default function Hero() {
             )}
           </span>
           <br />
-          <span className="inline-block text-gradient-gold animate-fade-in text-3xl sm:text-4xl lg:text-4xl" style={{ animationDelay: "0.45s" }}>
+          <span className="mt-2 inline-block break-words text-gradient-gold animate-fade-in text-2xl leading-tight sm:text-3xl lg:text-4xl" style={{ animationDelay: "0.45s" }}>
             {t("without hiring a single rep", "sin contratar un solo vendedor")}
           </span>
         </h1>
-        <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground animate-fade-in" style={{ animationDelay: "0.6s" }}>
+        <p className="mx-auto mb-8 max-w-2xl text-base sm:text-lg text-muted-foreground animate-fade-in" style={{ animationDelay: "0.6s" }}>
           {t(
-            "I embed with your team, rebuild your commercial engine, and only get paid when you grow. 30+ companies scaled this way.",
-            "Me integro a tu equipo, reconstruyo tu motor comercial, y solo cobro cuando creces. 30+ empresas escalaron así."
+            "I become your Growth Partner: I redesign your commercial system to generate predictable revenue, execute alongside you, and only get paid when your company grows. 30+ companies have already scaled under this model.",
+            "Me convierto en tu Growth Partner: rediseño tu sistema comercial para generar ingresos predecibles, ejecuto contigo y solo gano cuando tu empresa crece. Más de 30 compañías ya escalaron bajo este modelo."
           )}
         </p>
 
-        <ul className="mx-auto mb-8 flex max-w-lg flex-col gap-3 text-left animate-fade-in" style={{ animationDelay: "0.75s" }}>
+        <ul className="mx-auto mb-6 flex max-w-lg flex-col gap-3 text-left animate-fade-in" style={{ animationDelay: "0.75s" }}>
           {(lang === "en" ? bullets.en : bullets.es).map((b, i) => (
             <li key={i} className="flex items-center gap-3 text-sm text-foreground/90">
               <CheckCircle className="h-5 w-5 shrink-0 text-primary" />
@@ -77,9 +78,11 @@ export default function Hero() {
           ))}
         </ul>
 
+        <GuaranteeBadge variant="compact" className="mb-6 animate-fade-in" />
+
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center animate-fade-in" style={{ animationDelay: "0.9s" }}>
           <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none shadow-[0_0_25px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_40px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openBooking}>
-            {t("Book Your Free Growth Diagnostic", "Agenda tu Diagnóstico de Crecimiento Gratis")}
+            {t("Book your strategic diagnostic now", "Agenda tu diagnóstico estratégico ahora")}
             <ArrowRight className="h-4 w-4" />
           </Button>
           <p className="text-xs text-muted-foreground">
