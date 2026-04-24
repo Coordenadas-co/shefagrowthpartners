@@ -129,6 +129,11 @@ export default function Results() {
             </div>
           ))}
         </div>
+
+        <SectionCTA
+          label={t("Access your growth plan now", "Accede a tu plan de crecimiento ahora")}
+          className="mt-12"
+        />
       </div>
     </section>
   );

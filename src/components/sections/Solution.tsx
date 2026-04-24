@@ -1,6 +1,7 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Magnet, ArrowRightLeft, DollarSign, RotateCcw, Rocket, Database, FileText, Headphones, BarChart, Users, Settings } from "lucide-react";
+import SectionCTA from "@/components/SectionCTA";
 
 const engines = {
   en: [
@@ -92,6 +93,11 @@ export default function Solution() {
             </div>
           ))}
         </div>
+
+        <SectionCTA
+          label={t("Scale your business with real strategy", "Escala tu empresa con estrategia real")}
+          className="mt-12"
+        />
       </div>
     </section>
   );
