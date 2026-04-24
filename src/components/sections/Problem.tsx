@@ -99,6 +99,13 @@ export default function Problem() {
             </ul>
           </div>
         </div>
+
+        <GuaranteeBadge className="mt-12" />
+
+        <SectionCTA
+          label={t("Start generating more revenue today", "Empieza a generar más ingresos desde hoy")}
+          className="mt-8"
+        />
       </div>
     </section>
   );
