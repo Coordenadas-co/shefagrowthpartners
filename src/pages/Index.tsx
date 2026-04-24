@@ -7,27 +7,31 @@ import HowIWork from "@/components/sections/HowIWork";
 import WhoItsFor from "@/components/sections/WhoItsFor";
 import ClientLogos from "@/components/sections/ClientLogos";
 import AboutMe from "@/components/sections/AboutMe";
+import Stack from "@/components/sections/Stack";
 import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/Footer";
 import ConversionPopup from "@/components/ConversionPopup";
+import StickyCTA from "@/components/StickyCTA";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
       <Hero />
+      <AboutMe />
       <Problem />
       <Results />
       <ClientLogos />
       <Solution />
       <HowIWork />
       <WhoItsFor />
-      <AboutMe />
+      <Stack />
       <FAQ />
       <FinalCTA />
       <Footer />
       <ConversionPopup />
+      <StickyCTA />
     </div>
   );
 };

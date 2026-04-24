@@ -6,31 +6,109 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import GuaranteeBadge from "@/components/GuaranteeBadge";
+import SectionCTA from "@/components/SectionCTA";
 
 const faqs = [
   {
-    en: { q: "How is this different from hiring a sales consultant?", a: "I don't advise — I execute. I embed with your team, build the systems myself, and only get paid when you grow. No PowerPoint decks, no 90-page reports that collect dust." },
-    es: { q: "¿En qué se diferencia de contratar un consultor de ventas?", a: "No asesoro — ejecuto. Me integro con tu equipo, construyo los sistemas yo mismo y solo cobro cuando creces. Sin presentaciones de PowerPoint, sin reportes de 90 páginas que juntan polvo." },
+    en: {
+      q: "How do I know this will actually generate results in my company?",
+      a: "I don't work with promises — I work with systems and execution. Before starting, we analyze your current situation and pinpoint exactly where money is being lost in your commercial process. If I see no real growth potential, I'll tell you directly. If we move forward together, it's because there's a clear opportunity to generate ROI.",
+    },
+    es: {
+      q: "¿Cómo sé que esto realmente va a generar resultados en mi empresa?",
+      a: "No trabajo con promesas, trabajo con sistemas y ejecución. Antes de empezar, analizamos tu situación actual y detectamos exactamente dónde se está perdiendo el dinero en tu proceso comercial. Si veo que no hay potencial real de crecimiento, te lo digo directamente. Si entramos a trabajar juntos, es porque hay una oportunidad clara de generar ROI.",
+    },
   },
   {
-    en: { q: "What kind of results can I expect?", a: "Typical partners see 2-3× improvement in close rates and a predictable pipeline within 90 days. The exact numbers depend on your current setup, which is why the diagnostic call exists — so I can give you a realistic projection, not a generic promise." },
-    es: { q: "¿Qué tipo de resultados puedo esperar?", a: "Los partners típicos ven una mejora de 2-3× en tasas de cierre y un pipeline predecible en 90 días. Los números exactos dependen de tu configuración actual, por eso existe la llamada diagnóstica — para darte una proyección realista, no una promesa genérica." },
+    en: {
+      q: "How involved are you in the execution?",
+      a: "I'm not an external consultant who delivers recommendations and disappears. I integrate into your operation, structure the commercial system, and work alongside your team on implementation. The goal isn't just to improve results — it's to leave behind a system that runs even without me.",
+    },
+    es: {
+      q: "¿Qué tan involucrado estás en la ejecución?",
+      a: "No soy un consultor externo que entrega recomendaciones y desaparece. Me integro a tu operación, estructuro el sistema comercial y trabajo junto a tu equipo en la implementación. El objetivo no es solo mejorar resultados, sino dejar un sistema que funcione incluso sin mi presencia.",
+    },
   },
   {
-    en: { q: "How long until I see results?", a: "We start executing in week 1. First measurable results by day 30. Full commercial system live by day 90. This isn't a 6-month engagement where you wait and hope." },
-    es: { q: "¿Cuánto tiempo hasta ver resultados?", a: "Empezamos a ejecutar en la semana 1. Primeros resultados medibles para el día 30. Sistema comercial completo en vivo para el día 90. Esto no es un engagement de 6 meses donde esperas y cruzas los dedos." },
+    en: {
+      q: "How are you different from an agency or traditional consultant?",
+      a: "An agency executes tasks. A consultant gives recommendations. I build with you the system that generates predictable revenue. I work from strategy through commercial execution (offer, sales process, team, metrics) with total focus on real growth.",
+    },
+    es: {
+      q: "¿En qué te diferencias de una agencia o consultor tradicional?",
+      a: "Una agencia ejecuta tareas. Un consultor da recomendaciones. Yo construyo contigo el sistema que genera ingresos de forma predecible. Trabajo desde la estrategia hasta la ejecución comercial (oferta, proceso de ventas, equipo, métricas), con enfoque total en crecimiento real.",
+    },
   },
   {
-    en: { q: "What do I need to commit?", a: "2 hours per week of your time and access to your CRM. That's it. I handle strategy, execution, and optimization. You focus on running your business." },
-    es: { q: "¿Qué necesito comprometer?", a: "2 horas por semana de tu tiempo y acceso a tu CRM. Eso es todo. Yo me encargo de la estrategia, ejecución y optimización. Tú te enfocas en manejar tu negocio." },
+    en: {
+      q: "How long until I see results?",
+      a: "It depends on the starting point, but typically the first changes show in weeks, not months. We optimize first what you already have (offer, conversion, commercial process), generating quick impact before scaling.",
+    },
+    es: {
+      q: "¿En cuánto tiempo puedo ver resultados?",
+      a: "Depende del punto de partida, pero normalmente los primeros cambios se ven en semanas, no en meses. Optimizamos primero lo que ya tienes (oferta, conversión, proceso comercial), lo que permite generar impacto rápido antes de escalar.",
+    },
   },
   {
-    en: { q: "What if it doesn't work?", a: "This is performance-based. If you don't grow, I don't earn. I'm putting my time and expertise on the line alongside you — we both have skin in the game." },
-    es: { q: "¿Qué pasa si no funciona?", a: "Esto es basado en resultados. Si no creces, no cobro. Pongo mi tiempo y experiencia en juego junto contigo — ambos tenemos skin in the game." },
+    en: {
+      q: "Is this service for my type of business?",
+      a: "I work with businesses that already sell and want to grow with structure: B2B, B2C, e-commerce, infoproducts and traditional businesses. More than the industry, what matters is having a real base and the will to scale.",
+    },
+    es: {
+      q: "¿Este servicio es para mi tipo de negocio?",
+      a: "Trabajo con empresas que ya venden y quieren crecer con estructura: B2B, B2C, e-commerce, infoproductos y negocios tradicionales. Más que la industria, lo importante es que exista una base real y voluntad de escalar.",
+    },
   },
   {
-    en: { q: "Do you work with companies outside B2B/SaaS?", a: "My sweet spot is B2B and SaaS companies doing $500K–$10M ARR. That's where my frameworks deliver the fastest ROI. If you're outside that range, the diagnostic call will tell us quickly if there's a fit." },
-    es: { q: "¿Trabajas con empresas fuera de B2B/SaaS?", a: "Mi punto fuerte son empresas B2B y SaaS con $500K–$10M ARR. Ahí es donde mis frameworks entregan el ROI más rápido. Si estás fuera de ese rango, la llamada diagnóstica nos dirá rápidamente si hay fit." },
+    en: {
+      q: "Do I need to have a sales team to work with you?",
+      a: "Not necessarily. I can help you structure, optimize, or even design your commercial system from scratch. If you already have a team, we align it and make it more efficient. If not, we build one with you.",
+    },
+    es: {
+      q: "¿Necesito tener un equipo de ventas para trabajar contigo?",
+      a: "No necesariamente. Puedo ayudarte a estructurar, optimizar o incluso diseñar tu sistema comercial desde cero. Si ya tienes equipo, lo alineamos y lo hacemos más eficiente. Si no, construimos uno contigo.",
+    },
+  },
+  {
+    en: {
+      q: "How does the investment work?",
+      a: "The model depends on the type of engagement, but it's designed to align with results. The goal is for the investment to make financial sense from the growth it generates. This is defined clearly during the diagnostic call.",
+    },
+    es: {
+      q: "¿Cómo funciona la inversión?",
+      a: "El modelo depende del tipo de intervención, pero está diseñado para alinearse con resultados. El objetivo es que la inversión tenga sentido financiero desde el crecimiento que se genera. Esto se define con claridad en la llamada diagnóstica.",
+    },
+  },
+  {
+    en: {
+      q: "Will this consume too much of my team's time?",
+      a: "We don't add unnecessary load — we eliminate friction. Implementation is designed to integrate into your current operation and make it more efficient, not more complex.",
+    },
+    es: {
+      q: "¿Esto va a consumir demasiado tiempo de mi equipo?",
+      a: "No buscamos añadir carga innecesaria, sino eliminar fricción. La implementación está diseñada para integrarse a tu operación actual y hacerla más eficiente, no más compleja.",
+    },
+  },
+  {
+    en: {
+      q: "Who don't you work with?",
+      a: "I don't work with companies looking for quick fixes without structure, or with businesses that haven't yet validated their ability to generate sales. This approach is for companies that want to build sustainable, scalable growth.",
+    },
+    es: {
+      q: "¿Con quién no trabajas?",
+      a: "No trabajo con empresas que buscan soluciones rápidas sin estructura, ni con negocios que aún no han validado su capacidad de generar ventas. Este enfoque es para empresas que quieren construir crecimiento sostenible y escalable.",
+    },
+  },
+  {
+    en: {
+      q: "What happens during the diagnostic call?",
+      a: "We analyze your current situation, identify growth opportunities, and define whether it makes sense to work together. If there's a fit, I'll explain exactly how we'd execute it. If not, you'll walk away with total clarity on what to do next.",
+    },
+    es: {
+      q: "¿Qué pasa en la llamada diagnóstica?",
+      a: "Analizamos tu situación actual, identificamos oportunidades de crecimiento y definimos si tiene sentido trabajar juntos. Si hay fit, te explico exactamente cómo lo ejecutaríamos. Si no, te llevas claridad total sobre qué hacer a continuación.",
+    },
   },
 ];
 
@@ -47,12 +125,14 @@ export default function FAQ() {
         <h2 className="mb-2 text-center text-3xl font-bold sm:text-4xl">
           {t("Frequently Asked Questions", "Preguntas Frecuentes")}
         </h2>
-        <p className="mb-10 text-center text-muted-foreground">
+        <p className="mb-8 text-center text-muted-foreground">
           {t(
             "Everything you need to know before booking your diagnostic call.",
             "Todo lo que necesitas saber antes de agendar tu llamada diagnóstica."
           )}
         </p>
+
+        <GuaranteeBadge className="mb-8" />
 
         <Accordion type="single" collapsible className="space-y-2">
           {faqs.map((faq, i) => {
@@ -73,6 +153,11 @@ export default function FAQ() {
             );
           })}
         </Accordion>
+
+        <SectionCTA
+          label={t("Book your private strategy session", "Reserva tu sesión estratégica privada")}
+          className="mt-12"
+        />
       </div>
     </section>
   );

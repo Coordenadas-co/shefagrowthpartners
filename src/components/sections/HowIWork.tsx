@@ -2,17 +2,19 @@ import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useParallax } from "@/hooks/useParallax";
 import { Handshake, BarChart3, Shield, Zap, Search, PenTool, PlayCircle, RefreshCw } from "lucide-react";
+import SectionCTA from "@/components/SectionCTA";
+import GuaranteeBadge from "@/components/GuaranteeBadge";
 
 const points = {
   en: [
     { icon: Handshake, title: "Partnership, not agency", desc: "I embed with your team as a fractional CRO. You give me 2 hours/week and CRM access. I do the rest." },
-    { icon: BarChart3, title: "Performance-based", desc: "No retainer. If you don't grow, I don't earn. My incentives are 100% aligned with yours." },
+    { icon: BarChart3, title: "Performance-aligned", desc: "100% results-aligned model: a fee structure tied to the growth we build together." },
     { icon: Shield, title: "Skin in the game", desc: "I invest my time and expertise upfront because I believe in the outcome." },
     { icon: Zap, title: "Speed to impact", desc: "We start executing week 1. First results by day 30. Full system live by day 90." },
   ],
   es: [
     { icon: Handshake, title: "Partnership, no agencia", desc: "Me integro a tu equipo como CRO fraccional. Me das 2 horas/semana y acceso al CRM. Yo hago el resto." },
-    { icon: BarChart3, title: "Basado en rendimiento", desc: "Sin retainer. Si no creces, no gano. Mis incentivos están 100% alineados con los tuyos." },
+    { icon: BarChart3, title: "Alineado a resultados", desc: "Modelo 100% alineado a resultados: estructura de cobro relacionada con el crecimiento que construimos juntos." },
     { icon: Shield, title: "Piel en el juego", desc: "Invierto mi tiempo y expertise desde el inicio porque creo en el resultado." },
     { icon: Zap, title: "Velocidad de impacto", desc: "Empezamos a ejecutar en la semana 1. Primeros resultados en 30 días. Sistema completo en 90 días." },
   ],
@@ -101,6 +103,13 @@ export default function HowIWork() {
             </div>
           ))}
         </div>
+
+        <GuaranteeBadge className="mt-12" />
+
+        <SectionCTA
+          label={t("Turn your business into a growth machine", "Convierte tu negocio en una máquina de crecimiento")}
+          className="mt-8"
+        />
       </div>
     </section>
   );

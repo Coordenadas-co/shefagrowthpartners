@@ -2,7 +2,8 @@ import { useLang } from "@/contexts/LanguageContext";
 import { useBooking } from "@/contexts/BookingContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Clock, ShieldCheck } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
+import GuaranteeBadge from "@/components/GuaranteeBadge";
 
 const objections = {
   en: [
@@ -45,18 +46,10 @@ export default function FinalCTA() {
         </p>
 
         {/* Guarantee */}
-        <div className="mx-auto mb-8 flex max-w-xl items-start gap-3 rounded-lg border border-primary/30 bg-primary/5 p-4 text-left">
-          <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-          <p className="text-sm text-foreground/90">
-            {t(
-              "Guarantee: If we don't identify at least 3 revenue leaks in your diagnostic call, I'll send you my full audit framework for free. Zero risk.",
-              "Garantía: Si no identificamos al menos 3 fugas de ingresos en tu llamada diagnóstica, te envío mi framework de auditoría completo gratis. Cero riesgo."
-            )}
-          </p>
-        </div>
+        <GuaranteeBadge className="mb-8" />
 
         <Button size="lg" className="gap-2 text-base font-semibold shadow-[0_0_20px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_30px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openBooking}>
-          {t("Book Your Free Growth Diagnostic", "Agenda tu Diagnóstico de Crecimiento Gratis")}
+          {t("Design the financial future of your business today", "Diseña el futuro financiero de tu negocio hoy")}
           <ArrowRight className="h-4 w-4" />
         </Button>
 

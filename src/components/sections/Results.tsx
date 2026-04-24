@@ -1,6 +1,7 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useCountUp } from "@/hooks/useCountUp";
+import SectionCTA from "@/components/SectionCTA";
 
 const cases = {
   en: [
@@ -128,6 +129,11 @@ export default function Results() {
             </div>
           ))}
         </div>
+
+        <SectionCTA
+          label={t("Access your growth plan now", "Accede a tu plan de crecimiento ahora")}
+          className="mt-12"
+        />
       </div>
     </section>
   );
