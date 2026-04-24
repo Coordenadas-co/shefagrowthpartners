@@ -52,10 +52,11 @@ export default function Hero() {
         </p>
         <h1 className="mb-5 break-words text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-[3.25rem]">
           <span className="inline-block animate-fade-in" style={{ animationDelay: "0.25s" }}>
-            {t(
-              "Increase revenue to your B2B pipeline in 90 days",
-              "Aumenta los ingresos de tu pipeline B2B en 90 días"
-            )}
+            <>
+              {t("Increase revenue to your", "Aumenta los ingresos de tu")}
+              <br />
+              {t("business in 90 days", "negocio en 90 días")}
+            </>
           </span>
           <br />
           <span className="mt-2 inline-block break-words text-gradient-gold animate-fade-in text-2xl leading-tight sm:text-3xl lg:text-4xl" style={{ animationDelay: "0.45s" }}>
