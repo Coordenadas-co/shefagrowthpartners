@@ -1,16 +1,17 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Check, X } from "lucide-react";
+import SectionCTA from "@/components/SectionCTA";
 
 const yes = {
   en: [
-    "B2B or SaaS doing $500K+ ARR",
+    "Businesses ready to turn their growth into a predictable, scalable system",
     "You have a product that works but growth has stalled",
     "You're willing to invest in building a real system",
     "You want a partner, not a vendor",
   ],
   es: [
-    "B2B o SaaS con $500K+ ARR",
+    "Negocios listos para convertir su crecimiento en un sistema predecible y escalable",
     "Tienes un producto que funciona pero el crecimiento se estancó",
     "Estás dispuesto a invertir en construir un sistema real",
     "Quieres un partner, no un proveedor",

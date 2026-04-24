@@ -103,6 +103,13 @@ export default function HowIWork() {
             </div>
           ))}
         </div>
+
+        <GuaranteeBadge className="mt-12" />
+
+        <SectionCTA
+          label={t("Turn your business into a growth machine", "Convierte tu negocio en una máquina de crecimiento")}
+          className="mt-8"
+        />
       </div>
     </section>
   );
