@@ -63,7 +63,7 @@ export default function Hero() {
             {t("without hiring a single rep", "sin contratar un solo vendedor")}
           </span>
         </h1>
-        <p className="mx-auto mb-8 max-w-2xl text-base sm:text-lg text-muted-foreground animate-fade-in" style={{ animationDelay: "0.6s" }}>
+        <p className="mx-auto mb-5 md:mb-6 max-w-2xl text-base sm:text-lg text-muted-foreground animate-fade-in" style={{ animationDelay: "0.6s" }}>
           {t(
             "I become your Growth Partner: I redesign your commercial system to generate predictable revenue, execute alongside you, and only get paid when your company grows. 30+ companies have already scaled under this model.",
             "Me convierto en tu Growth Partner: rediseño tu sistema comercial para generar ingresos predecibles, ejecuto contigo y solo gano cuando tu empresa crece. Más de 30 compañías ya escalaron bajo este modelo."
