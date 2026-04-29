@@ -59,7 +59,7 @@ export default function Hero() {
             </>
           </span>
           <br />
-          <span className="mt-2 inline-block break-words text-gradient-gold animate-fade-in text-2xl leading-tight sm:text-3xl lg:text-4xl" style={{ animationDelay: "0.45s" }}>
+          <span className="mt-1 inline-block break-words text-gradient-gold animate-fade-in text-2xl leading-tight sm:text-3xl lg:text-4xl" style={{ animationDelay: "0.45s" }}>
             {t("without hiring a single rep", "sin contratar un solo vendedor")}
           </span>
         </h1>
