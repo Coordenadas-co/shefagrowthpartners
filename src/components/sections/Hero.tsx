@@ -26,7 +26,7 @@ export default function Hero() {
   const offset = useParallax(0.3);
 
   return (
-    <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden pt-16">
+    <section className="relative flex min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh] items-center justify-center overflow-hidden pt-14 md:pt-16">
       {/* Background image */}
       <img
         src={heroBg}
