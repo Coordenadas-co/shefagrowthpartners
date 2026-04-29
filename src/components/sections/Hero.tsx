@@ -47,10 +47,10 @@ export default function Hero() {
         className="relative z-10 mx-auto w-full max-w-4xl px-6 text-center"
         style={{ transform: `translateY(${offset * 0.15}px)` }}
       >
-        <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary animate-fade-in" style={{ animationDelay: "0.1s" }}>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary animate-fade-in" style={{ animationDelay: "0.1s" }}>
           {t("Growth Partner for B2B & SaaS", "Growth Partner para B2B y SaaS")}
         </p>
-        <h1 className="mb-5 break-words text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-[3.25rem]">
+        <h1 className="mb-4 break-words text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-[3.25rem]">
           <span className="inline-block animate-fade-in" style={{ animationDelay: "0.25s" }}>
             <>
               {t("Increase revenue to your", "Aumenta los ingresos de tu")}
