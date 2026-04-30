@@ -50,7 +50,7 @@ export default function Hero() {
         <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary animate-fade-in" style={{ animationDelay: "0.1s" }}>
           {t("Growth Partner for B2B & SaaS", "Growth Partner para B2B y SaaS")}
         </p>
-        <h1 className="mb-4 break-words text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-[3.25rem]">
+        <h1 className="mb-4 break-words text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
           <span className="inline-block animate-fade-in" style={{ animationDelay: "0.25s" }}>
             <>
               {t("Increase revenue to your", "Aumenta los ingresos de tu")}
@@ -59,7 +59,7 @@ export default function Hero() {
             </>
           </span>
           <br />
-          <span className="mt-1 inline-block break-words text-gradient-gold animate-fade-in text-2xl leading-tight sm:text-3xl lg:text-4xl" style={{ animationDelay: "0.45s" }}>
+          <span className="mt-2 inline-block break-words text-gradient-gold animate-fade-in text-xl leading-tight sm:text-2xl lg:text-3xl" style={{ animationDelay: "0.45s" }}>
             {t("without hiring a single rep", "sin contratar un solo vendedor")}
           </span>
         </h1>
