@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import FloatingParticles from "@/components/FloatingParticles";
 import GuaranteeBadge from "@/components/GuaranteeBadge";
+import VSLPlayer from "@/components/VSLPlayer";
 import { useParallax } from "@/hooks/useParallax";
 import heroBg from "@/assets/hero-bg.png";
 
