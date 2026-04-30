@@ -70,7 +70,7 @@ export default function Hero() {
           )}
         </p>
 
-        <ul className="mx-auto mb-6 flex max-w-lg flex-col gap-3 text-left animate-fade-in" style={{ animationDelay: "0.75s" }}>
+        <ul className="mx-auto mb-4 md:mb-5 flex max-w-lg flex-col gap-2 md:gap-2.5 text-left animate-fade-in" style={{ animationDelay: "0.75s" }}>
           {(lang === "en" ? bullets.en : bullets.es).map((b, i) => (
             <li key={i} className="flex items-center gap-3 text-sm text-foreground/90">
               <CheckCircle className="h-5 w-5 shrink-0 text-primary" />
@@ -79,7 +79,7 @@ export default function Hero() {
           ))}
         </ul>
 
-        <GuaranteeBadge variant="compact" className="mb-6 animate-fade-in" />
+        <GuaranteeBadge variant="compact" className="mb-4 md:mb-5 animate-fade-in" />
 
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center animate-fade-in" style={{ animationDelay: "0.9s" }}>
           <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none shadow-[0_0_25px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_40px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openBooking}>
