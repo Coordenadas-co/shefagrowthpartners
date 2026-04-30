@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { z } from "zod";
 import { useLang } from "@/contexts/LanguageContext";
 import { useBooking } from "@/contexts/BookingContext";
+import { useLeadMagnet } from "@/contexts/LeadMagnetContext";
 import { supabase } from "@/integrations/supabase/client";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -21,13 +22,21 @@ const leadSchema = z.object({
 type Step = "form" | "download" | "upsell";
 
 export default function LeadMagnetPopup() {
-  const [open, setOpen] = useState(false);
+  const { isOpen: open, setOpen, openLeadMagnet } = useLeadMagnet();
   const [step, setStep] = useState<Step>("form");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const { lang, t } = useLang();
   const { openBooking } = useBooking();
+
+  // Reset to first step whenever the popup is closed
+  useEffect(() => {
+    if (!open) {
+      const id = setTimeout(() => setStep("form"), 250);
+      return () => clearTimeout(id);
+    }
+  }, [open]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -37,7 +46,7 @@ export default function LeadMagnetPopup() {
     const trigger = () => {
       if (triggered) return;
       triggered = true;
-      setOpen(true);
+      openLeadMagnet();
       localStorage.setItem(STORAGE_KEY, "1");
     };
 
