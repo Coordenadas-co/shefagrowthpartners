@@ -1,94 +1,43 @@
+# Plan: CTA del Lead Magnet en la Home
 
-# Lead Magnet Flow: Guía 5 Palancas → Consultoría
-
-## Resumen del flujo
-
-```
-Usuario navega → Popup aparece (exit-intent + 15s)
-                    ↓
-        [Formulario: nombre + email]
-                    ↓
-        Submit → Guarda lead en BD
-                    ↓
-        Pantalla 2: "¡Descarga lista!" + botón descargar PDF
-                    ↓
-        Al descargar → Pantalla 3 (upsell):
-        "Aplica esto con un experto - Diagnóstico gratis 30min"
-                    ↓
-              [Agendar Sesión] → BookingModal
-```
+## Objetivo
+Hoy el popup del lead magnet ("Las 5 Palancas") solo aparece automáticamente (exit-intent o 15s). Vamos a darle visibilidad permanente en la home con CTAs explícitos para que el usuario pueda solicitarlo cuando quiera, en EN y ES.
 
 ## Cambios
 
-### 1. Subir el PDF al proyecto
-- Copiar `user-uploads://shefa-growth-partners-leadmagnet_1.pdf` → `public/lead-magnet/guia-5-palancas.pdf`
-- Servible directo en `/lead-magnet/guia-5-palancas.pdf`
+### 1. Crear `LeadMagnetContext` (nuevo)
+`src/contexts/LeadMagnetContext.tsx` — análogo a `BookingContext`:
+- Estado `open` + `openLeadMagnet()` / `closeLeadMagnet()`.
+- Provider envuelve la app en `App.tsx` (junto al `BookingProvider`).
 
-### 2. Lovable Cloud — tabla `lead_magnet_downloads`
-Migración con:
-- `id uuid pk`, `name text`, `email text not null`, `lang text`, `created_at timestamptz default now()`
-- RLS habilitado: política `INSERT` para `anon` (público puede registrar leads)
-- Sin `SELECT` público (datos privados del owner)
+### 2. Refactor de `LeadMagnetPopup.tsx`
+- Consumir el contexto en lugar de manejar `open` localmente.
+- Mantener la lógica de auto-trigger (exit-intent + 15s) llamando a `openLeadMagnet()` si no se ha mostrado.
+- Resetear el `step` a `"form"` al cerrar para que reabrir muestre el flujo completo.
 
-### 3. Reemplazar `ConversionPopup.tsx` por nuevo `LeadMagnetPopup.tsx`
-Componente con 3 estados internos (`form` | `download` | `upsell`):
+### 3. Nueva sección `LeadMagnetCTA` 
+`src/components/sections/LeadMagnetCTA.tsx` — banner/card destacado entre `Problem` y `Results`:
+- Mockup/ícono del PDF a la izquierda, copy a la derecha.
+- Headline (ES): "Descarga gratis: Las 5 Palancas que duplican el crecimiento en 12 meses".
+- Headline (EN): "Free download: The 5 Levers that double growth in 12 months".
+- 3 bullets cortos (qué incluye la guía).
+- Botón primario "Descargar guía gratis" / "Get the free guide" → `openLeadMagnet()`.
+- Microcopy: "PDF · 100% gratis · Sin spam".
+- Estilo coherente con tokens (navy bg, gold accents, GuaranteeBadge opcional).
 
-**Estado 1 — Formulario (bilingüe)**
-- Eyebrow: "GUÍA GRATUITA / FREE GUIDE"
-- Título: *"Las 5 palancas que duplican el crecimiento de tu empresa en 12 meses"* / EN equivalente
-- Subtítulo corto + bullets cortos (3 beneficios sacados del PDF)
-- Inputs: Nombre, Email
-- Botón: "Descargar Guía Gratis" / "Get Free Guide"
-- Trust line: "Sin spam. Cancela cuando quieras."
+### 4. CTA secundario en `Hero`
+- Bajo el botón principal "Agenda tu diagnóstico", agregar un link/botón ghost pequeño:  
+  "📥 O descarga primero la guía gratis: Las 5 Palancas" / "Or grab the free guide first: The 5 Levers".
+- onClick → `openLeadMagnet()`.
 
-**Estado 2 — Descarga**
-- Check verde grande + "¡Tu guía está lista!"
-- Botón primario: "Descargar PDF" → trigger download del PDF y avanza a estado 3
-- Mini preview/thumb del PDF (opcional, decorativo dorado)
+### 5. Item en `Navbar`
+- Agregar entrada "Guía Gratis" / "Free Guide" en `navItems` (no ancla; onClick que llama `openLeadMagnet()`).
+- Visible en desktop y mobile menu.
 
-**Estado 3 — Upsell consultoría**
-- Headline: "Ya tienes el mapa. ¿Quieres que lo apliquemos juntos?" / EN
-- Texto: 30 min, sin compromiso, identificamos las 2-3 palancas de mayor impacto para tu empresa
-- GuaranteeBadge reutilizado
-- CTA primario: "Agendar Mi Diagnóstico Gratis" → cierra popup + `openBooking()`
-- Link secundario: "No, gracias" → cierra
+### 6. Integración en `Index.tsx`
+- Insertar `<LeadMagnetCTA />` entre `<Problem />` y `<Results />`.
 
-### 4. Trigger del popup
-- **Exit intent** (mouseleave hacia top viewport) **O**
-- **15 segundos** en página
-- Lo que pase primero
-- Mostrar máx 1 vez por sesión (`localStorage` `shefa_leadmagnet_shown`)
-
-### 5. Botón secundario en Hero (opcional pero recomendado)
-Debajo del CTA principal del Hero, agregar link sutil:
-*"O descarga primero la guía gratuita →"*
-que dispara el popup manualmente.
-
-### 6. Limpieza
-- Eliminar `ConversionPopup.tsx` viejo (queda reemplazado)
-- Index.tsx: cambiar import a `LeadMagnetPopup`
-
-## Archivos
-
-**Crear:**
-- `public/lead-magnet/guia-5-palancas.pdf`
-- `src/components/LeadMagnetPopup.tsx`
-- Migración SQL para `lead_magnet_downloads`
-
-**Modificar:**
-- `src/pages/Index.tsx` (swap del popup)
-- `src/components/sections/Hero.tsx` (link secundario opcional)
-
-**Eliminar:**
-- `src/components/ConversionPopup.tsx`
-
-## Detalles técnicos
-- Insert vía `supabase.from('lead_magnet_downloads').insert(...)` desde el cliente (RLS permite anon insert)
-- Descarga del PDF: `<a href="/lead-magnet/guia-5-palancas.pdf" download>` programático con `link.click()`
-- Validación email regex simple, loading state en botón
-- Toast de confirmación al insertar
-- Reusar tokens de diseño existentes (gold, navy, GuaranteeBadge, Dialog shadcn)
-- Bilingüe vía `useLang()` + `t()`
-- `useBooking()` para abrir el modal de consultoría en estado 3
-
-¿Apruebas? Si quieres ajustar algo (timing del popup, copy del upsell, omitir el link en Hero, o no usar BD y solo trackear localmente), dímelo antes de implementar.
+## Notas
+- Bilingüe vía `useLang().t(en, es)` ya existente.
+- Sin cambios de BD (la tabla `lead_magnet_downloads` ya está).
+- El popup sigue auto-disparándose una vez por sesión; los CTAs lo abren on-demand sin importar si ya se mostró.

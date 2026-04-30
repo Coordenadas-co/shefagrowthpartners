@@ -1,7 +1,8 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useBooking } from "@/contexts/BookingContext";
+import { useLeadMagnet } from "@/contexts/LeadMagnetContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Download } from "lucide-react";
 import FloatingParticles from "@/components/FloatingParticles";
 import GuaranteeBadge from "@/components/GuaranteeBadge";
 import VSLPlayer from "@/components/VSLPlayer";
@@ -24,6 +25,7 @@ const bullets = {
 export default function Hero() {
   const { lang, t } = useLang();
   const { openBooking } = useBooking();
+  const { openLeadMagnet } = useLeadMagnet();
   const offset = useParallax(0.3);
 
   return (
@@ -75,6 +77,20 @@ export default function Hero() {
             {t("30-min call. I'll show you exactly where you're leaking revenue.", "Llamada de 30 min. Te mostraré exactamente dónde estás perdiendo ingresos.")}
           </p>
         </div>
+
+        <button
+          onClick={openLeadMagnet}
+          className="mb-5 inline-flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground transition-colors hover:text-primary animate-fade-in"
+          style={{ animationDelay: "0.75s" }}
+        >
+          <Download className="h-3.5 w-3.5" />
+          <span className="underline-offset-4 hover:underline">
+            {t(
+              "Or grab the free guide first: The 5 Levers",
+              "O descarga primero la guía gratis: Las 5 Palancas"
+            )}
+          </span>
+        </button>
 
         <GuaranteeBadge variant="compact" className="mb-5 animate-fade-in" />
 
