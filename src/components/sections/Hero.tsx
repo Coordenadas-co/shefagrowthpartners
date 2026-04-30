@@ -45,7 +45,7 @@ export default function Hero() {
       />
       <FloatingParticles />
       <div
-        className="relative z-10 mx-auto w-full max-w-4xl px-6 text-center"
+        className="relative z-10 mx-auto w-full max-w-5xl px-6 text-center"
         style={{ transform: `translateY(${offset * 0.15}px)` }}
       >
         <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary animate-fade-in" style={{ animationDelay: "0.1s" }}>
