@@ -68,28 +68,31 @@ export default function Hero() {
         </h1>
         <VSLPlayer />
 
-        <div className="mb-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-4 sm:justify-center animate-fade-in" style={{ animationDelay: "0.7s" }}>
-          <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none shadow-[0_0_25px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_40px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openBooking}>
-            {t("Book your strategic diagnostic now", "Agenda tu diagnóstico estratégico ahora")}
-            <ArrowRight className="h-4 w-4" />
+        <div className="mb-3 flex flex-col items-center gap-2 sm:flex-row sm:gap-4 sm:justify-center animate-fade-in" style={{ animationDelay: "0.7s" }}>
+          <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none shadow-[0_0_25px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_40px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openLeadMagnet}>
+            <Download className="h-4 w-4" />
+            {t("Get the free guide — The 5 Levers", "Descarga la guía gratis — Las 5 Palancas")}
           </Button>
           <p className="text-xs text-muted-foreground">
-            {t("30-min call. I'll show you exactly where you're leaking revenue.", "Llamada de 30 min. Te mostraré exactamente dónde estás perdiendo ingresos.")}
+            {t(
+              "Free PDF · The 5 levers that double your revenue in 12 months",
+              "PDF gratis · Las 5 palancas que duplican tus ingresos en 12 meses"
+            )}
           </p>
         </div>
 
         <button
-          onClick={openLeadMagnet}
+          onClick={openBooking}
           className="mb-5 inline-flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground transition-colors hover:text-primary animate-fade-in"
           style={{ animationDelay: "0.75s" }}
         >
-          <Download className="h-3.5 w-3.5" />
           <span className="underline-offset-4 hover:underline">
             {t(
-              "Or grab the free guide first: The 5 Levers",
-              "O descarga primero la guía gratis: Las 5 Palancas"
+              "Already know you need help? Book a free 30-min diagnostic",
+              "¿Ya sabes que necesitas ayuda? Agenda un diagnóstico gratis de 30 min"
             )}
           </span>
+          <ArrowRight className="h-3.5 w-3.5" />
         </button>
 
         <GuaranteeBadge variant="compact" className="mb-5 animate-fade-in" />

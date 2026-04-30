@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useLang } from "@/contexts/LanguageContext";
-import { useBooking } from "@/contexts/BookingContext";
+import { useLeadMagnet } from "@/contexts/LeadMagnetContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, X } from "lucide-react";
+import { Download, X } from "lucide-react";
 
 export default function StickyCTA() {
   const { t } = useLang();
-  const { openBooking } = useBooking();
+  const { openLeadMagnet } = useLeadMagnet();
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
@@ -26,11 +26,11 @@ export default function StickyCTA() {
       <div className="flex items-center gap-2">
         <Button
           size="sm"
-          onClick={openBooking}
+          onClick={openLeadMagnet}
           className="flex-1 gap-2 font-semibold"
         >
-          {t("Book your free diagnostic", "Agenda tu diagnóstico")}
-          <ArrowRight className="h-4 w-4" />
+          <Download className="h-4 w-4" />
+          {t("Get the free guide", "Descarga la guía gratis")}
         </Button>
         <button
           aria-label="Dismiss"

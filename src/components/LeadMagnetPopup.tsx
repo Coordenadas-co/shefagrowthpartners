@@ -11,7 +11,6 @@ import GuaranteeBadge from "@/components/GuaranteeBadge";
 import { ArrowRight, BookOpen, CheckCircle2, Download, Loader2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
-const STORAGE_KEY = "shefa_leadmagnet_shown";
 const PDF_URL = "/lead-magnet/guia-5-palancas.pdf";
 
 const leadSchema = z.object({
@@ -38,29 +37,6 @@ export default function LeadMagnetPopup() {
     }
   }, [open]);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (localStorage.getItem(STORAGE_KEY)) return;
-
-    let triggered = false;
-    const trigger = () => {
-      if (triggered) return;
-      triggered = true;
-      openLeadMagnet();
-      localStorage.setItem(STORAGE_KEY, "1");
-    };
-
-    const timer = setTimeout(trigger, 15000);
-    const onMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0) trigger();
-    };
-    document.addEventListener("mouseleave", onMouseLeave);
-
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener("mouseleave", onMouseLeave);
-    };
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
