@@ -37,29 +37,6 @@ export default function LeadMagnetPopup() {
     }
   }, [open]);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (localStorage.getItem(STORAGE_KEY)) return;
-
-    let triggered = false;
-    const trigger = () => {
-      if (triggered) return;
-      triggered = true;
-      openLeadMagnet();
-      localStorage.setItem(STORAGE_KEY, "1");
-    };
-
-    const timer = setTimeout(trigger, 15000);
-    const onMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0) trigger();
-    };
-    document.addEventListener("mouseleave", onMouseLeave);
-
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener("mouseleave", onMouseLeave);
-    };
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
