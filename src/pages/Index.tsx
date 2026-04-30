@@ -11,7 +11,7 @@ import Stack from "@/components/sections/Stack";
 import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/Footer";
-import ConversionPopup from "@/components/ConversionPopup";
+import LeadMagnetPopup from "@/components/LeadMagnetPopup";
 import StickyCTA from "@/components/StickyCTA";
 
 const Index = () => {
@@ -30,7 +30,7 @@ const Index = () => {
       <FAQ />
       <FinalCTA />
       <Footer />
-      <ConversionPopup />
+      <LeadMagnetPopup />
       <StickyCTA />
     </div>
   );

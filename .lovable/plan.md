@@ -1,32 +1,94 @@
-# Agregar VSL (Video Sales Letter) al Hero
 
-## 1. Crear `src/components/VSLPlayer.tsx`
-- Iframe responsivo de YouTube (`aspect-video` 16:9)
-- Marco dorado: `border border-primary/30`, `rounded-xl`, `shadow-[0_0_40px_hsl(43_52%_54%/0.25)]`
-- URL dinámica según `lang`:
-  - ES → `https://www.youtube.com/embed/OaUw7oAxmKY`
-  - EN → `https://www.youtube.com/embed/D04_AU7Tx40`
-- `?rel=0&modestbranding=1&playsinline=1`
-- `loading="lazy"`, `key={lang}` para re-render al cambiar idioma
-- `max-w-3xl mx-auto`
+# Lead Magnet Flow: Guía 5 Palancas → Consultoría
 
-## 2. Modificar `src/components/sections/Hero.tsx`
-Reordenar para colocar el video justo después del título, con CTA inmediatamente debajo (estilo VSL del ejemplo):
+## Resumen del flujo
 
 ```
-Eyebrow
-H1 + subtítulo dorado
-[VSLPlayer]                ← nuevo
-CTA principal + texto      ← sube
-GuaranteeBadge
-Párrafo descriptivo        ← baja
-Bullets                    ← baja
+Usuario navega → Popup aparece (exit-intent + 15s)
+                    ↓
+        [Formulario: nombre + email]
+                    ↓
+        Submit → Guarda lead en BD
+                    ↓
+        Pantalla 2: "¡Descarga lista!" + botón descargar PDF
+                    ↓
+        Al descargar → Pantalla 3 (upsell):
+        "Aplica esto con un experto - Diagnóstico gratis 30min"
+                    ↓
+              [Agendar Sesión] → BookingModal
 ```
 
-- Importar `VSLPlayer`
-- Aumentar contenedor a `max-w-5xl` (para que el video respire)
-- Aumentar padding-bottom: `pb-16 md:pb-20 lg:pb-24`
+## Cambios
+
+### 1. Subir el PDF al proyecto
+- Copiar `user-uploads://shefa-growth-partners-leadmagnet_1.pdf` → `public/lead-magnet/guia-5-palancas.pdf`
+- Servible directo en `/lead-magnet/guia-5-palancas.pdf`
+
+### 2. Lovable Cloud — tabla `lead_magnet_downloads`
+Migración con:
+- `id uuid pk`, `name text`, `email text not null`, `lang text`, `created_at timestamptz default now()`
+- RLS habilitado: política `INSERT` para `anon` (público puede registrar leads)
+- Sin `SELECT` público (datos privados del owner)
+
+### 3. Reemplazar `ConversionPopup.tsx` por nuevo `LeadMagnetPopup.tsx`
+Componente con 3 estados internos (`form` | `download` | `upsell`):
+
+**Estado 1 — Formulario (bilingüe)**
+- Eyebrow: "GUÍA GRATUITA / FREE GUIDE"
+- Título: *"Las 5 palancas que duplican el crecimiento de tu empresa en 12 meses"* / EN equivalente
+- Subtítulo corto + bullets cortos (3 beneficios sacados del PDF)
+- Inputs: Nombre, Email
+- Botón: "Descargar Guía Gratis" / "Get Free Guide"
+- Trust line: "Sin spam. Cancela cuando quieras."
+
+**Estado 2 — Descarga**
+- Check verde grande + "¡Tu guía está lista!"
+- Botón primario: "Descargar PDF" → trigger download del PDF y avanza a estado 3
+- Mini preview/thumb del PDF (opcional, decorativo dorado)
+
+**Estado 3 — Upsell consultoría**
+- Headline: "Ya tienes el mapa. ¿Quieres que lo apliquemos juntos?" / EN
+- Texto: 30 min, sin compromiso, identificamos las 2-3 palancas de mayor impacto para tu empresa
+- GuaranteeBadge reutilizado
+- CTA primario: "Agendar Mi Diagnóstico Gratis" → cierra popup + `openBooking()`
+- Link secundario: "No, gracias" → cierra
+
+### 4. Trigger del popup
+- **Exit intent** (mouseleave hacia top viewport) **O**
+- **15 segundos** en página
+- Lo que pase primero
+- Mostrar máx 1 vez por sesión (`localStorage` `shefa_leadmagnet_shown`)
+
+### 5. Botón secundario en Hero (opcional pero recomendado)
+Debajo del CTA principal del Hero, agregar link sutil:
+*"O descarga primero la guía gratuita →"*
+que dispara el popup manualmente.
+
+### 6. Limpieza
+- Eliminar `ConversionPopup.tsx` viejo (queda reemplazado)
+- Index.tsx: cambiar import a `LeadMagnetPopup`
 
 ## Archivos
-- `src/components/VSLPlayer.tsx` (nuevo)
-- `src/components/sections/Hero.tsx` (editar)
+
+**Crear:**
+- `public/lead-magnet/guia-5-palancas.pdf`
+- `src/components/LeadMagnetPopup.tsx`
+- Migración SQL para `lead_magnet_downloads`
+
+**Modificar:**
+- `src/pages/Index.tsx` (swap del popup)
+- `src/components/sections/Hero.tsx` (link secundario opcional)
+
+**Eliminar:**
+- `src/components/ConversionPopup.tsx`
+
+## Detalles técnicos
+- Insert vía `supabase.from('lead_magnet_downloads').insert(...)` desde el cliente (RLS permite anon insert)
+- Descarga del PDF: `<a href="/lead-magnet/guia-5-palancas.pdf" download>` programático con `link.click()`
+- Validación email regex simple, loading state en botón
+- Toast de confirmación al insertar
+- Reusar tokens de diseño existentes (gold, navy, GuaranteeBadge, Dialog shadcn)
+- Bilingüe vía `useLang()` + `t()`
+- `useBooking()` para abrir el modal de consultoría en estado 3
+
+¿Apruebas? Si quieres ajustar algo (timing del popup, copy del upsell, omitir el link en Hero, o no usar BD y solo trackear localmente), dímelo antes de implementar.
