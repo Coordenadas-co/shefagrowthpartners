@@ -11,7 +11,6 @@ import GuaranteeBadge from "@/components/GuaranteeBadge";
 import { ArrowRight, BookOpen, CheckCircle2, Download, Loader2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
-const STORAGE_KEY = "shefa_leadmagnet_shown";
 const PDF_URL = "/lead-magnet/guia-5-palancas.pdf";
 
 const leadSchema = z.object({
