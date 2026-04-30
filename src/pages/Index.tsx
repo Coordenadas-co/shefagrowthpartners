@@ -12,6 +12,7 @@ import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/Footer";
 import LeadMagnetPopup from "@/components/LeadMagnetPopup";
+import LeadMagnetCTA from "@/components/sections/LeadMagnetCTA";
 import StickyCTA from "@/components/StickyCTA";
 
 const Index = () => {
@@ -21,6 +22,7 @@ const Index = () => {
       <Hero />
       <AboutMe />
       <Problem />
+      <LeadMagnetCTA />
       <Results />
       <ClientLogos />
       <Solution />
