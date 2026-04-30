@@ -84,6 +84,12 @@ export default function Navbar() {
               {lang === "en" ? item.en : item.es}
             </a>
           ))}
+          <button
+            onClick={() => { setOpen(false); openLeadMagnet(); }}
+            className="text-left text-sm text-muted-foreground transition-colors hover:text-primary"
+          >
+            {t("Free Guide", "Guía Gratis")}
+          </button>
           <div className="flex gap-3 pt-2">
             <Button size="sm" onClick={toggleLang} variant="outline" className="text-xs font-semibold">
               {lang === "en" ? "ES" : "EN"}
