@@ -78,6 +78,20 @@ export default function Hero() {
           </p>
         </div>
 
+        <button
+          onClick={openLeadMagnet}
+          className="mb-5 inline-flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground transition-colors hover:text-primary animate-fade-in"
+          style={{ animationDelay: "0.75s" }}
+        >
+          <Download className="h-3.5 w-3.5" />
+          <span className="underline-offset-4 hover:underline">
+            {t(
+              "Or grab the free guide first: The 5 Levers",
+              "O descarga primero la guía gratis: Las 5 Palancas"
+            )}
+          </span>
+        </button>
+
         <GuaranteeBadge variant="compact" className="mb-5 animate-fade-in" />
 
         <p className="mx-auto mb-4 max-w-xl text-sm sm:text-base text-muted-foreground animate-fade-in" style={{ animationDelay: "0.85s" }}>
