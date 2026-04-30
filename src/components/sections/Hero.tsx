@@ -81,7 +81,7 @@ export default function Hero() {
 
         <GuaranteeBadge variant="compact" className="mb-3 md:mb-4 animate-fade-in" />
 
-        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center animate-fade-in" style={{ animationDelay: "0.9s" }}>
+        <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4 sm:justify-center animate-fade-in" style={{ animationDelay: "0.9s" }}>
           <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none shadow-[0_0_25px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_40px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openBooking}>
             {t("Book your strategic diagnostic now", "Agenda tu diagnóstico estratégico ahora")}
             <ArrowRight className="h-4 w-4" />
