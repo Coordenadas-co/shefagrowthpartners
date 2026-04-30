@@ -1,7 +1,8 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useBooking } from "@/contexts/BookingContext";
+import { useLeadMagnet } from "@/contexts/LeadMagnetContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Download } from "lucide-react";
 import FloatingParticles from "@/components/FloatingParticles";
 import GuaranteeBadge from "@/components/GuaranteeBadge";
 import VSLPlayer from "@/components/VSLPlayer";
@@ -24,6 +25,7 @@ const bullets = {
 export default function Hero() {
   const { lang, t } = useLang();
   const { openBooking } = useBooking();
+  const { openLeadMagnet } = useLeadMagnet();
   const offset = useParallax(0.3);
 
   return (
