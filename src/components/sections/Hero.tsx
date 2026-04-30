@@ -64,25 +64,9 @@ export default function Hero() {
             {t("without hiring a single rep", "sin contratar un solo vendedor")}
           </span>
         </h1>
-        <p className="mx-auto mb-4 md:mb-5 max-w-xl text-sm sm:text-base text-muted-foreground animate-fade-in" style={{ animationDelay: "0.6s" }}>
-          {t(
-            "I become your Growth Partner: I redesign your commercial system to generate predictable revenue, execute alongside you, and only get paid when your company grows. 30+ companies have already scaled under this model.",
-            "Me convierto en tu Growth Partner: rediseño tu sistema comercial para generar ingresos predecibles, ejecuto contigo y solo gano cuando tu empresa crece. Más de 30 compañías ya escalaron bajo este modelo."
-          )}
-        </p>
+        <VSLPlayer />
 
-        <ul className="mx-auto mb-3 md:mb-4 flex max-w-lg flex-col gap-2 md:gap-2.5 text-left animate-fade-in" style={{ animationDelay: "0.75s" }}>
-          {(lang === "en" ? bullets.en : bullets.es).map((b, i) => (
-            <li key={i} className="flex items-center gap-2.5 text-[13px] sm:text-sm text-foreground/90">
-              <CheckCircle className="h-4 w-4 shrink-0 text-primary" />
-              {b}
-            </li>
-          ))}
-        </ul>
-
-        <GuaranteeBadge variant="compact" className="mb-3 md:mb-4 animate-fade-in" />
-
-        <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4 sm:justify-center animate-fade-in" style={{ animationDelay: "0.9s" }}>
+        <div className="mb-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-4 sm:justify-center animate-fade-in" style={{ animationDelay: "0.7s" }}>
           <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none shadow-[0_0_25px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_40px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openBooking}>
             {t("Book your strategic diagnostic now", "Agenda tu diagnóstico estratégico ahora")}
             <ArrowRight className="h-4 w-4" />
@@ -91,6 +75,24 @@ export default function Hero() {
             {t("30-min call. I'll show you exactly where you're leaking revenue.", "Llamada de 30 min. Te mostraré exactamente dónde estás perdiendo ingresos.")}
           </p>
         </div>
+
+        <GuaranteeBadge variant="compact" className="mb-5 animate-fade-in" />
+
+        <p className="mx-auto mb-4 max-w-xl text-sm sm:text-base text-muted-foreground animate-fade-in" style={{ animationDelay: "0.85s" }}>
+          {t(
+            "I become your Growth Partner: I redesign your commercial system to generate predictable revenue, execute alongside you, and only get paid when your company grows. 30+ companies have already scaled under this model.",
+            "Me convierto en tu Growth Partner: rediseño tu sistema comercial para generar ingresos predecibles, ejecuto contigo y solo gano cuando tu empresa crece. Más de 30 compañías ya escalaron bajo este modelo."
+          )}
+        </p>
+
+        <ul className="mx-auto flex max-w-lg flex-col gap-2 md:gap-2.5 text-left animate-fade-in" style={{ animationDelay: "0.95s" }}>
+          {(lang === "en" ? bullets.en : bullets.es).map((b, i) => (
+            <li key={i} className="flex items-center gap-2.5 text-[13px] sm:text-sm text-foreground/90">
+              <CheckCircle className="h-4 w-4 shrink-0 text-primary" />
+              {b}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
