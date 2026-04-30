@@ -63,23 +63,23 @@ export default function Hero() {
             {t("without hiring a single rep", "sin contratar un solo vendedor")}
           </span>
         </h1>
-        <p className="mx-auto mb-5 md:mb-6 max-w-2xl text-base sm:text-lg text-muted-foreground animate-fade-in" style={{ animationDelay: "0.6s" }}>
+        <p className="mx-auto mb-4 md:mb-5 max-w-xl text-sm sm:text-base text-muted-foreground animate-fade-in" style={{ animationDelay: "0.6s" }}>
           {t(
             "I become your Growth Partner: I redesign your commercial system to generate predictable revenue, execute alongside you, and only get paid when your company grows. 30+ companies have already scaled under this model.",
             "Me convierto en tu Growth Partner: rediseño tu sistema comercial para generar ingresos predecibles, ejecuto contigo y solo gano cuando tu empresa crece. Más de 30 compañías ya escalaron bajo este modelo."
           )}
         </p>
 
-        <ul className="mx-auto mb-4 md:mb-5 flex max-w-lg flex-col gap-2 md:gap-2.5 text-left animate-fade-in" style={{ animationDelay: "0.75s" }}>
+        <ul className="mx-auto mb-3 md:mb-4 flex max-w-lg flex-col gap-2 md:gap-2.5 text-left animate-fade-in" style={{ animationDelay: "0.75s" }}>
           {(lang === "en" ? bullets.en : bullets.es).map((b, i) => (
-            <li key={i} className="flex items-center gap-3 text-sm text-foreground/90">
-              <CheckCircle className="h-5 w-5 shrink-0 text-primary" />
+            <li key={i} className="flex items-center gap-2.5 text-[13px] sm:text-sm text-foreground/90">
+              <CheckCircle className="h-4 w-4 shrink-0 text-primary" />
               {b}
             </li>
           ))}
         </ul>
 
-        <GuaranteeBadge variant="compact" className="mb-4 md:mb-5 animate-fade-in" />
+        <GuaranteeBadge variant="compact" className="mb-3 md:mb-4 animate-fade-in" />
 
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center animate-fade-in" style={{ animationDelay: "0.9s" }}>
           <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none shadow-[0_0_25px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_40px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openBooking}>
