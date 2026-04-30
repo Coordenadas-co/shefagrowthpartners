@@ -26,7 +26,7 @@ export default function Hero() {
   const offset = useParallax(0.3);
 
   return (
-    <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden pt-16">
+    <section className="relative flex min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh] items-center justify-center overflow-hidden pt-14 md:pt-16">
       {/* Background image */}
       <img
         src={heroBg}
@@ -47,10 +47,10 @@ export default function Hero() {
         className="relative z-10 mx-auto w-full max-w-4xl px-6 text-center"
         style={{ transform: `translateY(${offset * 0.15}px)` }}
       >
-        <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary animate-fade-in" style={{ animationDelay: "0.1s" }}>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary animate-fade-in" style={{ animationDelay: "0.1s" }}>
           {t("Growth Partner for B2B & SaaS", "Growth Partner para B2B y SaaS")}
         </p>
-        <h1 className="mb-5 break-words text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-[3.25rem]">
+        <h1 className="mb-4 break-words text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-[3.25rem]">
           <span className="inline-block animate-fade-in" style={{ animationDelay: "0.25s" }}>
             <>
               {t("Increase revenue to your", "Aumenta los ingresos de tu")}
@@ -59,18 +59,18 @@ export default function Hero() {
             </>
           </span>
           <br />
-          <span className="mt-2 inline-block break-words text-gradient-gold animate-fade-in text-2xl leading-tight sm:text-3xl lg:text-4xl" style={{ animationDelay: "0.45s" }}>
+          <span className="mt-1 inline-block break-words text-gradient-gold animate-fade-in text-2xl leading-tight sm:text-3xl lg:text-4xl" style={{ animationDelay: "0.45s" }}>
             {t("without hiring a single rep", "sin contratar un solo vendedor")}
           </span>
         </h1>
-        <p className="mx-auto mb-8 max-w-2xl text-base sm:text-lg text-muted-foreground animate-fade-in" style={{ animationDelay: "0.6s" }}>
+        <p className="mx-auto mb-5 md:mb-6 max-w-2xl text-base sm:text-lg text-muted-foreground animate-fade-in" style={{ animationDelay: "0.6s" }}>
           {t(
             "I become your Growth Partner: I redesign your commercial system to generate predictable revenue, execute alongside you, and only get paid when your company grows. 30+ companies have already scaled under this model.",
             "Me convierto en tu Growth Partner: rediseño tu sistema comercial para generar ingresos predecibles, ejecuto contigo y solo gano cuando tu empresa crece. Más de 30 compañías ya escalaron bajo este modelo."
           )}
         </p>
 
-        <ul className="mx-auto mb-6 flex max-w-lg flex-col gap-3 text-left animate-fade-in" style={{ animationDelay: "0.75s" }}>
+        <ul className="mx-auto mb-4 md:mb-5 flex max-w-lg flex-col gap-2 md:gap-2.5 text-left animate-fade-in" style={{ animationDelay: "0.75s" }}>
           {(lang === "en" ? bullets.en : bullets.es).map((b, i) => (
             <li key={i} className="flex items-center gap-3 text-sm text-foreground/90">
               <CheckCircle className="h-5 w-5 shrink-0 text-primary" />
@@ -79,7 +79,7 @@ export default function Hero() {
           ))}
         </ul>
 
-        <GuaranteeBadge variant="compact" className="mb-6 animate-fade-in" />
+        <GuaranteeBadge variant="compact" className="mb-4 md:mb-5 animate-fade-in" />
 
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center animate-fade-in" style={{ animationDelay: "0.9s" }}>
           <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none shadow-[0_0_25px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_40px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openBooking}>
