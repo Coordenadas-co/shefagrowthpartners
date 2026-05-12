@@ -19,6 +19,10 @@ const PDF_URLS: Record<"en" | "es", string> = {
 const leadSchema = z.object({
   name: z.string().trim().min(2, { message: "Name too short" }).max(120),
   email: z.string().trim().email().max(255),
+  phone: z
+    .string()
+    .trim()
+    .regex(/^[+\d\s().-]{6,32}$/u, { message: "Invalid phone" }),
 });
 
 type Step = "form" | "download" | "upsell";
@@ -28,6 +32,7 @@ export default function LeadMagnetPopup() {
   const [step, setStep] = useState<Step>("form");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const { lang, t } = useLang();
   const { openBooking } = useBooking();
@@ -43,15 +48,16 @@ export default function LeadMagnetPopup() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const parsed = leadSchema.safeParse({ name, email });
+    const parsed = leadSchema.safeParse({ name, email, phone });
     if (!parsed.success) {
-      toast.error(t("Please enter a valid name and email.", "Por favor ingresa un nombre y email válidos."));
+      toast.error(t("Please enter a valid name, email and phone.", "Por favor ingresa un nombre, email y teléfono válidos."));
       return;
     }
     setLoading(true);
     const { error } = await supabase.from("lead_magnet_downloads").insert({
       name: parsed.data.name,
       email: parsed.data.email,
+      phone: parsed.data.phone,
       lang,
     });
     setLoading(false);
@@ -133,6 +139,16 @@ export default function LeadMagnetPopup() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 maxLength={255}
+                required
+                disabled={loading}
+              />
+              <Input
+                type="tel"
+                inputMode="tel"
+                placeholder={t("WhatsApp / phone number", "WhatsApp / número de teléfono")}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                maxLength={32}
                 required
                 disabled={loading}
               />
