@@ -11,7 +11,10 @@ import GuaranteeBadge from "@/components/GuaranteeBadge";
 import { ArrowRight, BookOpen, CheckCircle2, Download, Loader2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
-const PDF_URL = "/lead-magnet/guia-5-palancas.pdf";
+const PDF_URLS: Record<"en" | "es", string> = {
+  en: "/lead-magnet/5-Levers-Shefa-Growth-Partners-EN.pdf",
+  es: "/lead-magnet/5-Palancas-Shefa-Growth-Partners-ES.pdf",
+};
 
 const leadSchema = z.object({
   name: z.string().trim().min(2, { message: "Name too short" }).max(120),
@@ -62,8 +65,8 @@ export default function LeadMagnetPopup() {
 
   const handleDownload = () => {
     const a = document.createElement("a");
-    a.href = PDF_URL;
-    a.download = lang === "es" ? "Shefa-5-Palancas.pdf" : "Shefa-5-Levers.pdf";
+    a.href = PDF_URLS[lang];
+    a.download = lang === "es" ? "5-Palancas-Shefa-Growth-Partners.pdf" : "5-Levers-Shefa-Growth-Partners.pdf";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
