@@ -51,19 +51,18 @@ export default function Hero() {
         style={{ transform: `translateY(${offset * 0.15}px)` }}
       >
         <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary animate-fade-in" style={{ animationDelay: "0.1s" }}>
-          {t("Growth Partner for B2B & SaaS", "Growth Partner para B2B y SaaS")}
+          {t("Growth Partner for Predictable Revenue Systems", "Growth Partner para sistemas de ingresos predecibles")}
         </p>
         <h1 className="mb-4 break-words text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
           <span className="inline-block animate-fade-in" style={{ animationDelay: "0.25s" }}>
-            <>
-              {t("Increase revenue to your", "Aumenta los ingresos de tu")}
-              <br />
-              {t("business in 90 days", "negocio en 90 días")}
-            </>
+            {t(
+              "5 ways to turn inconsistent sales into predictable revenue in 90 days",
+              "5 formas de convertir ventas inestables en ingresos predecibles en 90 días"
+            )}
           </span>
           <br />
           <span className="mt-2 inline-block break-words text-gradient-gold animate-fade-in text-xl leading-tight sm:text-2xl lg:text-3xl" style={{ animationDelay: "0.45s" }}>
-            {t("without hiring a single rep", "sin contratar un solo vendedor")}
+            {t("Without relying on you or unpredictable campaigns", "Sin depender de ti ni de campañas impredecibles")}
           </span>
         </h1>
         <VSLPlayer />
