@@ -19,6 +19,10 @@ const PDF_URLS: Record<"en" | "es", string> = {
 const leadSchema = z.object({
   name: z.string().trim().min(2, { message: "Name too short" }).max(120),
   email: z.string().trim().email().max(255),
+  phone: z
+    .string()
+    .trim()
+    .regex(/^[+\d\s().-]{6,32}$/u, { message: "Invalid phone" }),
 });
 
 type Step = "form" | "download" | "upsell";
