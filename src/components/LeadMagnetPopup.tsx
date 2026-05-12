@@ -142,6 +142,16 @@ export default function LeadMagnetPopup() {
                 required
                 disabled={loading}
               />
+              <Input
+                type="tel"
+                inputMode="tel"
+                placeholder={t("WhatsApp / phone number", "WhatsApp / número de teléfono")}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                maxLength={32}
+                required
+                disabled={loading}
+              />
               <Button
                 type="submit"
                 size="lg"
