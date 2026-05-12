@@ -48,15 +48,16 @@ export default function LeadMagnetPopup() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const parsed = leadSchema.safeParse({ name, email });
+    const parsed = leadSchema.safeParse({ name, email, phone });
     if (!parsed.success) {
-      toast.error(t("Please enter a valid name and email.", "Por favor ingresa un nombre y email válidos."));
+      toast.error(t("Please enter a valid name, email and phone.", "Por favor ingresa un nombre, email y teléfono válidos."));
       return;
     }
     setLoading(true);
     const { error } = await supabase.from("lead_magnet_downloads").insert({
       name: parsed.data.name,
       email: parsed.data.email,
+      phone: parsed.data.phone,
       lang,
     });
     setLoading(false);
