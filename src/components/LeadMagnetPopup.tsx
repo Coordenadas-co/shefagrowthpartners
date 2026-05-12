@@ -32,6 +32,7 @@ export default function LeadMagnetPopup() {
   const [step, setStep] = useState<Step>("form");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const { lang, t } = useLang();
   const { openBooking } = useBooking();
