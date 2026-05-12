@@ -1,8 +1,8 @@
 import { useLang } from "@/contexts/LanguageContext";
 
 const VIDEO_IDS = {
-  en: "D04_AU7Tx40",
-  es: "OaUw7oAxmKY",
+  en: "yAJMUIdEwx8",
+  es: "JdajKCPv3D4",
 };
 
 export default function VSLPlayer() {
