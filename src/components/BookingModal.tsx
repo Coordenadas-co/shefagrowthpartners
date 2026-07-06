@@ -3,7 +3,7 @@ import { useLang } from "@/contexts/LanguageContext";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Loader2 } from "lucide-react";
 
-const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/FHOxAqdafvXaA2qoyd7c";
+const BOOKING_URL = "https://calendly.com/juan-medrano-shefagrowthpartners/30min";
 
 interface Props {
   open: boolean;

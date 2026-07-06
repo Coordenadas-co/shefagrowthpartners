@@ -1,7 +1,9 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Linkedin, TrendingUp, Wrench, Trophy, HelpCircle, Check } from "lucide-react";
-import jsmPhoto from "@/assets/jsm-photo.png";
+import jsmPhotoAsset from "@/assets/jsm-office.png.asset.json";
+
+const jsmPhoto = jsmPhotoAsset.url;
 import SectionCTA from "@/components/SectionCTA";
 
 const blocks = {

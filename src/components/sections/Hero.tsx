@@ -7,7 +7,9 @@ import FloatingParticles from "@/components/FloatingParticles";
 import GuaranteeBadge from "@/components/GuaranteeBadge";
 import VSLPlayer from "@/components/VSLPlayer";
 import { useParallax } from "@/hooks/useParallax";
-import heroBg from "@/assets/hero-bg.png";
+import heroBgAsset from "@/assets/jsm-office.png.asset.json";
+
+const heroBg = heroBgAsset.url;
 
 const bullets = {
   en: [
