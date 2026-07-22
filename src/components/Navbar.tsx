@@ -77,18 +77,13 @@ export default function Navbar() {
               {lang === "en" ? item.en : item.es}
             </a>
           ))}
-          <button
-            onClick={() => { setOpen(false); openLeadMagnet(); }}
-            className="text-left text-sm text-muted-foreground transition-colors hover:text-primary"
-          >
-            {t("Free Guide", "Guía Gratis")}
-          </button>
-          <div className="flex gap-3 pt-2">
-            <Button size="sm" onClick={toggleLang} variant="outline" className="text-xs font-semibold">
+          <div className="flex flex-col gap-3 pt-2">
+            <Button size="sm" onClick={toggleLang} variant="outline" className="text-xs font-semibold w-fit">
               {lang === "en" ? "ES" : "EN"}
             </Button>
-            <Button size="sm" onClick={() => { setOpen(false); openBooking(); }}>
-              {t("Apply Now", "Aplica ahora")}
+            <Button size="sm" onClick={() => { setOpen(false); openLeadMagnet(); }} className="gap-2">
+              <Download className="h-4 w-4" />
+              {t("Download free guide", "Descarga la guía gratis")}
             </Button>
           </div>
         </div>
