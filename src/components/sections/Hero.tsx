@@ -25,7 +25,7 @@ const bullets = {
 
 export default function Hero() {
   const { lang, t } = useLang();
-  const { openBooking } = useBooking();
+  
   const { openLeadMagnet } = useLeadMagnet();
   const offset = useParallax(0.3);
 
