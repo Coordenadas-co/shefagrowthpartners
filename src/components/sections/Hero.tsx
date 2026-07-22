@@ -58,15 +58,19 @@ export default function Hero() {
         <h1 className="mb-4 break-words text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
           <span className="inline-block animate-fade-in" style={{ animationDelay: "0.25s" }}>
             {t(
-              "5 ways to turn inconsistent sales into predictable revenue in 90 days",
-              "5 formas de convertir ventas inestables en ingresos predecibles en 90 días"
+              "5 Ways for $20K+/Month Businesses to Turn an Unpredictable Sales System Into a 30%+ Close Rate in 90 Days",
+              "5 formas de dejar atrás un sistema comercial impredecible y alcanzar una tasa de cierre superior al 30% en 90 días para empresas que facturan más de USD $20.000 al mes."
             )}
           </span>
           <br />
           <span className="mt-2 inline-block break-words text-gradient-gold animate-fade-in text-xl leading-tight sm:text-2xl lg:text-3xl" style={{ animationDelay: "0.45s" }}>
-            {t("Without relying on you or unpredictable campaigns", "Sin depender de ti ni de campañas impredecibles")}
+            {t(
+              "Guaranteed, without depending on the owner — using the Shefa Growth Architecture System™",
+              "Garantizado, sin depender del dueño, utilizando el Shefa Growth Architecture System™"
+            )}
           </span>
         </h1>
+
         <VSLPlayer />
 
         <div className="mb-3 flex flex-col items-center gap-2 sm:flex-row sm:gap-4 sm:justify-center animate-fade-in" style={{ animationDelay: "0.7s" }}>
