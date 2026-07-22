@@ -1,10 +1,9 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { useBooking } from "@/contexts/BookingContext";
 import { useLeadMagnet } from "@/contexts/LeadMagnetContext";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navItems = [
@@ -17,7 +16,6 @@ const navItems = [
 
 export default function Navbar() {
   const { lang, toggleLang, t } = useLang();
-  const { openBooking } = useBooking();
   const { openLeadMagnet } = useLeadMagnet();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -51,17 +49,12 @@ export default function Navbar() {
               {lang === "en" ? item.en : item.es}
             </a>
           ))}
-          <button
-            onClick={openLeadMagnet}
-            className="text-sm text-muted-foreground transition-colors hover:text-primary"
-          >
-            {t("Free Guide", "Guía Gratis")}
-          </button>
           <Button size="sm" onClick={toggleLang} variant="outline" className="min-w-[48px] text-xs font-semibold">
             {lang === "en" ? "ES" : "EN"}
           </Button>
-          <Button size="sm" onClick={openBooking}>
-            {t("Apply Now", "Aplica ahora")}
+          <Button size="sm" onClick={openLeadMagnet} className="gap-2">
+            <Download className="h-4 w-4" />
+            {t("Download free guide", "Descarga la guía gratis")}
           </Button>
         </div>
 
@@ -84,18 +77,13 @@ export default function Navbar() {
               {lang === "en" ? item.en : item.es}
             </a>
           ))}
-          <button
-            onClick={() => { setOpen(false); openLeadMagnet(); }}
-            className="text-left text-sm text-muted-foreground transition-colors hover:text-primary"
-          >
-            {t("Free Guide", "Guía Gratis")}
-          </button>
-          <div className="flex gap-3 pt-2">
-            <Button size="sm" onClick={toggleLang} variant="outline" className="text-xs font-semibold">
+          <div className="flex flex-col gap-3 pt-2">
+            <Button size="sm" onClick={toggleLang} variant="outline" className="text-xs font-semibold w-fit">
               {lang === "en" ? "ES" : "EN"}
             </Button>
-            <Button size="sm" onClick={() => { setOpen(false); openBooking(); }}>
-              {t("Apply Now", "Aplica ahora")}
+            <Button size="sm" onClick={() => { setOpen(false); openLeadMagnet(); }} className="gap-2">
+              <Download className="h-4 w-4" />
+              {t("Download free guide", "Descarga la guía gratis")}
             </Button>
           </div>
         </div>

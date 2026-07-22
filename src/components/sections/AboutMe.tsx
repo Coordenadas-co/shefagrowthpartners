@@ -121,7 +121,7 @@ export default function AboutMe() {
           <img
             src={jsmPhoto}
             alt="Juan Sebastián Medrano"
-            className="h-40 w-40 shrink-0 rounded-full border-2 border-primary/30 object-cover object-[70%_20%]"
+            className="h-40 w-40 shrink-0 rounded-full border-2 border-primary/30 object-cover object-[62%_12%] scale-150"
           />
 
           <div>

@@ -1,8 +1,7 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { useBooking } from "@/contexts/BookingContext";
 import { useLeadMagnet } from "@/contexts/LeadMagnetContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, Download } from "lucide-react";
+import { CheckCircle, Download } from "lucide-react";
 import FloatingParticles from "@/components/FloatingParticles";
 import GuaranteeBadge from "@/components/GuaranteeBadge";
 import VSLPlayer from "@/components/VSLPlayer";
@@ -26,7 +25,7 @@ const bullets = {
 
 export default function Hero() {
   const { lang, t } = useLang();
-  const { openBooking } = useBooking();
+  
   const { openLeadMagnet } = useLeadMagnet();
   const offset = useParallax(0.3);
 
@@ -86,19 +85,6 @@ export default function Hero() {
           </p>
         </div>
 
-        <button
-          onClick={openBooking}
-          className="mb-5 inline-flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground transition-colors hover:text-primary animate-fade-in"
-          style={{ animationDelay: "0.75s" }}
-        >
-          <span className="underline-offset-4 hover:underline">
-            {t(
-              "Already know you need help? Book a free 30-min diagnostic",
-              "¿Ya sabes que necesitas ayuda? Agenda un diagnóstico gratis de 30 min"
-            )}
-          </span>
-          <ArrowRight className="h-3.5 w-3.5" />
-        </button>
 
         <GuaranteeBadge variant="compact" className="mb-5 animate-fade-in" />
 

@@ -1,8 +1,8 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { useBooking } from "@/contexts/BookingContext";
+import { useLeadMagnet } from "@/contexts/LeadMagnetContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Clock } from "lucide-react";
+import { Download, Clock } from "lucide-react";
 import GuaranteeBadge from "@/components/GuaranteeBadge";
 
 const objections = {
@@ -22,7 +22,7 @@ const objections = {
 
 export default function FinalCTA() {
   const { t, lang } = useLang();
-  const { openBooking } = useBooking();
+  const { openLeadMagnet } = useLeadMagnet();
   const { ref, visible } = useScrollReveal();
   const items = lang === "en" ? objections.en : objections.es;
 
@@ -48,9 +48,9 @@ export default function FinalCTA() {
         {/* Guarantee */}
         <GuaranteeBadge className="mb-8" />
 
-        <Button size="lg" className="gap-2 text-base font-semibold shadow-[0_0_20px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_30px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openBooking}>
-          {t("Design the financial future of your business today", "Diseña el futuro financiero de tu negocio hoy")}
-          <ArrowRight className="h-4 w-4" />
+        <Button size="lg" className="gap-2 text-base font-semibold shadow-[0_0_20px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_30px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openLeadMagnet}>
+          <Download className="h-4 w-4" />
+          {t("Download the free guide", "Descarga la guía gratis")}
         </Button>
 
         <div className="mt-4 flex items-center justify-center gap-2 text-xs text-muted-foreground">
