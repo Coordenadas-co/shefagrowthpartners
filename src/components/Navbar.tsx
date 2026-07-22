@@ -16,7 +16,6 @@ const navItems = [
 
 export default function Navbar() {
   const { lang, toggleLang, t } = useLang();
-  const { openBooking } = useBooking();
   const { openLeadMagnet } = useLeadMagnet();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
