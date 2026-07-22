@@ -1,8 +1,8 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { useBooking } from "@/contexts/BookingContext";
+import { useLeadMagnet } from "@/contexts/LeadMagnetContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Clock } from "lucide-react";
+import { Download, Clock } from "lucide-react";
 import GuaranteeBadge from "@/components/GuaranteeBadge";
 
 const objections = {
