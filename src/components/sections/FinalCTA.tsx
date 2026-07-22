@@ -22,7 +22,7 @@ const objections = {
 
 export default function FinalCTA() {
   const { t, lang } = useLang();
-  const { openBooking } = useBooking();
+  const { openLeadMagnet } = useLeadMagnet();
   const { ref, visible } = useScrollReveal();
   const items = lang === "en" ? objections.en : objections.es;
 
