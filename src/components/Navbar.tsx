@@ -1,10 +1,9 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { useBooking } from "@/contexts/BookingContext";
 import { useLeadMagnet } from "@/contexts/LeadMagnetContext";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navItems = [
