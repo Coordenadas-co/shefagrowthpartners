@@ -1,8 +1,7 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { useBooking } from "@/contexts/BookingContext";
 import { useLeadMagnet } from "@/contexts/LeadMagnetContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, Download } from "lucide-react";
+import { CheckCircle, Download } from "lucide-react";
 import FloatingParticles from "@/components/FloatingParticles";
 import GuaranteeBadge from "@/components/GuaranteeBadge";
 import VSLPlayer from "@/components/VSLPlayer";
