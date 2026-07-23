@@ -1,9 +1,6 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Linkedin, TrendingUp, Wrench, Trophy, HelpCircle, Check } from "lucide-react";
-import jsmPhotoAsset from "@/assets/jsm-office.png.asset.json";
-
-const jsmPhoto = jsmPhotoAsset.url;
 import SectionCTA from "@/components/SectionCTA";
 
 const blocks = {
@@ -117,26 +114,18 @@ export default function AboutMe() {
         className={`mx-auto max-w-4xl px-6 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
       >
         {/* Header */}
-        <div className="mb-10 flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:gap-8 md:text-left">
-          <img
-            src={jsmPhoto}
-            alt="Juan Sebastián Medrano"
-            className="h-40 w-40 shrink-0 rounded-full border-2 border-primary/30 object-cover object-[62%_12%] scale-150"
-          />
-
-          <div>
-            <h2 className="mb-2 text-3xl font-bold sm:text-4xl">Juan Sebastián Medrano</h2>
-            <p className="mb-3 text-sm font-semibold text-primary">{data.role}</p>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
-            >
-              <Linkedin className="h-4 w-4" />
-              LinkedIn
-            </a>
-          </div>
+        <div className="mb-10 text-center">
+          <h2 className="mb-2 text-3xl font-bold sm:text-4xl">Juan Sebastián Medrano</h2>
+          <p className="mb-3 text-sm font-semibold text-primary">{data.role}</p>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+          >
+            <Linkedin className="h-4 w-4" />
+            LinkedIn
+          </a>
         </div>
 
         {/* Intro */}
