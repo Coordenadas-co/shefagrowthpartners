@@ -3,7 +3,7 @@ import { useBooking } from "@/contexts/BookingContext";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, CalendarCheck } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navItems = [
@@ -53,8 +53,8 @@ export default function Navbar() {
             {lang === "en" ? "ES" : "EN"}
           </Button>
           <Button size="sm" onClick={openBooking} className="gap-2">
-            <Download className="h-4 w-4" />
-            {t("Download free guide", "Descarga la guía gratis")}
+            <CalendarCheck className="h-4 w-4" />
+            {t("Book your call", "Agenda tu llamada")}
           </Button>
         </div>
 
@@ -82,8 +82,8 @@ export default function Navbar() {
               {lang === "en" ? "ES" : "EN"}
             </Button>
             <Button size="sm" onClick={() => { setOpen(false); openBooking(); }} className="gap-2">
-              <Download className="h-4 w-4" />
-              {t("Download free guide", "Descarga la guía gratis")}
+              <CalendarCheck className="h-4 w-4" />
+              {t("Book your call", "Agenda tu llamada")}
             </Button>
           </div>
         </div>

@@ -2,7 +2,7 @@ import { useLang } from "@/contexts/LanguageContext";
 import { useBooking } from "@/contexts/BookingContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BookOpen, CheckCircle2, Download } from "lucide-react";
+import { ArrowRight, BookOpen, CheckCircle2, CalendarCheck } from "lucide-react";
 
 export default function LeadMagnetCTA() {
   const { t } = useLang();
@@ -88,7 +88,7 @@ export default function LeadMagnetCTA() {
                   onClick={openBooking}
                   className="w-full gap-2 font-semibold shadow-[0_0_20px_hsl(43_52%_54%/0.3)] sm:w-auto"
                 >
-                  <Download className="h-4 w-4" />
+                  <CalendarCheck className="h-4 w-4" />
                   {t("Download free guide", "Descargar guía gratis")}
                   <ArrowRight className="h-4 w-4" />
                 </Button>

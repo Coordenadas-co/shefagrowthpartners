@@ -1,7 +1,7 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useBooking } from "@/contexts/BookingContext";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Download } from "lucide-react";
+import { CheckCircle, CalendarCheck } from "lucide-react";
 import FloatingParticles from "@/components/FloatingParticles";
 import GuaranteeBadge from "@/components/GuaranteeBadge";
 import VSLPlayer from "@/components/VSLPlayer";
@@ -78,8 +78,8 @@ export default function Hero() {
 
         <div className="mb-3 flex flex-col items-center gap-2 sm:flex-row sm:gap-4 sm:justify-center animate-fade-in" style={{ animationDelay: "0.7s" }}>
           <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none shadow-[0_0_25px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_40px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openBooking}>
-            <Download className="h-4 w-4" />
-            {t("Get the free guide — The 5 Levers", "Descarga la guía gratis — Las 5 Palancas")}
+            <CalendarCheck className="h-4 w-4" />
+            {t("Book your free call", "Agenda tu llamada gratis")}
           </Button>
           <p className="text-xs text-muted-foreground">
             {t(

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLang } from "@/contexts/LanguageContext";
 import { useBooking } from "@/contexts/BookingContext";
 import { Button } from "@/components/ui/button";
-import { Download, X } from "lucide-react";
+import { CalendarCheck, X } from "lucide-react";
 
 export default function StickyCTA() {
   const { t } = useLang();
@@ -29,8 +29,8 @@ export default function StickyCTA() {
           onClick={openBooking}
           className="flex-1 gap-2 font-semibold"
         >
-          <Download className="h-4 w-4" />
-          {t("Get the free guide", "Descarga la guía gratis")}
+          <CalendarCheck className="h-4 w-4" />
+          {t("Book your call", "Agenda tu llamada")}
         </Button>
         <button
           aria-label="Dismiss"
