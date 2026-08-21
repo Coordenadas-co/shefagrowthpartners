@@ -93,7 +93,7 @@ export default function LeadMagnetCTA() {
                   <ArrowRight className="h-4 w-4" />
                 </Button>
                 <p className="text-xs text-muted-foreground">
-                  {t("PDF · 100% free · No spam", "PDF · 100% gratis · Sin spam")}
+                  {t("30 min · 100% free · No commitment", "30 min · 100% gratis · Sin compromiso")}
                 </p>
               </div>
             </div>
