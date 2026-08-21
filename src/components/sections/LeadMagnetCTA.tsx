@@ -1,12 +1,12 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { useLeadMagnet } from "@/contexts/LeadMagnetContext";
+import { useBooking } from "@/contexts/BookingContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BookOpen, CheckCircle2, Download } from "lucide-react";
+import { ArrowRight, BookOpen, CheckCircle2, CalendarCheck } from "lucide-react";
 
 export default function LeadMagnetCTA() {
   const { t } = useLang();
-  const { openLeadMagnet } = useLeadMagnet();
+  const { openBooking } = useBooking();
   const { ref, visible } = useScrollReveal();
 
   const bullets = [
@@ -85,15 +85,15 @@ export default function LeadMagnetCTA() {
               <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
                 <Button
                   size="lg"
-                  onClick={openLeadMagnet}
+                  onClick={openBooking}
                   className="w-full gap-2 font-semibold shadow-[0_0_20px_hsl(43_52%_54%/0.3)] sm:w-auto"
                 >
-                  <Download className="h-4 w-4" />
-                  {t("Download free guide", "Descargar guía gratis")}
+                  <CalendarCheck className="h-4 w-4" />
+                  {t("Book your free call", "Agenda tu llamada gratis")}
                   <ArrowRight className="h-4 w-4" />
                 </Button>
                 <p className="text-xs text-muted-foreground">
-                  {t("PDF · 100% free · No spam", "PDF · 100% gratis · Sin spam")}
+                  {t("30 min · 100% free · No commitment", "30 min · 100% gratis · Sin compromiso")}
                 </p>
               </div>
             </div>

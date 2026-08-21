@@ -1,10 +1,11 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { useLeadMagnet } from "@/contexts/LeadMagnetContext";
+import { useBooking } from "@/contexts/BookingContext";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Download } from "lucide-react";
+import { CheckCircle, CalendarCheck } from "lucide-react";
 import FloatingParticles from "@/components/FloatingParticles";
 import GuaranteeBadge from "@/components/GuaranteeBadge";
 import VSLPlayer from "@/components/VSLPlayer";
+import GoldNumbers from "@/components/GoldNumbers";
 import { useParallax } from "@/hooks/useParallax";
 import heroBgAsset from "@/assets/jsm-office.png.asset.json";
 
@@ -26,7 +27,7 @@ const bullets = {
 export default function Hero() {
   const { lang, t } = useLang();
   
-  const { openLeadMagnet } = useLeadMagnet();
+  const { openBooking } = useBooking();
   const offset = useParallax(0.3);
 
   return (
@@ -56,11 +57,14 @@ export default function Hero() {
         </p>
         <h1 className="mb-4 break-words text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
           <span className="inline-block animate-fade-in" style={{ animationDelay: "0.25s" }}>
-            {t(
-              "5 Ways for $20K+/Month Businesses to Turn an Unpredictable Sales System Into a 30%+ Close Rate in 90 Days",
-              "5 formas de dejar atrás un sistema comercial impredecible y alcanzar una tasa de cierre superior al 30% en 90 días para empresas que facturan más de USD $20.000 al mes."
-            )}
+            <GoldNumbers
+              text={t(
+                "5 Ways for $20K+/Month Businesses to Turn an Unpredictable Sales System Into a 30%+ Close Rate in 90 Days",
+                "5 formas de dejar atrás un sistema comercial impredecible y alcanzar una tasa de cierre superior al 30% en 90 días para empresas que facturan más de USD $20.000 al mes."
+              )}
+            />
           </span>
+
           <br />
           <span className="mt-2 inline-block break-words text-gradient-gold animate-fade-in text-xl leading-tight sm:text-2xl lg:text-3xl" style={{ animationDelay: "0.45s" }}>
             {t(
@@ -73,14 +77,14 @@ export default function Hero() {
         <VSLPlayer />
 
         <div className="mb-3 flex flex-col items-center gap-2 sm:flex-row sm:gap-4 sm:justify-center animate-fade-in" style={{ animationDelay: "0.7s" }}>
-          <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none shadow-[0_0_25px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_40px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openLeadMagnet}>
-            <Download className="h-4 w-4" />
-            {t("Get the free guide — The 5 Levers", "Descarga la guía gratis — Las 5 Palancas")}
+          <Button size="lg" className="w-full sm:w-auto gap-2 text-base font-semibold animate-[pulse_3s_ease-in-out_infinite] hover:animate-none shadow-[0_0_25px_hsl(43_52%_54%/0.3)] hover:shadow-[0_0_40px_hsl(43_52%_54%/0.5)] transition-shadow" onClick={openBooking}>
+            <CalendarCheck className="h-4 w-4" />
+            {t("Book your free call", "Agenda tu llamada gratis")}
           </Button>
           <p className="text-xs text-muted-foreground">
             {t(
-              "Free PDF · The 5 levers that double your revenue in 12 months",
-              "PDF gratis · Las 5 palancas que duplican tus ingresos en 12 meses"
+              "Free 30-min diagnostic · No commitment",
+              "Diagnóstico gratis de 30 min · Sin compromiso"
             )}
           </p>
         </div>

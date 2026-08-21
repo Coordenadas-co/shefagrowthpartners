@@ -1,9 +1,9 @@
 import { useLang } from "@/contexts/LanguageContext";
-import { useLeadMagnet } from "@/contexts/LeadMagnetContext";
+import { useBooking } from "@/contexts/BookingContext";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, CalendarCheck } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navItems = [
@@ -16,7 +16,7 @@ const navItems = [
 
 export default function Navbar() {
   const { lang, toggleLang, t } = useLang();
-  const { openLeadMagnet } = useLeadMagnet();
+  const { openBooking } = useBooking();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const activeSection = useActiveSection();
@@ -52,9 +52,9 @@ export default function Navbar() {
           <Button size="sm" onClick={toggleLang} variant="outline" className="min-w-[48px] text-xs font-semibold">
             {lang === "en" ? "ES" : "EN"}
           </Button>
-          <Button size="sm" onClick={openLeadMagnet} className="gap-2">
-            <Download className="h-4 w-4" />
-            {t("Download free guide", "Descarga la guía gratis")}
+          <Button size="sm" onClick={openBooking} className="gap-2">
+            <CalendarCheck className="h-4 w-4" />
+            {t("Book your call", "Agenda tu llamada")}
           </Button>
         </div>
 
@@ -81,9 +81,9 @@ export default function Navbar() {
             <Button size="sm" onClick={toggleLang} variant="outline" className="text-xs font-semibold w-fit">
               {lang === "en" ? "ES" : "EN"}
             </Button>
-            <Button size="sm" onClick={() => { setOpen(false); openLeadMagnet(); }} className="gap-2">
-              <Download className="h-4 w-4" />
-              {t("Download free guide", "Descarga la guía gratis")}
+            <Button size="sm" onClick={() => { setOpen(false); openBooking(); }} className="gap-2">
+              <CalendarCheck className="h-4 w-4" />
+              {t("Book your call", "Agenda tu llamada")}
             </Button>
           </div>
         </div>
