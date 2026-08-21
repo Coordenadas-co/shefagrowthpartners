@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useLang } from "@/contexts/LanguageContext";
-import { useLeadMagnet } from "@/contexts/LeadMagnetContext";
+import { useBooking } from "@/contexts/BookingContext";
 import { Button } from "@/components/ui/button";
 import { Download, X } from "lucide-react";
 
 export default function StickyCTA() {
   const { t } = useLang();
-  const { openLeadMagnet } = useLeadMagnet();
+  const { openBooking } = useBooking();
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
@@ -26,7 +26,7 @@ export default function StickyCTA() {
       <div className="flex items-center gap-2">
         <Button
           size="sm"
-          onClick={openLeadMagnet}
+          onClick={openBooking}
           className="flex-1 gap-2 font-semibold"
         >
           <Download className="h-4 w-4" />

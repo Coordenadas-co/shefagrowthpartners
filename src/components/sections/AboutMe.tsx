@@ -2,6 +2,7 @@ import { useLang } from "@/contexts/LanguageContext";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Linkedin, TrendingUp, Wrench, Trophy, HelpCircle, Check } from "lucide-react";
 import SectionCTA from "@/components/SectionCTA";
+import GoldNumbers from "@/components/GoldNumbers";
 
 const blocks = {
   en: {
