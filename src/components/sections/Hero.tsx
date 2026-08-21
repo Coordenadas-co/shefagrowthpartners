@@ -83,8 +83,8 @@ export default function Hero() {
           </Button>
           <p className="text-xs text-muted-foreground">
             {t(
-              "Free PDF · The 5 levers that double your revenue in 12 months",
-              "PDF gratis · Las 5 palancas que duplican tus ingresos en 12 meses"
+              "Free 30-min diagnostic · No commitment",
+              "Diagnóstico gratis de 30 min · Sin compromiso"
             )}
           </p>
         </div>
