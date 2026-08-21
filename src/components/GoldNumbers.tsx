@@ -4,7 +4,7 @@ const SPLIT = /(\+30%|30%\+|30%|USD \$20\.000|\$20K\+)/g;
 const MATCH = /^(\+30%|30%\+|30%|USD \$20\.000|\$20K\+)$/;
 
 /** Highlights key numbers (30%, $20K+) in gold. */
-export default function Highlight({ text }: { text: string }) {
+export default function GoldNumbers({ text }: { text: string }) {
   const parts = text.split(SPLIT);
   return (
     <>

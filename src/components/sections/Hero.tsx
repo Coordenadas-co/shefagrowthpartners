@@ -5,6 +5,7 @@ import { CheckCircle, Download } from "lucide-react";
 import FloatingParticles from "@/components/FloatingParticles";
 import GuaranteeBadge from "@/components/GuaranteeBadge";
 import VSLPlayer from "@/components/VSLPlayer";
+import GoldNumbers from "@/components/GoldNumbers";
 import { useParallax } from "@/hooks/useParallax";
 import heroBgAsset from "@/assets/jsm-office.png.asset.json";
 
@@ -56,7 +57,7 @@ export default function Hero() {
         </p>
         <h1 className="mb-4 break-words text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
           <span className="inline-block animate-fade-in" style={{ animationDelay: "0.25s" }}>
-            <Highlight
+            <GoldNumbers
               text={t(
                 "5 Ways for $20K+/Month Businesses to Turn an Unpredictable Sales System Into a 30%+ Close Rate in 90 Days",
                 "5 formas de dejar atrás un sistema comercial impredecible y alcanzar una tasa de cierre superior al 30% en 90 días para empresas que facturan más de USD $20.000 al mes."
