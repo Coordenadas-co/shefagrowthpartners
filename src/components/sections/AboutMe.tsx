@@ -154,8 +154,9 @@ export default function AboutMe() {
                   {s.bullets.map((b, k) => (
                     <li key={k} className="flex items-start gap-2 text-sm text-foreground/90">
                       <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      {b}
+                      <GoldNumbers text={b} />
                     </li>
+
                   ))}
                 </ul>
               )}
