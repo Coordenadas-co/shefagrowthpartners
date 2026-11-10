@@ -1,12 +1,14 @@
 # Shefa Growth Partners — Guía de entrega y administración sin experiencia técnica
 
-Sitio comercial bilingüe (español/inglés) de Shefa Growth Partners, con videos de venta, agenda de llamadas en Calendly y un formulario de descarga de guía. Está desarrollado con React, TypeScript, Vite, Tailwind CSS y componentes shadcn/ui; utiliza Lovable Cloud para almacenar registros del formulario.
+Sitio comercial bilingüe (español/inglés) de Shefa Growth Partners, desarrollado con React, TypeScript, Vite, Tailwind CSS y componentes shadcn/ui. Incluye videos, agenda y archivos de guía.
 
-**Contexto de esta entrega:** el proyecto será clonado y administrado fuera de la cuenta de Lovable que lo creó. Esta guía está dirigida a personas que no desarrollan software. No necesitas esa cuenta para abrir el código en tu computadora, pero copiar el código **no transfiere** los registros del formulario, el dominio, las cuentas de Calendly/YouTube/HighLevel ni el acceso al servicio que guarda los datos.
+**Contexto de entrega:** el cliente administrará y publicará el proyecto sin utilizar Lovable. No se contempla una base de datos conectada ni un servicio obligatorio de captura de contactos. El cliente puede elegir su alojamiento, agente de IA, calendario, CRM, formularios y APIs. Los servicios que aparecen en el código son referencias existentes, no una obligación de contratación ni una confirmación de integración activa.
 
-**Por dónde empezar:** pide los accesos de la sección 1, utiliza la sección 2 para iniciar el trabajo con un agente de IA, sigue la sección 7 para abrir la copia en tu computadora y utiliza la sección 8 cuando quieras publicarla.
+**Advertencia sobre el código recibido:** todavía existen referencias heredadas a un cliente de datos y un formulario que intenta guardar información antes de habilitar la descarga. Actualizar este README no elimina esas referencias. Antes de ejecutar una copia sin configuración o publicarla, pide al agente que revise y adapte esos puntos para funcionar sin servicio de datos, o que conecte exclusivamente el servicio que elijas. No inventes credenciales ni asumas que el formulario ya funciona sin conexión.
 
-> Abrir el sitio en tu computadora no lo publica en Internet ni crea un panel para editarlo. Este proyecto no tiene un editor visual de contenido independiente: los textos se cambian en archivos. La configuración inicial del alojamiento y cualquier traslado de datos deben quedar a cargo de una persona técnica; después puedes seguir esta guía para tareas sencillas.
+**Por dónde empezar:** revisa los accesos de la sección 1, utiliza el prompt de la sección 2, sigue la sección 7 para abrir el sitio en tu computadora y publica con la sección 8.
+
+> Abrir el sitio localmente no lo publica ni crea un panel de administración. Puedes revisar el diseño sin contratar una base de datos una vez desacopladas las referencias heredadas. Cualquier integración con terceros es opcional y debe configurarse y probarse por separado.
 
 ## Índice
 
@@ -15,50 +17,41 @@ Sitio comercial bilingüe (español/inglés) de Shefa Growth Partners, con video
 - [3. Dónde cambiar cada elemento](#3-dónde-cambiar-cada-elemento)
 - [4. Calendario, videos, idiomas y guía](#4-calendario-videos-idiomas-y-guía)
 - [5. Formularios e integraciones](#5-formularios-e-integraciones)
-- [6. Sincronización con el repositorio](#6-sincronización-con-el-repositorio)
-- [7. Administrar fuera de Lovable](#7-administrar-fuera-de-lovable)
-- [8. Publicar en otro alojamiento](#8-publicar-en-otro-alojamiento)
+- [6. Administrar el repositorio](#6-administrar-el-repositorio)
+- [7. Ejecutar y editar en tu computadora](#7-ejecutar-y-editar-en-tu-computadora)
+- [8. Publicar con el alojamiento elegido](#8-publicar-con-el-alojamiento-elegido)
 - [9. Seguridad, respaldos y mantenimiento](#9-seguridad-respaldos-y-mantenimiento)
 - [10. Comprobaciones antes de publicar](#10-comprobaciones-antes-de-publicar)
 - [11. Problemas frecuentes](#11-problemas-frecuentes)
 
 ## 1. Accesos y responsabilidades
 
-Antes de cerrar la entrega, el equipo receptor debe contar con:
+Antes de comenzar, reúne:
 
-- [ ] Una copia del repositorio en una cuenta u organización que pueda administrar, no solo un enlace sin permisos.
-- [ ] Acceso al alojamiento donde se publicará la copia y al proveedor del dominio.
-- [ ] Acceso autorizado a Calendly, YouTube y, si corresponde, HighLevel.
-- [ ] Confirmación de quién seguirá administrando los registros del formulario: el equipo original o un servicio del equipo receptor.
-- [ ] Configuración pública necesaria para ejecutar el sitio y copias de los PDF y fotos originales.
-- [ ] Exportación protegida de los datos que deban entregarse y credenciales propias para las integraciones nuevas, si se trasladan.
+- [ ] Copia del repositorio en una cuenta que el cliente pueda administrar.
+- [ ] Acceso al alojamiento elegido y al proveedor del dominio, cuando vayas a publicar.
+- [ ] PDF y fotos originales para alojarlos sin depender de recursos de la plataforma anterior.
+- [ ] Acceso a las cuentas de los terceros que decidas utilizar, solo si vas a conectarlos.
+- [ ] Confirmación de la rama del repositorio que publica el sitio y cómo volver a una versión anterior.
 
-**No elimines el proyecto original ni cierres sus servicios antes de probar la copia.** El sitio clonado puede seguir utilizándolos aunque se vea en otra dirección.
+No necesitas una cuenta de Lovable ni contratar una base de datos para el escenario de entrega. Tampoco necesitas una API privada para mostrar textos, imágenes o PDF locales.
 
-| Servicio | Para qué se administra | Acceso necesario |
+| Servicio | Para qué sirve | Cuándo se necesita |
 | --- | --- | --- |
-| Lovable original, mientras siga siendo necesario | Servicio actual de registros y proyecto original | Acceso autorizado al proyecto original; clonar no lo concede |
-| Repositorio Git | Código, revisiones y colaboración | Permisos de lectura o escritura según la tarea |
-| Calendly | Disponibilidad, duración, notificaciones y reuniones | Cuenta propietaria del evento |
-| YouTube | Videos, privacidad y permiso para insertarlos | Cuenta propietaria de los videos |
-| Proveedor del dominio | DNS y renovación del dominio | Cuenta del titular del dominio |
-| Alojamiento externo, si se utiliza | Despliegues, variables y registros de errores | Cuenta del proveedor |
-| HighLevel, si se configura | Contactos, seguimiento y automatizaciones | Cuenta y permisos de la ubicación correspondiente |
+| Repositorio Git | Guardar y compartir versiones | Para colaboración y despliegues desde código |
+| Alojamiento del cliente | Mostrar el sitio en Internet | Al publicar |
+| Proveedor del dominio | Dirección propia y renovación | Si utilizas dominio propio |
+| Calendario del cliente | Reservar llamadas | Si habilitas agenda |
+| Plataforma de video | Reproducir videos insertados | Si mantienes videos externos |
+| CRM, formulario, automatización o API elegida | Recibir contactos o realizar otras acciones | Solo si el cliente solicita esa integración |
 
-**Direcciones del sitio:**
-
-- Dominio personalizado: https://www.shefagrowthpartners.com
-- Dirección publicada de Lovable: https://shefagrowthpartners.lovable.app
-
-Estas direcciones identifican el sitio; no sustituyen una comprobación de disponibilidad o del estado del dominio.
-
-El dominio no cambia de propietario al copiar el código. Para que muestre la nueva copia, su titular debe conectarlo al nuevo alojamiento después de probarlo.
+**Dominio de referencia:** https://www.shefagrowthpartners.com. Copiar el código no transfiere el dominio ni lo conecta a un nuevo alojamiento; el titular debe autorizar su configuración. La dirección definitiva la determina el cliente.
 
 ## 2. Administrar con cualquier agente de IA
 
-Puedes usar el agente de programación que prefieras, ya sea dentro de un editor, en una aplicación de escritorio o en un servicio que admita repositorios. Los nombres de los botones varían según la herramienta; busca opciones equivalentes a **Abrir carpeta**, **Conectar repositorio** o **Adjuntar archivos**. No se requiere acceso a la cuenta original de Lovable para revisar y editar la copia.
+Puedes usar el agente de programación que prefieras, ya sea dentro de un editor, en una aplicación de escritorio o en un servicio que admita repositorios. Los nombres de los botones varían según la herramienta; busca opciones equivalentes a **Abrir carpeta**, **Conectar repositorio** o **Adjuntar archivos**. No requiere ninguna operación en Lovable.
 
-**Importante:** no todos los chats de IA pueden editar archivos o ejecutar el sitio. Un agente con acceso autorizado a la carpeta puede realizar cambios; un chat sin ese acceso solo puede darte instrucciones. El agente tampoco recibe acceso al dominio, Calendly o los registros del formulario por leer el repositorio.
+**Importante:** no todos los chats de IA pueden editar archivos o ejecutar el sitio. Un agente con acceso autorizado a la carpeta puede realizar cambios; un chat sin ese acceso solo puede darte instrucciones. El agente tampoco recibe acceso al dominio ni a cuentas de terceros por leer el repositorio.
 
 ### Paso 1. Preparar el proyecto para el agente
 
@@ -76,30 +69,31 @@ Abre una conversación nueva con el agente. Copia todo el bloque siguiente y env
 Actúa como asistente de mantenimiento de este proyecto existente de Shefa Growth Partners. Soy una persona no desarrolladora. Explícame los pasos en español, con instrucciones breves y resultados que pueda comprobar.
 
 Contexto:
-- Este código se ha copiado para administrarlo fuera de la cuenta original de Lovable.
+- El proyecto se administrará y publicará sin utilizar Lovable. No propongas esa plataforma como requisito.
 - El sitio es bilingüe español/inglés y utiliza React, TypeScript, Vite, Tailwind CSS y shadcn/ui. Confirma el estado real leyendo los archivos; no reconstruyas ni cambies de tecnología el proyecto.
-- Copiar el repositorio no transfiere el servicio de datos de Lovable Cloud, sus registros, secretos, permisos, dominio ni cuentas externas.
+- No hay una base de datos conectada prevista para esta entrega. Las integraciones son opcionales: el cliente elige sus terceros y APIs. No des por activa ninguna conexión ni exijas un proveedor concreto.
+- El código puede contener referencias heredadas a un servicio de datos. Distingue lo que encuentres en archivos del funcionamiento esperado sin conexión.
 - Conserva el diseño, ambos idiomas, los videos, los PDF y la acción actual de los botones salvo que solicite cambiarlos.
 
-Primera tarea: ayúdame a iniciar el proyecto localmente sin modificar su contenido ni publicar nada.
+Primera tarea: ayúdame a preparar e iniciar el proyecto localmente sin depender de la plataforma anterior ni publicar nada. No cambies el contenido comercial.
 1. Lee README.md, package.json y la configuración de Vite. Respeta las instrucciones del repositorio si existen.
 2. Indica qué acceso tienes: lectura, edición de archivos, ejecución de comandos o navegador. Si no puedes abrir archivos o ejecutar algo, dilo y guíame; no afirmes que lo hiciste.
 3. Pregunta si uso Windows, macOS o Linux solo si no puedes determinarlo. Comprueba Node.js y npm o indícame cómo hacerlo.
-4. Revisa si están presentes las variables públicas requeridas sin mostrar sus valores ni abrir o compartir secretos. Explica si la copia sigue utilizando el servicio original y qué debo confirmar con su responsable.
-5. Si puedes ejecutar comandos en un entorno local autorizado, instala con npm ci e inicia con npm run dev. Si no puedes, dame un comando por paso, dónde escribirlo y qué debería aparecer. No cambies dependencias ni archivos de bloqueo para ocultar errores.
+4. Identifica imports, inicializaciones, variables, llamadas y recursos heredados que dependan del servicio anterior. No uses sus credenciales ni envíes solicitudes a ese servicio. Propón el cambio mínimo para que la página arranque sin una base de datos. Explica qué ocurrirá con el formulario y pide mi aprobación antes de modificarlo: descarga sin captura o conexión a un tercero elegido por mí. No simules que los contactos se guardaron. Si requiere cambios, espera mi autorización antes de continuar con el arranque.
+5. Después de resolver los bloqueos aprobados, si puedes ejecutar comandos en un entorno local autorizado, instala con npm ci e inicia con npm run dev. Si no puedes, dame un comando por paso, dónde escribirlo y qué debería aparecer. No cambies dependencias ni archivos de bloqueo para ocultar errores.
 6. Usa la dirección local que indique Vite; este proyecto utiliza normalmente el puerto 8080. Explica cómo abrir el sitio, detenerlo y reiniciarlo.
 7. Comprueba, si dispones de navegador, que la página carga, permite cambiar idioma y abre el calendario. No envíes formularios ni reserves citas sin mi permiso porque podrían utilizar servicios reales. Si no puedes comprobarlo, dame una lista de verificaciones manuales.
 8. Si encuentras errores, explica su impacto y propone el cambio mínimo antes de aplicarlo. No migres datos, no elimines archivos, no cambies DNS, no publiques y no envíes cambios al repositorio sin mi autorización.
 
-Al terminar, resume: cómo abrir el sitio, si depende de servicios originales, qué verificaste realmente y qué queda pendiente. Después espera mi solicitud de cambio.
+Al terminar, resume: cómo abrir el sitio, qué dependencias heredadas eliminaste con autorización o quedan pendientes, qué verificaste realmente y qué integraciones opcionales no están configuradas. Después espera mi solicitud de cambio.
 ```
 
 ### Paso 3. Revisar la respuesta y encender el sitio
 
 - El agente debe reconocer que recibió **un proyecto existente**, indicar si puede ejecutar los pasos y darte una dirección local o instrucciones para obtenerla.
-- Si te pide un dato de configuración, solicita ese dato al responsable; no uses valores inventados. Nunca entregues claves privadas en el chat.
+- Si pide credenciales de la plataforma anterior para iniciar el sitio, recuerda que debe preparar funcionamiento sin esa dependencia. Si eliges conectar un tercero, utiliza su configuración real y nunca entregues claves privadas en el chat.
 - Si no puede ejecutar comandos, sigue las instrucciones de la sección 7 y comparte únicamente el mensaje de error necesario, sin credenciales ni datos personales.
-- Abre la dirección local y comprueba ambos idiomas. Ver la página no confirma que los registros se guarden ni que los contactos lleguen a HighLevel.
+- Abre la dirección local y comprueba ambos idiomas. Ver la página no confirma que los datos se envíen a ningún tercero.
 
 ### Paso 4. Pedir cambios concretos
 
@@ -126,11 +120,11 @@ No envíes los corchetes como contenido definitivo del sitio. Si no tienes la tr
 4. Publica desde el alojamiento del equipo receptor siguiendo la sección 8. La edición local, el envío de archivos y la publicación son pasos diferentes.
 5. Comprueba el resultado en el dominio público y conserva la posibilidad de volver a la versión anterior.
 
-**Registros y servicios externos:** el sitio no incluye un panel propio para administrarlos. Las citas se gestionan en Calendly; los registros del formulario, en el servicio autorizado que los almacene. Un agente no debe prometer que los ha trasladado ni que tiene acceso solo por haber editado los archivos.
+**Servicios externos:** no se incluye un panel propio para administrarlos ni almacenamiento de contactos garantizado. Si conectas un tercero, utiliza su panel para consultar resultados. El agente no debe prometer una conexión activa solo por haber editado archivos.
 
 ## 3. Dónde cambiar cada elemento
 
-Esta tabla es para quien edite desde **Code** o trabaje localmente:
+Esta tabla ayuda a localizar los archivos en tu editor o a indicárselos al agente:
 
 Para localizar un archivo sin usar comandos, abre la carpeta del proyecto en Visual Studio Code y despliega las carpetas que aparecen en la columna izquierda. Por ejemplo, `src/components/sections/FAQ.tsx` significa abrir `src`, después `components`, luego `sections` y finalmente `FAQ.tsx`.
 
@@ -155,7 +149,7 @@ Para localizar un archivo sin usar comandos, abre la carpeta del proyecto en Vis
 | Colores y estilos globales | `src/index.css` y `tailwind.config.ts` |
 | Título y descripción para buscadores/redes | `index.html` |
 | Comandos y dependencias | `package.json` |
-| Historial de cambios de estructura de datos | `supabase/migrations/` |
+| Referencias heredadas al servicio de datos; no son requisitos de la entrega | `src/integrations/supabase/` y `supabase/migrations/` |
 
 Mantén los colores mediante los tokens existentes y los textos en ambos idiomas. Cambiar el botón compartido no modifica necesariamente todos los botones: revisa también navegación, encabezado, botón móvil y sección final.
 
@@ -163,12 +157,12 @@ Mantén los colores mediante los tokens existentes y los textos en ambos idiomas
 
 ### Calendly
 
-El calendario insertado utiliza:
+Como referencia heredada, el calendario insertado en el código utiliza:
 
 https://calendly.com/juan-medrano-shefagrowthpartners/30min
 
 - Para modificar horarios, duración o avisos: administra el evento en Calendly.
-- Para sustituir el evento: cambia `BOOKING_URL` en `src/components/BookingModal.tsx` o solicita el cambio en Lovable.
+- Para sustituir el evento: pide al agente que cambie `BOOKING_URL` en `src/components/BookingModal.tsx`. Si eliges otra plataforma, debe adaptar también la inserción y comprobarla. No es obligatorio utilizar Calendly.
 - Comprueba el evento dentro del sitio y desde su enlace directo.
 
 Los CTA principales están orientados a **agendar una llamada**. El formulario de guía sigue presente en el código; no confundas su existencia con que todos los botones lo abran. El calendario actual no incluye una detección de reserva completada ni una página de confirmación propia en este componente; configura la confirmación en Calendly o solicita su implementación antes de darla por disponible.
@@ -201,33 +195,47 @@ Los textos se definen generalmente como `t("Texto en inglés", "Texto en españo
 3. Publica y abre las rutas `/lead-magnet/5-Palancas-Shefa-Growth-Partners-ES.pdf` y `/lead-magnet/5-Levers-Shefa-Growth-Partners-EN.pdf` en el dominio público.
 4. Comprueba la descarga en ambos idiomas, también en móvil; algunos navegadores móviles pueden abrir el PDF en lugar de guardarlo directamente.
 
-Cuando se abre el formulario, el flujo implementado es: datos válidos → registro guardado → botón de descarga → oferta para agendar la llamada. La oferta aparece aproximadamente 600 ms después de pulsar la descarga; esto no confirma que el navegador haya terminado de guardar el archivo.
+El flujo heredado intenta guardar un registro antes de mostrar el botón de descarga. Sin una conexión válida no debe considerarse operativo. El cliente puede elegir descarga directa sin captura o un formulario conectado a su tercero. Esa adaptación requiere cambios de código y no se realiza al editar este README. La transición posterior a la oferta tampoco confirma que el navegador haya terminado de guardar el PDF.
 
 ## 5. Formularios e integraciones
 
-El formulario actual exige nombre, correo y teléfono. Solo avanza a la descarga cuando Lovable Cloud acepta el registro.
+**No hay una base de datos conectada prevista para esta entrega.** Por defecto, no prometas que se guardan contactos, se envían correos o se crean registros en un CRM. El formulario heredado exige nombre, correo y teléfono y aún contiene una llamada de escritura a un cliente de datos: debe adaptarse antes de utilizarlo en este escenario.
 
-**HighLevel: no dar por confirmada la sincronización.** El código actual de `LeadMagnetPopup.tsx` inserta el registro en Lovable Cloud; no realiza una llamada explícita a HighLevel. Tampoco se observa un script de seguimiento de HighLevel en el `index.html` actual ni una función `submit-lead` en este repositorio. Esto no permite descartar automatizaciones externas, pero tampoco confirma que los contactos lleguen a HighLevel.
+El cliente puede elegir:
 
-Si la entrega de contactos a HighLevel es necesaria, verifica la integración activa y realiza una prueba completa: enviar un formulario de prueba y comprobar que el contacto aparece en la ubicación correcta. Un secreto guardado por sí solo no activa una integración. Nunca coloques una API privada en el navegador; las llamadas que la requieran deben ejecutarse en una función segura con el secreto configurado en el servicio.
+- **Sin captura:** facilitar el PDF sin recoger información. El agente debe retirar la dependencia de guardado y comprobar descarga y oferta posterior.
+- **Formulario de un tercero:** insertar o conectar la solución elegida por el cliente.
+- **API o automatización:** conectar el formulario con un CRM, correo u otro servicio elegido. Una base de datos propia no es obligatoria si el destino recibe y administra los datos.
 
-## 6. Sincronización con el repositorio
+### Cómo pedir una integración al agente
 
-**Distingue dos casos:** trabajar sobre el mismo repositorio conectado puede seguir enviando cambios al proyecto original; crear una copia en otro repositorio no mantiene esa sincronización automáticamente. Para esta entrega, el equipo receptor debe confirmar qué repositorio administrará y qué cuenta lo controla. No supongas que tus ediciones externas quedan aisladas si sigues utilizando el repositorio original.
+Copia la plantilla y completa los campos antes de enviarla:
 
-En Lovable, revisa **Project settings → Git** para conocer el proveedor, repositorio y rama sincronizada. También puedes llegar desde el menú **+** del chat, en **Project → GitHub** cuando corresponda.
+```text
+Quiero conectar [nombre del servicio elegido] para [resultado deseado].
+Datos que necesito enviar: [campos necesarios].
+Acción al completarse: [descarga, confirmación u otra acción].
+Consulta la documentación oficial de ese servicio y explícame cuentas, permisos, costes y configuración necesarios. No utilices Lovable ni conectes una base de datos salvo que yo lo pida.
+No reutilices credenciales ni conexiones heredadas. No pongas claves privadas en el navegador, en el repositorio ni en el chat. Si la integración necesita un servidor o función segura, propón una opción compatible con mi alojamiento y espera mi aprobación.
+Antes de implementarla, confirma el alcance. Después prueba con datos ficticios autorizados, verifica el resultado en el servicio de destino y documenta cómo desactivar la integración. No muestres éxito si el envío falla.
+```
 
-- Si ya está conectado, los cambios guardados en Lovable, incluido este README, se envían mediante la sincronización del proyecto.
-- Los commits enviados desde fuera a la **rama sincronizada** llegan a Lovable. Los de otras ramas no llegan hasta que se fusionan o se cambia la rama activa.
-- La sincronización inicial crea un repositorio nuevo; no enlaza uno preexistente. Desconectar y reconectar crea otro repositorio, no vuelve a enlazar el anterior.
-- En un borrador, los cambios no aparecen en el repositorio hasta aceptar el borrador o abrir su pull request.
-- No borres el repositorio ni uses `force push` sobre la rama sincronizada.
-- Si Lovable y el repositorio divergen, revisa y fusiona la rama `lovable-sync*` más reciente antes de continuar.
-- Un push al repositorio no publica el sitio automáticamente en Lovable.
+Una clave configurada no basta para activar una integración. HighLevel es solo una posible elección, no un requisito ni una conexión confirmada. No recojas datos personales si no existe un destino y un uso claramente definidos.
 
-Esta guía no acredita el estado de conexión del repositorio: compruébalo en **Project settings → Git**. Para evitar conflictos, coordina las ediciones externas y las de Lovable, y trabaja en ramas separadas para cambios grandes.
+## 6. Administrar el repositorio
 
-## 7. Administrar fuera de Lovable
+El repositorio del cliente es el lugar donde se conservan los archivos y su historial. No se utilizará sincronización con Lovable para administrar el proyecto.
+
+- Trabaja en un repositorio y una cuenta controlados por el cliente. Si recibes un repositorio con automatizaciones previas, pide al responsable que revise y desactive las que no se utilizarán.
+- Usa una rama de prueba para cambios importantes; una rama es una versión separada donde puedes revisar cambios antes de incorporarlos al sitio público.
+- Confirma qué rama utiliza el alojamiento y si publicar es automático al enviar cambios.
+- No uses envíos forzados ni borres el historial para resolver un conflicto: pide ayuda al responsable.
+- Una copia ZIP no conserva sincronización: tendrás que entregar los archivos modificados o configurar Git.
+- Guarda versiones antes de editar y revisa los cambios antes de enviarlos.
+
+Enviar archivos al repositorio y publicar el sitio son acciones distintas, salvo que el alojamiento tenga una publicación automática configurada.
+
+## 7. Ejecutar y editar en tu computadora
 
 ### Paso 1. Instalar las herramientas una sola vez
 
@@ -253,15 +261,13 @@ Esta guía no acredita el estado de conexión del repositorio: compruébalo en *
 
 No abras solo un archivo ni la carpeta que contiene el ZIP. Debes abrir la carpeta donde están `package.json`, `src` y `public`. Una copia ZIP no se sincroniza con el repositorio: para publicar sus cambios necesitarás entregarlos al responsable o configurar Git.
 
-### Paso 3. Preparar la conexión del formulario
+### Paso 3. Revisar que la copia no dependa de servicios heredados
 
-La copia puede conservar un archivo `.env` con la configuración pública del servicio original. Eso **no** te concede permiso para administrarlo y puede hacer que tus pruebas registren datos reales allí.
+No configures una base de datos ni credenciales de la plataforma anterior para satisfacer este paso. Abre el proyecto con el agente y utiliza el prompt de la sección 2.
 
-- Si el equipo original autoriza conservar ese servicio, confirma que la configuración recibida está completa antes de enviar pruebas.
-- Si falta la configuración, pide al responsable los tres valores públicos descritos más abajo; no intentes adivinarlos.
-- Si se busca independencia, una persona técnica debe preparar el nuevo servicio y entregar sus valores públicos. Copiar archivos no realiza ese traslado.
+El agente debe revisar las referencias heredadas, proponer cómo desacoplarlas y esperar autorización para cambiar el código. El cliente elige el comportamiento del formulario según la sección 5. Si aparece un error de conexión al iniciar, no basta con quitar el archivo `.env`: una inicialización importada puede seguir bloqueando la página.
 
-Para introducir valores entregados por el responsable, crea en Visual Studio Code un archivo llamado exactamente `.env.local` junto a `package.json` y completa el ejemplo de «Variables de configuración». No dejes los textos entre `< >`: son etiquetas que hay que sustituir, no valores funcionales. No pongas claves privadas en este archivo. Si cambias esta configuración mientras el sitio está abierto, detenlo y vuelve a iniciarlo.
+**Antes de continuar:** confirma que la página puede arrancar sin esas conexiones y que ningún formulario envía datos al destino anterior. Este README no hace esa limpieza por sí solo. Si el código recibido todavía la requiere, el arranque queda pendiente de esa adaptación, no de contratar un servicio.
 
 ### Paso 4. Abrir la terminal y comprobar la instalación
 
@@ -292,7 +298,7 @@ npm run dev
 
 La terminal mostrará una dirección local, normalmente **http://localhost:8080**. Ábrela en Chrome, Edge, Firefox o Safari. Si muestra otro puerto, usa la dirección que aparece en la terminal.
 
-**Resultado esperado:** aparece la página de Shefa Growth Partners; puedes cambiar el idioma y abrir el calendario. Los videos y el servicio del formulario necesitan Internet. Si aparecen errores o una pantalla en blanco, revisa la sección 11 antes de continuar.
+**Resultado esperado:** aparece la página de Shefa Growth Partners; puedes cambiar el idioma y abrir el calendario. Los videos y el calendario externos necesitan Internet; cualquier formulario conectado necesitará además su integración configurada. Si aparecen errores o una pantalla en blanco, revisa la sección 11 antes de continuar.
 
 Mantén la terminal abierta mientras revisas el sitio. Que siga mostrando mensajes sin volver a la línea de escritura es normal: está manteniendo el sitio encendido.
 
@@ -320,21 +326,13 @@ Si utilizas GitHub Desktop, revisa la lista **Changes**, escribe una descripció
 
 Si utilizas ZIP, entrega los archivos modificados al responsable indicando sus carpetas y lo que cambiaste. No envíes `node_modules`, archivos con secretos ni datos de personas. No sobrescribas el proyecto original sin una revisión.
 
-### Variables de configuración
+### Variables de configuración —solo si una integración las necesita
 
-El cliente utiliza estas variables públicas:
+Para el escenario sin servicios de datos, no debes introducir claves de una base de datos. Primero debe resolverse la dependencia heredada indicada en el paso 3.
 
-```dotenv
-VITE_SUPABASE_PROJECT_ID=<identificador_del_backend>
-VITE_SUPABASE_URL=<url_del_backend>
-VITE_SUPABASE_PUBLISHABLE_KEY=<clave_publica_del_backend>
-```
+Si eliges conectar un tercero, pide al agente que documente únicamente las variables necesarias para esa integración y dónde configurarlas. En tu computadora, las variables públicas pueden guardarse en `.env.local`, junto a `package.json`; en el alojamiento, usa su panel de configuración. Tras cambiarlas, reinicia el sitio local o vuelve a generar la publicación.
 
-Los nombres técnicos deben conservarse aunque el servicio administrado sea Lovable Cloud. Para seguir utilizando el mismo backend, configura los valores públicos correspondientes al proyecto. En tu equipo puedes usar `.env.local`, que está ignorado por Git. En otro alojamiento, utiliza su panel de variables.
-
-**Toda variable `VITE_` puede llegar al navegador.** Nunca uses este prefijo para claves privadas de HighLevel, credenciales, contraseñas o claves de servicio. No edites manualmente los archivos generados `src/integrations/supabase/client.ts`, `types.ts` o `supabase/config.toml` dentro de Lovable.
-
-**Precaución:** si utilizas la configuración del proyecto activo, los formularios locales escriben en la misma base de datos del sitio publicado. Usa registros de prueba identificables; para pruebas destructivas utiliza un entorno separado.
+**Todo valor con prefijo `VITE_` puede llegar al navegador.** Nunca lo uses para contraseñas, tokens privados o claves de servicio. Los secretos deben configurarse en el servidor o función segura elegidos por el cliente, no en el sitio estático. No copies valores de la configuración heredada como parte de una conexión nueva.
 
 ### Comandos disponibles
 
@@ -351,57 +349,54 @@ Para revisar la versión que se publicará, ejecuta `npm run build` y, cuando te
 
 Si fallan pruebas o revisiones, comparte el mensaje sin credenciales ni datos personales con el responsable; no ignores errores para publicar. No subas `node_modules/`, `dist/` ni secretos al repositorio.
 
-## 8. Publicar en otro alojamiento
+## 8. Publicar con el alojamiento elegido
 
-**No necesitas pulsar Publish en la cuenta original de Lovable para publicar la copia externa.** El responsable debe dejar configurado el alojamiento del equipo receptor y explicar cómo publicar y restaurar una versión. Las instrucciones siguientes son una lista de entrega para esa configuración inicial, no una indicación de que los servicios ya se hayan trasladado.
+El cliente puede elegir cualquier alojamiento compatible con un sitio React + Vite estático. No se utilizará Lovable para publicar, configurar el dominio ni administrar integraciones.
 
-### Opción A: mover solo el sitio y conservar Lovable Cloud
+### Preparación inicial
 
-Otro proveedor sirve el sitio, mientras los registros siguen en el servicio actual. **Esta opción no es independiente de la cuenta original:** requiere un acuerdo de acceso, continuidad y pago con su responsable. Clonar el sitio no asegura que ese servicio siga disponible.
+Solicita al agente o al responsable estos pasos:
 
-1. Conecta el repositorio a un alojamiento compatible con sitios estáticos, como Netlify, Vercel o Cloudflare Pages.
-2. Configura Node.js 22, instalación con `npm ci`, compilación con `npm run build` y carpeta de salida `dist`.
-3. Añade las variables públicas anteriores **antes de compilar**. Si cambian, vuelve a desplegar.
-4. Configura las rutas del sitio para que las visitas a rutas de la aplicación devuelvan `index.html` —excepto archivos existentes— en lugar de un error 404.
-5. Comprueba los PDF, videos, Calendly y envío del formulario en la dirección de prueba del proveedor.
-6. Configura HTTPS y el dominio con las instrucciones DNS del nuevo alojamiento. Cambia el tráfico solo después de validar la nueva versión.
+1. Completar y probar el funcionamiento sin referencias al servicio anterior. Alojar las fotos y recursos necesarios en archivos del cliente o en un servicio elegido por él.
+2. Conectar el repositorio del cliente a su alojamiento; Netlify, Vercel o Cloudflare Pages son ejemplos, no requisitos.
+3. Configurar Node.js 22, instalación `npm ci`, generación `npm run build` y carpeta publicada `dist`.
+4. Configurar solo las variables de las integraciones elegidas, si existen. No añadir claves de una base de datos por defecto.
+5. Permitir que las rutas de la aplicación devuelvan `index.html` al recargar, sin reemplazar los PDF ni otros archivos existentes.
+6. Comprobar la dirección de prueba del alojamiento: textos, imágenes, ambos idiomas, videos, agenda y descarga según el comportamiento acordado.
+7. Activar HTTPS y conectar el dominio desde su proveedor siguiendo las instrucciones del alojamiento. Revisar los registros existentes antes de cambiar DNS para no afectar otros servicios, como correo.
+8. Si se eligieron integraciones, verificar los envíos en el tercero correspondiente con datos ficticios autorizados.
 
-Si en el futuro añades autenticación o funciones, revisa también sus URL de redirección y los orígenes permitidos. Los despliegues externos y su publicación automática se administran en ese proveedor, no en Lovable.
+Un sitio estático no protege una clave privada: cualquier integración que la necesite requiere un servicio seguro adicional elegido por el cliente.
 
-### Opción B: mover también el backend
+### Publicaciones siguientes
 
-Esta opción permite retirar la dependencia del servicio de datos de la cuenta original, una vez trasladado y probado. Es una migración independiente, no una consecuencia automática de clonar el código. Requiere una persona con conocimientos técnicos:
+1. Haz el cambio y revísalo localmente.
+2. Ejecuta las comprobaciones pertinentes y `npm run build`.
+3. Envía los cambios a la rama acordada o entrega `dist` mediante el procedimiento del alojamiento.
+4. Comprueba si debes pulsar un botón de publicación o si se inicia automáticamente al enviar los cambios.
+5. Abre el dominio público y revisa el resultado; conoce cómo restaurar la publicación anterior.
 
-- Recrear estructura, políticas de acceso y permisos a partir de las migraciones disponibles; comprobar que coinciden con el estado real.
-- Exportar e importar los registros de base de datos por separado.
-- Copiar por separado los archivos almacenados fuera del repositorio, si existen.
-- Configurar autenticación, funciones, automatizaciones y credenciales propias que realmente se utilicen.
-- Actualizar la conexión de la aplicación y validar lectura y escritura antes de cambiar el dominio.
+### Lo que debe quedar documentado para el cliente
 
-Los secretos de Lovable Cloud no se exportan con Git. La clave de servicio y la contraseña de base de datos del backend administrado no están disponibles para solicitarlas o copiarlas. Prepara credenciales propias en el destino y consulta la guía oficial de migración; no asumas que una copia del repositorio es una copia completa del servicio.
+- Dirección publicada, alojamiento, titular y acceso administrativo.
+- Repositorio, rama de publicación y si publica automáticamente.
+- Pasos para publicar y restaurar una versión.
+- Lista de terceros elegidos, propósito, titular de la cuenta y costes conocidos.
+- Variables requeridas y lugar seguro donde se configuran, sin registrar sus valores privados.
+- Comportamiento del formulario sin integración y, si se conecta, dónde comprobar los resultados.
 
-Para exportar los datos, una persona autorizada debe abrir en el proyecto original **More → Database → Manage → Settings → Export project data**, seleccionar **Export data** y después **Database → Export → Start export**. Cuando la exportación esté lista, debe descargarla desde **More → Storage** y guardarla de forma protegida. Los archivos almacenados allí se descargan aparte; no se entregan con el ZIP del código. Confirma que la exportación pueda importarse en el destino antes de retirar el servicio original.
-
-### Lo que debe dejar preparado el responsable para una persona no técnica
-
-- Dirección del sitio público y acceso al alojamiento del equipo receptor.
-- Repositorio y rama que publican los cambios, y si la publicación ocurre automáticamente.
-- Instrucciones propias de ese alojamiento para publicar y volver a la versión anterior.
-- Acceso al lugar donde se consultan y exportan los registros del formulario.
-- Confirmación de si queda alguna dependencia de la cuenta original y quién la paga/administra.
-- Prueba documentada de calendario, videos, PDF y registro de formulario en la nueva dirección.
-
-**Este README prepara la entrega; no realiza el clonado, la transferencia de cuentas, la migración de datos ni el cambio del dominio.**
+**Alcance:** este README documenta el escenario independiente. No ha retirado dependencias del código, conectado terceros, publicado una nueva copia ni modificado el dominio.
 
 ## 9. Seguridad, respaldos y mantenimiento
 
-- Limita los permisos de Lovable, repositorio y servicios a las personas que los necesiten; activa verificación en dos pasos cuando esté disponible.
-- Trata nombre, correo y teléfono como datos personales: no los incluyas en commits, capturas públicas ni registros de errores compartidos.
-- No abras acceso público de lectura a `lead_magnet_downloads` para solucionar un fallo de formulario; conserva las políticas de acceso y revisa los permisos necesarios para insertar.
-- Conserva versiones del código en Git y exportaciones de datos en un lugar protegido, especialmente antes de migrar o borrar información.
-- Guarda una copia de los PDF y fotos originales. Los archivos `.asset.json` pueden apuntar a recursos alojados: comprueba su disponibilidad desde cualquier alojamiento nuevo y prepara copias si necesitas independencia del proveedor.
-- Revisa periódicamente dependencias, disponibilidad del calendario, videos, enlaces y renovación del dominio.
-- Si necesitas volver atrás, utiliza una versión anterior del sitio o un despliegue anterior del alojamiento. Revertir el código no revierte automáticamente cambios o borrados en la base de datos.
+- Limita permisos del repositorio, alojamiento y terceros; activa verificación en dos pasos cuando exista.
+- No incluyas secretos ni datos personales en commits, capturas o chats.
+- Conserva versiones del código y copias de PDF y fotos originales.
+- Revisa los archivos `.asset.json`: pueden apuntar a recursos externos. Para independencia completa, el agente debe incorporar o reemplazar esas referencias con recursos controlados por el cliente y comprobarlos.
+- No contrates ni conectes una base de datos por defecto. Si el cliente decide hacerlo, configura permisos y protección de los datos con una persona técnica.
+- Revisa periódicamente enlaces, disponibilidad del calendario, videos, dependencias y renovación del dominio.
+- Si conectas un tercero, documenta cómo desactivarlo y, cuando proceda, cómo exportar o eliminar sus datos.
+- Volver a una versión anterior del sitio no revierte acciones ya realizadas en un tercero.
 
 ## 10. Comprobaciones antes de publicar
 
@@ -411,8 +406,10 @@ Para exportar los datos, una persona autorizada debe abrir en el proyecto origin
 - [ ] Botones principales abren el calendario correcto.
 - [ ] Videos reproducibles en ambos idiomas.
 - [ ] PDF correcto en cada idioma y descarga comprobada cuando el formulario esté accesible.
-- [ ] Envío de prueba con nombre, correo y teléfono; registro visible en Lovable Cloud.
-- [ ] Si se requiere HighLevel, contacto de prueba visible allí; no basta con que el formulario muestre éxito.
+- [ ] Arranque sin una conexión de datos heredada ni solicitudes al servicio anterior.
+- [ ] Sin integración, el formulario no promete ni simula guardar contactos.
+- [ ] Si el cliente eligió un tercero, envío probado y resultado confirmado allí.
+- [ ] Fotos y demás recursos disponibles desde ubicaciones controladas por el cliente.
 - [ ] Título, descripción, enlaces, fotos y logotipos revisados.
 - [ ] Pruebas pertinentes ejecutadas y ausencia de errores nuevos.
 - [ ] Resultado comprobado en el dominio público después de publicar.
@@ -428,23 +425,22 @@ Para exportar los datos, una persona autorizada debe abrir en el proyecto origin
 | La página local no abre | Mantén `npm run dev` activo y usa la dirección exacta mostrada en la terminal |
 | Se ve una pantalla en blanco | Revisa configuración pública y mensajes de la terminal; deshaz la última edición si el problema empezó al cambiar un archivo |
 | Mi compañero no abre el enlace `localhost` | Esa dirección es solo local; comparte la dirección publicada por el alojamiento |
-| No puedo consultar los registros tras clonar | Clonar no da acceso al servicio de datos; pide el acceso o confirma el traslado con el responsable |
-| La vista previa cambió, pero el dominio no | Publica con **Publish → Update** y comprueba la caché del navegador |
-| Los cambios externos no aparecen en Lovable | Rama sincronizada, estado de Git y posibles conflictos en **Project settings → Git** |
+| No hay registros de formularios | Sin destino conectado no hay almacenamiento; si deseas captura, elige un tercero y solicita la integración |
+| La página local cambió, pero el dominio no | Revisa la publicación en el alojamiento del cliente, su rama y la caché del navegador |
 | Calendario vacío o con error | Enlace directo, disponibilidad del evento, permisos y posibles bloqueadores del navegador |
 | Video no disponible | Identificador, privacidad del video y permiso de inserción en YouTube |
 | PDF devuelve 404 | Nombre exacto, mayúsculas/minúsculas, ruta en `PDF_URLS` y publicación del archivo |
-| El formulario no avanza | Validez de los tres campos, conexión al backend, permisos de inserción y error de la solicitud |
-| El contacto no aparece en HighLevel | Verifica una integración activa; el código actual del formulario no confirma ese envío |
+| El formulario no avanza | Puede conservar una llamada de guardado heredada; pide al agente adaptarlo al modo sin captura o al tercero elegido |
+| El contacto no aparece en el tercero elegido | Confirma que la integración se implementó y que la solicitud se recibió; una clave configurada no basta |
 | Una ruta externa devuelve 404 al recargar | Configura el fallback de la aplicación a `index.html` en el alojamiento |
-| La app externa no conecta al backend | Variables públicas presentes durante la compilación y nuevo despliegue después de cambiarlas |
+| La página exige configuración del servicio anterior | No inventes valores: pide al agente desacoplar la inicialización y las llamadas heredadas antes de ejecutar sin conexión |
 
-## Documentación oficial
+## Documentación de referencia
 
-- [Editar y revisar código en Lovable](https://docs.lovable.dev/features/code-mode)
-- [Publicar en Lovable](https://docs.lovable.dev/features/publish)
-- [Sincronización Git y trabajo local](https://docs.lovable.dev/integrations/git-sync-overview)
-- [Conectar GitHub](https://docs.lovable.dev/integrations/github)
-- [Alojamiento externo y migración](https://docs.lovable.dev/tips-tricks/external-deployment-hosting)
+- [Node.js](https://nodejs.org/en/download)
+- [Visual Studio Code](https://code.visualstudio.com/docs)
+- [GitHub Desktop](https://docs.github.com/en/desktop)
+- [Vite: generación y publicación de un sitio estático](https://vite.dev/guide/static-deploy.html)
+- Documentación oficial del alojamiento y de las APIs que el cliente elija.
 
-**Alcance de esta guía:** documenta el código presente en este repositorio; no certifica el estado de publicación, sincronización Git, DNS ni automatizaciones configuradas en servicios externos.
+**Alcance de esta guía:** define cómo administrar la entrega sin Lovable y sin asumir una base de datos conectada. Señala las referencias heredadas que necesitan adaptación; no certifica su eliminación ni el estado de publicación, DNS o integraciones externas. En esta actualización solo se modifica documentación.
