@@ -4,14 +4,14 @@ Sitio comercial bilingüe (español/inglés) de Shefa Growth Partners, con video
 
 **Contexto de esta entrega:** el proyecto será clonado y administrado fuera de la cuenta de Lovable que lo creó. Esta guía está dirigida a personas que no desarrollan software. No necesitas esa cuenta para abrir el código en tu computadora, pero copiar el código **no transfiere** los registros del formulario, el dominio, las cuentas de Calendly/YouTube/HighLevel ni el acceso al servicio que guarda los datos.
 
-**Por dónde empezar:** pide los accesos de la sección 1, sigue la sección 7 para abrir la copia en tu computadora y utiliza la sección 8 cuando quieras publicarla. La sección 2 explica únicamente el proyecto original en Lovable; no es un paso obligatorio para administrar la copia externa.
+**Por dónde empezar:** pide los accesos de la sección 1, utiliza la sección 2 para iniciar el trabajo con un agente de IA, sigue la sección 7 para abrir la copia en tu computadora y utiliza la sección 8 cuando quieras publicarla.
 
 > Abrir el sitio en tu computadora no lo publica en Internet ni crea un panel para editarlo. Este proyecto no tiene un editor visual de contenido independiente: los textos se cambian en archivos. La configuración inicial del alojamiento y cualquier traslado de datos deben quedar a cargo de una persona técnica; después puedes seguir esta guía para tareas sencillas.
 
 ## Índice
 
 - [1. Accesos y responsabilidades](#1-accesos-y-responsabilidades)
-- [2. Administrar dentro de Lovable](#2-administrar-dentro-de-lovable)
+- [2. Administrar con cualquier agente de IA](#2-administrar-con-cualquier-agente-de-ia)
 - [3. Dónde cambiar cada elemento](#3-dónde-cambiar-cada-elemento)
 - [4. Calendario, videos, idiomas y guía](#4-calendario-videos-idiomas-y-guía)
 - [5. Formularios e integraciones](#5-formularios-e-integraciones)
@@ -54,36 +54,79 @@ Estas direcciones identifican el sitio; no sustituyen una comprobación de dispo
 
 El dominio no cambia de propietario al copiar el código. Para que muestre la nueva copia, su titular debe conectarlo al nuevo alojamiento después de probarlo.
 
-## 2. Administrar dentro de Lovable
+## 2. Administrar con cualquier agente de IA
 
-**Solo para quienes conserven acceso al proyecto original.** Los pasos de esta sección no administran una copia alojada fuera de Lovable. Publicar aquí actualiza el sitio original; publicar la copia se hace en el alojamiento elegido por el equipo receptor.
+Puedes usar el agente de programación que prefieras, ya sea dentro de un editor, en una aplicación de escritorio o en un servicio que admita repositorios. Los nombres de los botones varían según la herramienta; busca opciones equivalentes a **Abrir carpeta**, **Conectar repositorio** o **Adjuntar archivos**. No se requiere acceso a la cuenta original de Lovable para revisar y editar la copia.
 
-### Cambiar contenido o diseño
+**Importante:** no todos los chats de IA pueden editar archivos o ejecutar el sitio. Un agente con acceso autorizado a la carpeta puede realizar cambios; un chat sin ese acceso solo puede darte instrucciones. El agente tampoco recibe acceso al dominio, Calendly o los registros del formulario por leer el repositorio.
 
-1. Abre el proyecto en Lovable.
-2. Solicita el cambio en el chat, indicando la sección, el texto exacto y los dos idiomas cuando corresponda.
-3. Revisa el resultado en la vista previa, tanto en computadora como en móvil.
-4. Comprueba los botones, el calendario y los videos antes de publicar.
+### Paso 1. Preparar el proyecto para el agente
 
-Ejemplo de solicitud:
+1. Obtén la copia del código siguiendo la sección 7. No comiences con una carpeta vacía ni le pidas recrear el sitio desde cero.
+2. Abre la carpeta que contiene `package.json` en la herramienta elegida, o conecta el repositorio del equipo receptor con los permisos mínimos necesarios.
+3. Si solo puedes adjuntar archivos, entrega el README y los archivos relevantes para el cambio. Si envías un ZIP, excluye `.env`, `.env.local`, otros archivos con credenciales, datos personales, `.git`, `node_modules` y `dist`. Para preparar una copia segura, solicita ayuda al responsable si no sabes identificar esos archivos.
+4. Confirma que estás trabajando en una copia o rama de prueba, no en una rama que publique automáticamente el sitio.
+5. No pegues contraseñas, claves privadas ni registros de clientes en el chat. Cuando haga falta configurar una credencial, pide instrucciones para introducirla en el lugar seguro del servicio correspondiente.
 
-> Cambia la segunda respuesta del FAQ por estos textos: español «…» e inglés «…». Conserva el diseño y la acción de los botones.
+### Paso 2. Copiar y enviar este prompt de inicio
 
-Para editar archivos directamente, abre **Code**. La edición manual depende del plan; en el plan gratuito el editor es de solo lectura. Guarda los cambios y utiliza el historial de versiones si necesitas revisar o revertir una edición.
+Abre una conversación nueva con el agente. Copia todo el bloque siguiente y envíalo después de abrir la carpeta o proporcionar los archivos:
 
-### Publicar cambios
+```text
+Actúa como asistente de mantenimiento de este proyecto existente de Shefa Growth Partners. Soy una persona no desarrolladora. Explícame los pasos en español, con instrucciones breves y resultados que pueda comprobar.
 
-1. Pulsa **Publish**.
-2. Si el sitio ya está publicado, confirma **Update** en el diálogo de publicación.
-3. Abre el dominio público y comprueba el resultado.
+Contexto:
+- Este código se ha copiado para administrarlo fuera de la cuenta original de Lovable.
+- El sitio es bilingüe español/inglés y utiliza React, TypeScript, Vite, Tailwind CSS y shadcn/ui. Confirma el estado real leyendo los archivos; no reconstruyas ni cambies de tecnología el proyecto.
+- Copiar el repositorio no transfiere el servicio de datos de Lovable Cloud, sus registros, secretos, permisos, dominio ni cuentas externas.
+- Conserva el diseño, ambos idiomas, los videos, los PDF y la acción actual de los botones salvo que solicite cambiarlos.
 
-**Vista previa, repositorio y sitio publicado no son lo mismo.** Un cambio de contenido en la vista previa o un commit sincronizado no actualiza automáticamente el sitio público en Lovable. Los cambios del backend, como modificaciones de tablas o funciones, pueden aplicarse al servicio activo sin esperar una publicación del sitio: trátalos con especial cuidado.
+Primera tarea: ayúdame a iniciar el proyecto localmente sin modificar su contenido ni publicar nada.
+1. Lee README.md, package.json y la configuración de Vite. Respeta las instrucciones del repositorio si existen.
+2. Indica qué acceso tienes: lectura, edición de archivos, ejecución de comandos o navegador. Si no puedes abrir archivos o ejecutar algo, dilo y guíame; no afirmes que lo hiciste.
+3. Pregunta si uso Windows, macOS o Linux solo si no puedes determinarlo. Comprueba Node.js y npm o indícame cómo hacerlo.
+4. Revisa si están presentes las variables públicas requeridas sin mostrar sus valores ni abrir o compartir secretos. Explica si la copia sigue utilizando el servicio original y qué debo confirmar con su responsable.
+5. Si puedes ejecutar comandos en un entorno local autorizado, instala con npm ci e inicia con npm run dev. Si no puedes, dame un comando por paso, dónde escribirlo y qué debería aparecer. No cambies dependencias ni archivos de bloqueo para ocultar errores.
+6. Usa la dirección local que indique Vite; este proyecto utiliza normalmente el puerto 8080. Explica cómo abrir el sitio, detenerlo y reiniciarlo.
+7. Comprueba, si dispones de navegador, que la página carga, permite cambiar idioma y abre el calendario. No envíes formularios ni reserves citas sin mi permiso porque podrían utilizar servicios reales. Si no puedes comprobarlo, dame una lista de verificaciones manuales.
+8. Si encuentras errores, explica su impacto y propone el cambio mínimo antes de aplicarlo. No migres datos, no elimines archivos, no cambies DNS, no publiques y no envíes cambios al repositorio sin mi autorización.
 
-### Administrar registros del formulario
+Al terminar, resume: cómo abrir el sitio, si depende de servicios originales, qué verificaste realmente y qué queda pendiente. Después espera mi solicitud de cambio.
+```
 
-Abre **More → Database** para revisar las herramientas de base de datos de Lovable Cloud. Los registros de descarga se guardan en `lead_magnet_downloads`, con nombre, correo, teléfono, idioma y fecha. La exportación de datos se realiza por separado desde **More → Database → Manage → Settings → Export data**.
+### Paso 3. Revisar la respuesta y encender el sitio
 
-El sitio no incluye un panel público de administración propio. El contenido se cambia en Lovable o en el código; la disponibilidad de citas se cambia en Calendly. El equipo que solo reciba el repositorio no obtiene acceso a estos registros. Si se trasladan, la exportación debe realizarla una persona autorizada antes de finalizar la entrega.
+- El agente debe reconocer que recibió **un proyecto existente**, indicar si puede ejecutar los pasos y darte una dirección local o instrucciones para obtenerla.
+- Si te pide un dato de configuración, solicita ese dato al responsable; no uses valores inventados. Nunca entregues claves privadas en el chat.
+- Si no puede ejecutar comandos, sigue las instrucciones de la sección 7 y comparte únicamente el mensaje de error necesario, sin credenciales ni datos personales.
+- Abre la dirección local y comprueba ambos idiomas. Ver la página no confirma que los registros se guarden ni que los contactos lleguen a HighLevel.
+
+### Paso 4. Pedir cambios concretos
+
+Solicita un cambio por vez, con el texto exacto o una captura sin datos personales. Puedes copiar esta plantilla y sustituir los campos entre corchetes:
+
+```text
+En el proyecto existente, cambia únicamente [sección o elemento].
+Resultado esperado: [describe lo que quieres ver o hacer].
+Texto en español: [texto exacto, si aplica].
+Texto en inglés: [texto exacto, si aplica].
+Conserva el resto del diseño, las acciones de los botones y las integraciones.
+Antes de editar, lee los archivos afectados y explica brevemente el cambio.
+Después, revisa el resultado en ambos idiomas y en móvil/computadora si tienes navegador, y ejecuta las comprobaciones pertinentes disponibles.
+Indica qué verificaste y qué no pudiste verificar. No publiques ni envíes cambios al repositorio sin mi autorización.
+```
+
+No envíes los corchetes como contenido definitivo del sitio. Si no tienes la traducción, pide primero al agente una propuesta y revísala antes de aplicarla.
+
+### Paso 5. Revisar, guardar y publicar por separado
+
+1. Revisa el cambio en la dirección local, en español e inglés, y comprueba los botones afectados.
+2. Pide al agente un resumen de los archivos cambiados y de las comprobaciones realizadas. Para ver la versión de publicación, utiliza `npm run build` y después `npm run preview`, como explica la sección 7.
+3. Guarda o envía los cambios mediante el procedimiento acordado con el responsable del repositorio. Confirma si ese envío activa una publicación automática antes de autorizarlo.
+4. Publica desde el alojamiento del equipo receptor siguiendo la sección 8. La edición local, el envío de archivos y la publicación son pasos diferentes.
+5. Comprueba el resultado en el dominio público y conserva la posibilidad de volver a la versión anterior.
+
+**Registros y servicios externos:** el sitio no incluye un panel propio para administrarlos. Las citas se gestionan en Calendly; los registros del formulario, en el servicio autorizado que los almacene. Un agente no debe prometer que los ha trasladado ni que tiene acceso solo por haber editado los archivos.
 
 ## 3. Dónde cambiar cada elemento
 
